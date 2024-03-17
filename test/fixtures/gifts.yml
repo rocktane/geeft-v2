@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  budget: 1
+  age: 1
+  genre: MyString
+  occasion: MyString
+  interests: MyText
+  generated_list: MyText
+  user: one
+
+two:
+  budget: 1
+  age: 1
+  genre: MyString
+  occasion: MyString
+  interests: MyText
+  generated_list: MyText
+  user: two
