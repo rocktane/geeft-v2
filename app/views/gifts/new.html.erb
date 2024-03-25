@@ -1,0 +1,11 @@
+<%= @gift %>
+
+<%= simple_form_for @gift do |f| %>
+  <%= f.input :budget %>
+  <%= f.input :age %>
+  <%= f.input :genre %>
+  <%= f.input :occasion %>
+  <%= f.input :relationship %>
+  <%= f.input :interests, as: :select, collection: ["musique", "nature"], input_html: { multiple: true } %>
+  <%= f.button :submit %>
+<% end %>
