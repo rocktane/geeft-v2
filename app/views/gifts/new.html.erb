@@ -1,11 +1,17 @@
-<%= @gift %>
+<% model_to_use = [@event, @gift] || @gift %>
 
-<%= simple_form_for @gift do |f| %>
-  <%= f.input :budget %>
-  <%= f.input :age %>
-  <%= f.input :genre %>
-  <%= f.input :occasion %>
-  <%= f.input :relationship %>
-  <%= f.input :interests, as: :select, collection: ["musique", "nature"], input_html: { multiple: true } %>
+<%= form_with(model: model_to_use, url: event_gifts_path) do |f| %>
+  <%= f.label :budget, "Budget" %>
+  <%= f.text_field :budget %>
+  <%= f.label :age, "Age" %>
+  <%= f.text_field :age %>
+  <%= f.label :genre, "Genre" %>
+  <%= f.select :genre, ['neutral', 'female', 'male'] %>
+  <%= f.label :occasion, "Occasion" %>
+  <%= f.select :occasion, Gift::OCCASIONS.sort %>
+  <%= f.label :relationship, "Relationship" %>
+  <%= f.select :relationship, Gift::RELATIONSHIPS.sort %>
+  <%= f.label :interests, "Interests" %>
+  <%= f.select :interests, Gift::INTERESTS.sort, { multiple: true } %>
   <%= f.button :submit %>
 <% end %>

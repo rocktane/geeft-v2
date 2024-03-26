@@ -4,3 +4,23 @@
 <%= @gift.interests %>
 <%= @gift.budget %>
 <%= @gift.age %>
+<br>
+<h1>List of gifts :</h1><br>
+<ul>
+<% @gift.generated_list.each do |gift| %>
+  <li><%= gift %></li>
+<% end %>
+</ul>
+
+<%= form_with(url: gift_path, method: :patch) do |f| %>
+  <%= f.text_field :comment, as: :text %>
+  <%= f.submit %>
+<% end %>
+
+<% if @gift.event_id %>
+  <%= @gift.id %>
+  <%= @gift.event[:id] %>
+  <%= link_to "ajouter à l'event", add_gifts_path(event_id: @gift.event[:id], generated_list: @gift.generated_list), method: :patch %>
+<% else %>
+  <%= link_to 'enregistrer', new_gift_event_path(@gift) %>
+<% end %>
