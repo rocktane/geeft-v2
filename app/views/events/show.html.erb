@@ -1,0 +1,15 @@
+<h1>Show de l'event</h1>
+<%= @event.name %>
+<%= @event.date %>
+<%= @event.description %>
+<%= @event.url %>
+<br>
+<% if @event.gift_list == [] %>
+  <%= link_to 'Generate list', new_event_gift_path(@event) %>
+<% else %>
+  <ul>
+    <% @event.gift_list.each do |gift| %>
+      <li><%= gift %></li>
+    <% end %>
+  </ul>
+<% end %>

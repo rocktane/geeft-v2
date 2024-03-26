@@ -1,0 +1,22 @@
+<h1>Crée ton évènement</h1>
+
+<% model_to_use = [@gift, @event] || @event %>
+
+<%= form_with(model: model_to_use, url: events_path) do |f| %>
+  <%= f.label :date, "Date" %>
+  <%= f.text_field :date %>
+  <%= f.label :name, "Nom" %>
+  <%= f.text_field :name %>
+  <%= f.label :description, "Description" %>
+  <%= f.text_field :description %>
+  <%= f.label :url, "URL" %>
+  <%= f.text_field :url %>
+  <%= f.submit %>
+<% end %>
+
+<% if @gift[:id] %>
+  <h2>There is a Gift</h2>
+  <%= @gift.generated_list %>
+<% else %>
+  <h2>There is no Gift</h2>
+<% end %>
