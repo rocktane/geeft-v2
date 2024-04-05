@@ -30,8 +30,18 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def link
+    @event = Event.find(params[:event_id])
+    @gift = Gift.find(params[:gift_id])
+    @event.gift_list = @gift.generated_list
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render 'gifts/show'
+    end
+  end
+
   def add_gifts
-    raise
     @event.update(event_params)
     redirect_to event_path(@event)
   end

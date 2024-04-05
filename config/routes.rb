@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "pages#home"
 
   get "dashboard" => "events#dashboard", as: :dashboard
-  patch 'events/:event_id/generate', to: 'events#add_gifts', as: 'add_gifts'
+  get "link" => "events#link", as: :link
 
   resources :events do
     resources :gifts, only: [:new, :create]
