@@ -20,12 +20,12 @@ class GiftsController < ApplicationController
   def create
     @event = params[:event_id] ? Event.find(params[:event_id]) : Event.new
     @gift = Gift.new(gift_params)
-    @gift.event = @event
+    # @gift.event = @event
     @gift.user = current_user
     @gift.interests = @gift.interests.compact_blank
     @gift.generated_list = @gift.gen_gifts($client, @gift.budget, @gift.age, @gift.genre, @gift.occasion, @gift.interests, @gift.relationship).split(/\d+\.\s+/).map(&:strip).compact_blank
     if @gift.save
-      redirect_to gift_path(@gift, @event)
+      redirect_to gift_path(@gift, event_id: @event)
     else
       render :new
     end

@@ -11,3 +11,10 @@
   <%= f.text_field :url, class: 'no-box-input' %>
   <%= f.submit %>
 <% end %>
+
+<h2>Liste de cadeaux :</h2>
+<ul>
+  <% @event.gift_list.each_with_index do |gift, index| %>
+    <li><%= gift %></li>
+  <% end %>
+</ul>

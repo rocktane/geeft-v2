@@ -17,12 +17,8 @@
   <%= f.submit %>
 <% end %>
 
-<% if @gift.event_id %>
-  gift.id = <%= @gift.id %>
-  <br>
-  gift.event.id = <%= @gift.event[:id] %>
-  <br>
-  <%= link_to "ajouter à l'event", link_path(event_id: @gift.event[:id], gift_id: @gift.id) %>
+<% if @event.id %>
+  <%= link_to "ajouter à l'event", link_path(event_id: @event, gift_id: @gift.id) %>
 <% else %>
   <%= link_to 'enregistrer', new_gift_event_path(@gift) %>
 <% end %>
