@@ -2,7 +2,8 @@
 
 <% model_to_use = [@gift, @event] || @event %>
 
-<%= form_with(model: model_to_use, url: events_path) do |f| %>
+<%= form_with(model: model_to_use, url: events_path(gift_id: @gift.id)) do |f| %>
+
   <%= f.label :date, "Date" %>
   <%= f.text_field :date %>
   <%= f.label :name, "Nom" %>

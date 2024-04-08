@@ -1,6 +1,6 @@
 <% model_to_use = [@event, @gift] || @gift %>
 
-<%= form_with(model: model_to_use, url: event_gifts_path) do |f| %>
+<%= form_with(model: model_to_use, url: gifts_path(event_id: @event)) do |f| %>
   <%= f.label :budget, "Budget" %>
   <%= f.text_field :budget %>
   <%= f.label :age, "Age" %>

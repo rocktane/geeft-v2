@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_event , only: [:show, :edit, :add_gifts, :destroy]
+  before_action :set_event , only: [:show, :edit, :update, :destroy]
 
   def dashboard
     @events = Event.where(user: current_user)
@@ -16,9 +16,9 @@ class EventsController < ApplicationController
   end
 
   def create
+    @gift = params[:gift_id] ? Gift.find(params[:gift_id]) : Gift.new
     @event = Event.new(event_params)
-    @event.gift = params[:gift_id] ? Gift.find(params[:gift_id]) : Gift.new
-    @event.gift_list = @event.gift.generated_list
+    @event.gift_list = @gift.generated_list
     @event.user = current_user
     if @event.save
       redirect_to event_path(@event)
@@ -28,6 +28,11 @@ class EventsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    @event.update(event_params)
+    redirect_to event_path(@event)
   end
 
   def link
@@ -41,10 +46,10 @@ class EventsController < ApplicationController
     end
   end
 
-  def add_gifts
-    @event.update(event_params)
-    redirect_to event_path(@event)
-  end
+  # def add_gifts
+  #   @event.update(event_params)
+  #   redirect_to event_path(@event)
+  # end
 
   def destroy
     @event.destroy
@@ -54,7 +59,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :description, :url, :gift_list, :user_id, :gift_id)
+    params.require(:event).permit(:name, :date, :description, :url, :gift_list, :user_id, :gift_id, :event_id)
   end
 
   def set_event
