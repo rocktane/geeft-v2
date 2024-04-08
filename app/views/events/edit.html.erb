@@ -13,8 +13,8 @@
 <% end %>
 
 <h2>Liste de cadeaux :</h2>
-<ul>
+<ul data-controller="delete-gift">
   <% @event.gift_list.each_with_index do |gift, index| %>
-    <li><%= gift %></li>
+    <li><%= gift %><div data-action="click->delete-gift#delete">X</div></li>
   <% end %>
 </ul>
