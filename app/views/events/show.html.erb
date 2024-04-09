@@ -1,19 +1,18 @@
 <h1>Show de l'event</h1>
 
-
 <%= @event.name %>
-<%= @event.date %>
+<%= @event.date.strftime('%d/%m/%Y') %>
 <%= @event.description %>
 <%= @event.url %>
 <br>
-<% if @event.gift_list == [] %>
-  <%= link_to 'Generate list', new_event_gift_path(@event) %>
-<% else %>
+<% if @event.gift.class.name != "NilClass" %>
   <ul>
-    <% @event.gift_list.each do |gift| %>
-      <li><%= gift %></li>
-    <% end %>
+  <% @event.gift.generated_list.each do |gift| %>
+    <li><%= gift %></li>
+  <% end %>
   </ul>
+<% else %>
+  <%= link_to 'Generate list', new_event_gift_path(@event) %>
 <% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %>
