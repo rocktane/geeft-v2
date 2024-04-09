@@ -7,6 +7,11 @@
 <br>
 <div data-controller="save-gift">
 
+  <h1><%= @event.gift %></h1>
+  <h1><%= @gift.event %></h1>
+  <h1>event.id :<%= @event.id %></h1>
+  <h1>event.gift.id :<%= @event.gift.id %></h1>
+
 <h1>List of gifts :</h1><br>
 <ul data-controller="refresh-gift" data-save-gift-target="list">
 <% @gift.generated_list.each_with_index do |gift, index| %>
@@ -29,10 +34,8 @@
 <% end %>
 
   <% if @event.id %>
-    <%= link_to "ajouter à l'event", link_path(event_id: @event, gift_id: @gift.id) %>
+    <%= link_to "Ajouter à l'event", link_path(event_id: @event, gift_id: @gift.id), data: { action: "click->save-gift#save", event_id: @event.id } %>
   <% else %>
-    <%= link_to 'enregistrer', new_gift_event_path(@gift) %>
-    <%= link_to 'Save with JS (link_to)', new_gift_event_path(@gift), data: { env: Rails.env, id: @gift.id, action: "click->save-gift#save", save_gift_target: "saveList" } %>
-    <!-- <a href="#" data-action="click->save-gift#save" data-env=<%= Rails.env %> data-id=<%= @gift.id %> data-save-gift-target="saveList">Save with JS</a> -->
+    <%= link_to 'Save', updatelist_path(@gift), data: { env: Rails.env, id: @gift.id, action: "click->save-gift#save", save_gift_target: "saveList" } %>
   <% end %>
 </div>
