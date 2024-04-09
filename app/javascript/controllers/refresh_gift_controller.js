@@ -9,9 +9,11 @@ export default class extends Controller {
   }
 
   refresh(event) {
-    const li = event.target.parentElement;
-    const firstHiddenGift = this.hiddenGiftTargets[0];
-    li.innerHTML = firstHiddenGift.innerHTML;
-    firstHiddenGift.remove();
+    if (this.hiddenGiftTargets.length > 0) {
+      const li = event.target.parentElement;
+      const firstHiddenGift = this.hiddenGiftTargets[0];
+      li.innerHTML = firstHiddenGift.innerHTML;
+      firstHiddenGift.remove();
+    }
   }
 }

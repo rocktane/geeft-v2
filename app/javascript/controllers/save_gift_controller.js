@@ -3,15 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["saveList", "gift", "list"];
 
-  connect() {
-    const url = window.location.href;
-
-    if (url.includes("event_id") === true) {
-      console.log("event found");
-    } else {
-      console.log("no event found");
-    }
-  }
+  connect() {}
 
   newList() {
     const old_list = this.giftTargets.slice(0, 5);
@@ -39,7 +31,7 @@ export default class extends Controller {
     const newList = this.newList();
 
     try {
-      const response = await fetch(url, {
+      await fetch(url, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
@@ -49,15 +41,21 @@ export default class extends Controller {
         body: JSON.stringify({ generated_list: newList }),
       });
 
-      const eventId = document.body.getAttribute("data-event-id");
+      if (document.body.querySelector("[data-event-id]")) {
+        const eventId = document.body
+          .querySelector("[data-event-id]")
+          .getAttribute("data-event-id");
+      } else {
+        const eventId = 0;
+      }
 
-      if (typeof eventId !== "undefined") {
+      if (typeof eventId === "string") {
         window.setTimeout(() => {
-          window.location.href = `/events/${eventId}`;
+          window.location.href = `${env}/events/${eventId}`;
         }, 500);
       } else {
         window.setTimeout(() => {
-          window.location.href = `/gifts/${giftId}/events/new`;
+          window.location.href = `${env}/gifts/${giftId}/events/new`;
         }, 500);
       }
     } catch (error) {

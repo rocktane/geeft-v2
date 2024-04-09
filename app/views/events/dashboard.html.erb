@@ -1,2 +1,7 @@
 <h1>Dashboard</h1>
+<ul>
+  <% @events.each do |event| %>
+    <li>  <%= link_to event.name, event_path(event) %></li>
+  <% end %>
+</ul>
 <%= link_to 'add event', new_event_path %>
