@@ -1,0 +1,23 @@
+#dashboard-calendar input {
+  display: none;
+  border: red 1px solid;
+  background: blue;
+}
+
+// .flatpickr-calendar {
+//   border: none;
+//   -webkit-box-shadow: none;
+//   box-shadow: none !important;
+// }
+
+.booked {
+  background: red !important;
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 150px;
+  bottom: 3px;
+  left: calc(50% - 1.5px);
+  content: " ";
+  display: block;
+}
