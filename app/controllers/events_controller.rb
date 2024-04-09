@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def dashboard
     @events = Event.where(user: current_user)
+    @eventsDates = @events.map { |event| event.date.strftime("%Y-%m-%d") }
   end
 
   def show

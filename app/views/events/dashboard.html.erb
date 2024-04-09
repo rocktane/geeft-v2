@@ -1,7 +1,17 @@
 <h1>Dashboard</h1>
+
+<%= form_with model: Event.new, authenticity_token: true, id:"dashboard-calendar", data: { events_dates: @eventsDates } do |f| %>
+  <%= f.text_field :start_time,
+    data: {
+      controller: "datepicker",
+      inline: "true",
+      flatpickr_min_date: Time.zone.now #disables past dates
+    } %>
+<% end %>
+
 <ul>
   <% @events.each do |event| %>
-    <li>  <%= link_to event.name, event_path(event) %></li>
+    <li>  <%= link_to event.name, event_path(event) %><%= event.date %></li>
   <% end %>
 </ul>
 <%= link_to 'add event', new_event_path %>
