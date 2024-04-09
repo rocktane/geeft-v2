@@ -5,20 +5,37 @@
 <%= @gift.budget %>
 <%= @gift.age %>
 <br>
+<div data-controller="save-gift">
+
+  <h1><%= @event.gift %></h1>
+  <h1><%= @gift.event %></h1>
+  <h1>event.id :<%= @event.id %></h1>
+  <h1>event.gift.id :<%= @event.gift.id %></h1>
+
 <h1>List of gifts :</h1><br>
-<ul>
-<% @gift.generated_list.each do |gift| %>
-  <li><%= gift %></li>
+<ul data-controller="refresh-gift" data-save-gift-target="list">
+<% @gift.generated_list.each_with_index do |gift, index| %>
+  <% if (index < 5) %>
+    <li data-save-gift-target="gift">
+      <%= gift %>
+      <div data-action="click->refresh-gift#refresh">X</div>
+    </li>
+  <% else %>
+    <li data-refresh-gift-target="hiddenGift" style="display: none">
+      <%= gift %>
+      <div data-action="click->refresh-gift#refresh">X</div>
+    </li>
+    <% end %>
 <% end %>
-</ul>
 
 <%= form_with(url: gift_path, method: :patch) do |f| %>
   <%= f.text_field :comment, as: :text %>
   <%= f.submit %>
 <% end %>
 
-<% if @event.id %>
-  <%= link_to "ajouter à l'event", link_path(event_id: @event, gift_id: @gift.id) %>
-<% else %>
-  <%= link_to 'enregistrer', new_gift_event_path(@gift) %>
-<% end %>
+  <% if @event.id %>
+    <%= link_to "Ajouter à l'event", link_path(event_id: @event, gift_id: @gift.id), data: { action: "click->save-gift#save", event_id: @event.id } %>
+  <% else %>
+    <%= link_to 'Save', updatelist_path(@gift), data: { env: Rails.env, id: @gift.id, action: "click->save-gift#save", save_gift_target: "saveList" } %>
+  <% end %>
+</div>

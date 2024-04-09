@@ -20,6 +20,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.gift_list = @gift.generated_list
     @event.user = current_user
+    @event.gift = @gift
     if @event.save
       redirect_to event_path(@event)
     else
