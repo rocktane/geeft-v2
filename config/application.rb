@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module GeeftV2
   class Application < Rails::Application
+
+    #Ajout des fonts locales
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
