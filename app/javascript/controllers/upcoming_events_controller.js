@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["event"];
 
   connect() {
+    console.log("Hello, upcoming events!");
     this.update();
 
     const calendarNavbar = document.querySelector(".flatpickr-months");

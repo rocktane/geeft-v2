@@ -5,10 +5,11 @@ export default class extends Controller {
     console.log("hello from delete gift controller");
   }
 
-  delete(event) {
+  // Deletion of a gift on an event 'edit' page
+  delete(gift) {
     const userConfirmed = confirm(
-      "Êtes-vous sûr de vouloir supprimer cet élément ?"
+      "Êtes-vous sûr de vouloir supprimer ce cadeau ?"
     );
-    if (userConfirmed) event.target.parentElement.remove();
+    if (userConfirmed) gift.target.parentElement.remove();
   }
 }

@@ -6,6 +6,7 @@ export default class extends Controller {
   connect() {}
 
   newList() {
+    // Recover the 5 gifts displayed
     const old_list = this.giftTargets.slice(0, 5);
     let new_list = [];
     old_list.forEach((gift) => {
@@ -20,13 +21,14 @@ export default class extends Controller {
     const giftId = event.currentTarget.dataset.id || "";
     let env = event.currentTarget.dataset.env || "";
 
+    // If the environment is not defined, we set it to development
     if (env === "development") {
       env = "http://localhost:3000";
     } else {
       env = "https://www.geeft.club";
     }
 
-    const url = `${env}/gifts/${giftId}`;
+    const url = `${env}/updatelist/${giftId}`;
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
     const newList = this.newList();
 
@@ -42,18 +44,15 @@ export default class extends Controller {
       });
 
       if (document.body.querySelector("[data-event-id]")) {
-        const eventId = document.body
+        // Redirection to the event show if the id is found
+        const eventId = document
           .querySelector("[data-event-id]")
           .getAttribute("data-event-id");
-      } else {
-        const eventId = 0;
-      }
-
-      if (typeof eventId === "string") {
         window.setTimeout(() => {
           window.location.href = `${env}/events/${eventId}`;
         }, 500);
       } else {
+        // Redirection to the event new if the id is not found
         window.setTimeout(() => {
           window.location.href = `${env}/gifts/${giftId}/events/new`;
         }, 500);

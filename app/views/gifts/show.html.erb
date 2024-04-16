@@ -29,7 +29,8 @@
 <% end %>
 
   <% if @event.id %>
-    <%= link_to "Ajouter à l'event", link_path(event_id: @event, gift_id: @gift.id), data: { env: Rails.env, id: @gift.id, action: "click->save-gift#save", event_id: @event.id, save_gift_target: "saveList" } %>
+    <a href="" data-env=<%= Rails.env %> data-id=<%= @gift.id %> data-event-id=<%= @event.id %>
+    data-action="click->save-gift#save" data-save-gift-target="saveList">Ajouter à l'event</a>
   <% else %>
     <%= link_to 'Créer un event', updatelist_path(@gift), data: { env: Rails.env, id: @gift.id, action: "click->save-gift#save", save_gift_target: "saveList" } %>
   <% end %>

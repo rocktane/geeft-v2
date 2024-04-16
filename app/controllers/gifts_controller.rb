@@ -48,9 +48,9 @@ class GiftsController < ApplicationController
     if @gift.save
       respond_to do |format|
         format.json { render json: @gift }
-    end
+      end
     else
-      render :new, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
   end
 
