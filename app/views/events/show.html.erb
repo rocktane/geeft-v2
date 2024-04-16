@@ -8,7 +8,7 @@
 <% if @event.gift.class.name != "NilClass" %>
   <ul>
   <% @event.gift.generated_list.each do |gift| %>
-    <li><%= gift %></li>
+    <li data-save-gift-target="gift"><%= gift %></li>
   <% end %>
   </ul>
 <% else %>

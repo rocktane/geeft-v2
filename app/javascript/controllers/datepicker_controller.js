@@ -4,6 +4,15 @@ import "flatpickr/dist/l10n/fr.js";
 
 export default class extends Controller {
   connect() {
+    this.intializeFlatpickr();
+  }
+
+  disconnect() {
+    this.destroyFlatpickr();
+  }
+
+  intializeFlatpickr() {
+    console.log("Hello, datepicker!");
     const userLang = navigator.language === "fr" ? "fr" : "en";
 
     const booked = JSON.parse(
@@ -12,23 +21,16 @@ export default class extends Controller {
         .getAttribute("data-events-dates")
     );
 
+    if (this.element._flatpickr) {
+      this.element._flatpickr.destroy();
+    }
+
     const calendar = flatpickr(this.element, {
       locale: userLang,
       inline: "true",
       altInput: true,
       altFormat: "F j, Y",
       dateFormat: "Y-m-d",
-
-      // onChange: function (selectedDates, dateStr, instance) {
-      //   if (
-      //     document.querySelector(".dayContainer").querySelector(".selected")
-      //   ) {
-      //     const selected_date = document
-      //       .querySelector(".dayContainer")
-      //       .querySelector(".selected");
-      //     selected_date.setAttribute("data-selected-date", dateStr);
-      //   }
-      // },
 
       onChange: function (selectedDates, dateStr, instance) {
         const event = new CustomEvent("dateChange", {
@@ -65,5 +67,12 @@ export default class extends Controller {
     document
       .querySelector(".flatpickr-current-month")
       .setAttribute("data-year", calendar.currentYear);
+  }
+
+  destroyFlatpickr() {
+    if (this.element._flatpickr) {
+      this.element._flatpickr.destroy();
+      this.element._flatpickr = null;
+    }
   }
 }

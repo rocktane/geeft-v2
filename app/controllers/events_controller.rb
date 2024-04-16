@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :set_cache_headers
   before_action :authenticate_user!
   before_action :set_event , only: [:show, :edit, :update, :destroy]
 
@@ -66,6 +67,12 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
   end
 
 end

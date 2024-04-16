@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root "pages#home"
 
-  patch "gifts/:id" => "gifts#updatelist", as: :updatelist
+  patch "updatelist/:id" => "gifts#updatelist", as: :updatelist
 
   get "dashboard" => "events#dashboard", as: :dashboard
   get "link" => "events#link", as: :link
