@@ -8,19 +8,20 @@
   <% end %>
 </div>
 
-<div class="home-subtitle">
-  Prochains événements :
+  <div class="home-subtitle">
+    Prochains évènements :
+  </div>
+  <%= render 'shared/event' %>
+
+  <div class="home-buttons">
+
+<div class="btn btn-green">
+    <%= link_to 'Tableau de Bord', dashboard_path%>
 </div>
 
-<%= render 'shared/event' %>
-
-<div class="home-buttons">
-
-    <%= link_to 'dashboard', dashboard_path, class: "btn-green" %>
-
-
-    <%= link_to 'generate list', new_gift_path %>
+<div class="btn btn-purple">
+    <%= link_to 'Trouver un cadeau', new_gift_path %>
     </div>
-
+</div>
 
 </div>

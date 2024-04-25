@@ -1,13 +1,34 @@
+// Base button styles
+.btn {
+  font-family: $headers-font;
+  font-size: 1.5em;
+  border-radius: 12px;
+  text-decoration: none;
+  padding: 0.5em;
+  text-align: center;
+  width: 16.4em;
+}
+
+// Green button styles
 .btn-green {
   background-color: $primary-color;
   color: $secondary-color;
-  border-radius: 12px;
-  text-decoration: none;
-  padding: 1em;
-  width: 10em;
-
-
   &:hover {
-    background-color: darkgreen;
+    background-color: $secondary-color;
+    a {
+      color: $primary-color;
+    }
+  }
+}
+
+// Purple button styles
+.btn-purple {
+  background-color: $accent-color;
+  color: $secondary-color;
+  &:hover {
+    background-color: $secondary-color;
+    a {
+      color: $accent-color;
+    }
   }
 }
