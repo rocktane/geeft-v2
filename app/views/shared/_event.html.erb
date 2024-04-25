@@ -1,0 +1,20 @@
+<!-- Evenements organisés par mois via le controller Pages -->
+
+<ul>
+  <% @events_by_month.each do |month, events| %>
+    <li>
+      <div class="event-container">
+      <h1>En <%= "#{french_month(month)}" %></h1>
+      <% if events.any? %>
+        <ul>
+          <% events.each do |event| %>
+            <li class="event-infos"><%= event.name %> - <%= event.date.strftime("%d") %> <%= french_month(event.date) %> <%= event.date.year %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="event-infos">Aucun événement ce mois-ci.</p>
+      <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>

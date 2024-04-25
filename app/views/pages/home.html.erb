@@ -1,16 +1,24 @@
 <div class="body-container">
-<h1 class="system">Hello World</h1>
-<h1 class="headers-font">Hello World</h1>
-<h1 class="body-font">Hello World</h1>
-<% if @user == "guest" %>
-  <p><%= @user %></p>
-<% else %>
-  <%= "email : " + @user.email if @user.email %>
-  <%= "username : " + @user.username if @user.username%>
-<% end %>
+  <% if @user == "guest" %>
+    <%= link_to 'login', login_path %>
+    <%= link_to 'signup', signup_path %>
+  <% else %>
+    <div class="home-title">
+    <%= "Hello " + @user.username if @user.username%>
+  <% end %>
+</div>
 
-<br>
-<%= link_to 'dashboard', dashboard_path %>
-<%= link_to 'generate list', new_gift_path %>
+<div class="home-subtitle">
+  Prochains événements :
+</div>
+
+<%= render 'shared/event' %>
+
+
+
+
+    <%= link_to 'dashboard', dashboard_path %>
+    <%= link_to 'generate list', new_gift_path %>
+
 
 </div>
