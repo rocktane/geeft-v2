@@ -1,0 +1,19 @@
+<!-- Navbar Dekstop -->
+<div class="navbar">
+
+<!-- Sur mobile, le bouton back doit amener sur la page précédante en
+l'adaptant dynamiquement mais ça doit être fait en JS si pas de Bootstrap -->
+  <div class="chevron-mobile">
+    <i class="fa-solid fa-chevron-left"></i>
+  </div>
+
+
+  <div class="navbar-left">
+    <%= link_to image_tag('geeft.png', alt: 'Geeft logo'), root_path %>
+    <!-- Voir Helper Navbar Titles -->
+    <h1> <%= navbar_title %> </h1>
+  </div>
+  <div class="navbar-right">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+</div>

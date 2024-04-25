@@ -1,5 +1,13 @@
+// Réinitialisation des styles par défaut
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 @import "components/form";
 @import "components/calendar";
 @import "config/font";
 @import "config/color";
 @import "config/flatpickr";
+@import "components/index";

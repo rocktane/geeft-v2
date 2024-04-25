@@ -32,4 +32,5 @@ Gift.create(budget: 100, age: 30, genre: "neutral", occasion: "Birthday", relati
    "Parapluie pliable avec constellations",
    "Boucles d'oreilles en forme de croissant de lune",
    "Carnet d'adresse avec symboles astrologiques"], user_id: User.first.id)
+
 Event.create(name: "Birthday", date: "2024-04-17", description: "My birthday", url: "https://www.google.com", user_id: User.first.id, gift: Gift.first)
