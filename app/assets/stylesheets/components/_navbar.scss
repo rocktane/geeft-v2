@@ -1,0 +1,35 @@
+// Style Dekstop
+.navbar{
+  background-color: $secondary-color;
+  font-family: $headers-font;
+  display: flex;
+  justify-content: space-between;
+  align-items: center ;
+  width: 100%;
+  height: 5.6em;
+}
+
+.navbar-left{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 3em;
+  & img {
+    width: 5.8em;
+    height: 5em;
+    margin-right: 1.3em;
+  }
+  & h1 {
+    margin-top: -0.2em;
+    font-size: 1.6em;
+    color: $primary-color;
+  }
+}
+
+.navbar-right{
+  margin-right: 1.5em;
+  font-size: 2.4em;
+  color: $primary-color;
+  display: flex;
+  align-items: center;
+}

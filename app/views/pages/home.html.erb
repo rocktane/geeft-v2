@@ -1,6 +1,7 @@
+<div class="body-container">
 <h1 class="system">Hello World</h1>
-<h1 class="oto">Hello World</h1>
-<h1 class="abz">Hello World</h1>
+<h1 class="headers-font">Hello World</h1>
+<h1 class="body-font">Hello World</h1>
 <% if @user == "guest" %>
   <p><%= @user %></p>
 <% else %>
@@ -11,3 +12,5 @@
 <br>
 <%= link_to 'dashboard', dashboard_path %>
 <%= link_to 'generate list', new_gift_path %>
+
+</div>
