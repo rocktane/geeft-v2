@@ -9,7 +9,7 @@ ul, li {
   border-radius: 10px;
   width: 50em;
   padding: 1em;
-  margin: 1em 0 1em 2.2em;
+  margin: 1em 0 1em 0em;
   & h1 {
     font-family: $headers-font;
     color: $primary-color;
@@ -20,6 +20,8 @@ ul, li {
 .event-infos {
   font-family: $body-font;
   color: $primary-color;
+  display: flex;
+  justify-content: space-between;
   font-size: 1.1em;
   margin: 0.5em 0 0.5em 0em;
 }
