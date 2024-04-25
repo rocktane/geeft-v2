@@ -1,3 +1,4 @@
+
 <div class="body-container">
   <% if @user == "guest" %>
     <%= link_to 'login', login_path %>
@@ -7,6 +8,8 @@
     <%= "Hello " + @user.username if @user.username%>
   <% end %>
 </div>
+
+
 
   <div class="home-subtitle">
     Prochains évènements :

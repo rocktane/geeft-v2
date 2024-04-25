@@ -17,3 +17,21 @@
   justify-content: space-between;
   width: 50em;
 }
+
+@media (max-width: 768px) {
+.navbar {
+  display: none;
+}
+
+.home-title {
+  display: none;
+}
+
+.home-subtitle {
+  font-size: 1.7em;
+}
+
+.home-buttons {
+  display: none;
+}
+}
