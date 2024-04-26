@@ -1,0 +1,27 @@
+<!-- J'ai réussi à adapté ton code avec les class css mais je n'arrive pas à
+ enlever la div quand il n'y a plus d'event dans le mois - surement du JS à prévoir
+ -->
+
+<ul data-controller="upcoming-events">
+  <% @events_by_month.each do |month, events| %>
+    <li>
+      <div class="event-container dashboard">
+        <h1>En <%= french_month(month) %></h1>
+        <% if events.any? %>
+          <ul>
+            <% events.each do |event| %>
+              <%= link_to event_path(event) do %>
+                <li class="event-infos" data-upcoming-events-target="event" data-event-date-year="<%= event.date.year %>" data-event-date-month="<%= event.date.month %>" data-event-date-day="<%= event.date.day %>">
+                  <div class="event-name"><%= event.name %></div>
+                  <div class="event-date"><%= event.date.strftime("%d/%m") %></div>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class="event-infos">Aucun évènement ce mois-ci.</p>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>

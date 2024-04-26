@@ -15,7 +15,15 @@ ul, li {
     color: $primary-color;
     font-size: 1.3em;
   }
+  & a {
+    color: $primary-color;
+    text-decoration: none;
+  }
 }
+
+.dashboard {
+  width: 100%;
+  }
 
 .event-infos {
   font-family: $body-font;
@@ -29,5 +37,12 @@ ul, li {
 @media (max-width: 768px) {
   .event-container {
     width: 100%;
+    & h1 {
+      font-size: 1em;
+    }
+  }
+
+  .event-infos {
+    font-size: 1em;
   }
 }
