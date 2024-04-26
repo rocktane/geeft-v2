@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+// Ajout de la ligne pour pouvoir cacher la nav-bar sur la homepage mobile
+@media (max-width: 768px) {
+  body.home-page .navbar {
+    display: none;
+  }
+}
+
+
 @import "components/form";
 @import "components/calendar";
 @import "config/font";

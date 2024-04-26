@@ -41,9 +41,14 @@
 
 // Style Mobile
 @media screen and (max-width: 768px){
+
+  body.home-page .navbar {
+    display: none;
+  }
   .navbar{
     height: 8em;
   }
+
 
   .chevron-mobile{
     display: block;

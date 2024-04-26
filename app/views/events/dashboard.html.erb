@@ -1,16 +1,18 @@
-<h1>Dashboard</h1>
+<div class="body-container">
 
-<%= form_with model: Event.new, authenticity_token: true, id:"dashboard-calendar", data: { events_dates: @eventsDates } do |f| %>
-  <%= f.text_field :start_time,
-    data: {
-      controller: "datepicker",
-      flatpickr_min_date: Time.zone.now #disables past dates
-    } %>
-<% end %>
+<div class="dashboard-left">
 
-<ul data-controller="upcoming-events">
-  <% @events.each do |event| %>
-    <li data-upcoming-events-target="event" data-event-date-year= <%= event.date.year %> data-event-date-month= <%= event.date.month %> data-event-date-day= <%= event.date.day %> > <%= link_to event.name, event_path(event) %><%= event.date %></li>
-  <% end %>
-</ul>
-<%= link_to 'add event', new_event_path %>
+  <!-- J'ai mis le calendar en "component" pour plus de lisibilité -->
+  <%= render 'shared/calendar' %>
+
+  <!-- J'ai mis les events en "component" pour plus de lisibilité -->
+  <%= render 'shared/event_dashboard' %>
+
+
+
+
+
+  <%= link_to 'add event', new_event_path %>
+  </div>
+
+</div>

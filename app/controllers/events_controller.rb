@@ -4,8 +4,15 @@ class EventsController < ApplicationController
   before_action :set_event , only: [:show, :edit, :update, :destroy]
 
   def dashboard
-    @events = Event.where(user: current_user)
+    # Pour avoir les evenements organisés par mois
+    @events = Event.where(user: current_user).order(:date)
     @eventsDates = @events.map { |event| event.date.strftime("%Y-%m-%d") }
+    start_date = Date.today.beginning_of_month
+    end_date = 1.year.from_now.beginning_of_month
+    all_months = (start_date..end_date).map(&:beginning_of_month).uniq
+    @events_by_month = all_months.map do |month|
+      [month, @events.select { |e| e.date.beginning_of_month == month }]
+    end.to_h
   end
 
   def show

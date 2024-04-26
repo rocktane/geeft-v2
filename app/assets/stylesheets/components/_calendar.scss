@@ -1,0 +1,39 @@
+#dashboard-calendar > input {
+  display: none;
+}
+
+#dashboard-calendar {
+  display: flex;
+  justify-content: center;
+}
+
+.flatpickr-calendar.inline {
+  background-color: #BACDCC ;
+}
+
+.flatpickr-calendar.arrowTop:before{
+  background-color: #BACDCC ;
+  border: 0;
+
+}
+
+
+
+.booked {
+  background: red !important;
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 150px;
+  bottom: 3px;
+  left: calc(50% - 1.5px);
+  content: " ";
+  display: block;
+}
+
+
+// .flatpickr-calendar {
+//   border: none;
+//   -webkit-box-shadow: none;
+//   box-shadow: none !important;
+// }

@@ -13,9 +13,11 @@
 
   </head>
 
-  <body>
-    <%= render "shared/navbar" %>
-    <%= yield %>
-    <%= render "shared/footer" %>
+
+<!-- Ajout de la ligne pour pouvoir cacher la nav-bar sur la homepage mobile -->
+<body class="<%= 'home-page' if controller_name == 'pages' && action_name == 'home' %>">
+  <%= render 'shared/navbar' %>
+  <%= yield %>
+  <%= render "shared/footer" %>
   </body>
 </html>
