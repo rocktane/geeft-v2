@@ -21,8 +21,6 @@
     <%= "Hello " + @user.username if @user.username%>
   <% end %>
     </div>
-
-
   <div class="home-subtitle">
     Prochains évènements :
   </div>
@@ -37,10 +35,8 @@
   </div>
 
 
-
   <!-- Bouton rond mobile pour générer la liste cadeau -->
-  <div class="mobile-btn">
+  <div class="btn-mobile">
     <%= link_to raw("<i class=\"fa-solid fa-gift\"></i>"), new_gift_path %>
   </div>
-
 </div>
