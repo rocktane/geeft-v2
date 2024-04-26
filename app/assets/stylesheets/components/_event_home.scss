@@ -2,7 +2,8 @@ ul, li {
   list-style-type: none;
 }
 
-.event-container {
+// Container Evenements Home
+.event-container-home {
   font-family: $body-font;
   background-color: $secondary-color;
   border: 3px solid $primary-color;
@@ -21,11 +22,7 @@ ul, li {
   }
 }
 
-.dashboard {
-  width: 100%;
-  }
-
-.event-infos {
+.infos-event-home {
   font-family: $body-font;
   color: $primary-color;
   display: flex;
@@ -34,15 +31,16 @@ ul, li {
   margin: 0.5em 0 0.5em 0em;
 }
 
+
 @media (max-width: 768px) {
-  .event-container {
+  .event-container-home {
     width: 100%;
     & h1 {
       font-size: 1em;
     }
   }
 
-  .event-infos {
+  .infos-event-home {
     font-size: 1em;
   }
 }

@@ -6,7 +6,7 @@
   text-decoration: none;
   padding: 0.5em;
   text-align: center;
-  width: 16.4em;
+  width: 49%;
 }
 
 // Green button styles
@@ -33,16 +33,39 @@
   }
 }
 
+// Bouton sous le calendrier dans le dashboard
+.btn-calendar {
+  font-family: $headers-font;
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  border-radius: 12px;
+  text-decoration: none;
+  padding: 0.5em;
+  text-align: center;
+  width: 12.4em;
+  background-color: $primary-color;
+  color: $secondary-color;
+  &:hover {
+    background-color: $secondary-color;
+    a {
+      color: $primary-color;
+    }
+  }
+
+}
+
 
 // Bouton gift mobile
-.mobile-btn {
+.btn-mobile {
   display: none;
 }
 
 
+
+
 @media (max-width: 768px) {
   // Bouton gift mobile
-  .mobile-btn {
+  .btn-mobile {
     position: fixed;
     bottom: 2em;
     right: 1.4em;
