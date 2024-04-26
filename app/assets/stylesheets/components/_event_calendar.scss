@@ -1,4 +1,4 @@
-// Container Evenements sous le calendrier
+// Container calendrier & Evenements sous le calendrier
 .annual-calendar {
   display: flex;
   flex-direction: column;
@@ -13,10 +13,10 @@
   font-family: $body-font;
   background-color: $secondary-color;
   border: 3px solid $primary-color;
-  border-radius: 10px;
+  border-radius: 12px;
   width: 18.7em;
   padding: 0.5em;
-  margin: 1em 0 1em 0em;
+  margin: 0.7em 0 0.7em 0em;
   & h1 {
     font-family: $headers-font;
     color: $primary-color;
@@ -38,8 +38,23 @@
 }
 
 @media (max-width: 768px) {
+  .annual-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 24em;
+    height: 100%;
+    margin: 0;
+  }
+
+  .annual-calendar-container {
+    display: flex;
+    justify-content: center;
+  }
+
+
+
   .event-container-calendar {
-    width: 100%;
     & h1 {
       font-size: 1em;
     }

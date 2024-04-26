@@ -33,16 +33,16 @@
   }
 }
 
-// Bouton sous le calendrier dans le dashboard
+// Bouton sous le calendrier dans le dashboard desktop
 .btn-calendar {
   font-family: $headers-font;
-  margin-top: 0.5em;
-  font-size: 1.5em;
+  margin-top: 0.7em;
+  font-size: 1.1em;
   border-radius: 12px;
   text-decoration: none;
   padding: 0.5em;
   text-align: center;
-  width: 12.4em;
+  width: 16.9em;
   background-color: $primary-color;
   color: $secondary-color;
   &:hover {
@@ -55,7 +55,7 @@
 }
 
 
-// Bouton gift mobile
+// Bouton mobile
 .btn-mobile {
   display: none;
 }
@@ -64,7 +64,7 @@
 
 
 @media (max-width: 768px) {
-  // Bouton gift mobile
+  // Bouton mobile
   .btn-mobile {
     position: fixed;
     bottom: 2em;
@@ -81,4 +81,8 @@
       margin: 0.5em;
     }
   }
+
+  .btn-calendar {
+    display: none;}
+
 }

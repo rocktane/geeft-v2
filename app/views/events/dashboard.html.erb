@@ -1,13 +1,16 @@
-<div class="body-container">
+<div class="body-container annual-calendar-container">
 
 <div class="annual-calendar">
   <!-- J'ai mis le calendar en "component" pour plus de lisibilité -->
   <%= render 'shared/calendar' %>
 
   <div class="btn-calendar">
-      <%= link_to raw("<i class='fa-solid fa-square-plus'></i> Ajouter un évènement"), new_event_path %>
+      <%= link_to raw("<i class='fa-solid fa-square-plus'></i> Nouvel évènement"), new_event_path %>
+  </div>
 
-
+    <!-- Bouton rond mobile pour générer un nouvel event -->
+  <div class="btn-mobile">
+    <%= link_to raw('<i class="fa-solid fa-plus"></i>'), new_event_path %>
   </div>
 
   <!-- J'ai mis les events en "component" pour plus de lisibilité -->

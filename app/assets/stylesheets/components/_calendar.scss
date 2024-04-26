@@ -11,10 +11,8 @@
   background-color: #BACDCC ;
 }
 
-.flatpickr-calendar.arrowTop:before{
-  background-color: #BACDCC ;
-  border: 0;
-
+.flatpickr-calendar.arrowTop:after, .flatpickr-calendar.arrowTop:before {
+  display: none;
 }
 
 
