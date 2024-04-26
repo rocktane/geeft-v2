@@ -32,3 +32,30 @@
     }
   }
 }
+
+
+// Bouton gift mobile
+.mobile-btn {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  // Bouton gift mobile
+  .mobile-btn {
+    position: fixed;
+    bottom: 2em;
+    right: 1.4em;
+    background-color: $accent-color;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & i {
+      font-size: 2em;
+      margin: 0.5em;
+    }
+  }
+}

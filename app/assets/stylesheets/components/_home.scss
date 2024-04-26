@@ -18,20 +18,54 @@
   width: 50em;
 }
 
+// Navbar Homepage mobile
+.mobile-homepage {
+  display: none;
+
+}
+
 @media (max-width: 768px) {
-.navbar {
-  display: none;
+  .navbar {
+    display: none;
+  }
+
+  // Navbar Homepage mobile
+  .mobile-homepage {
+    display: flex;
+    margin-top: -2em;
+    background-color: $secondary-color;
+    background-image: url('geeft-logo-mobile.png');
+    background-repeat: no-repeat;
+    background-size: 87%;
+    background-position: center;
+    height: 16em;
+    justify-content: space-between;
+    align-items: center;
+    & i {
+      color: $primary-color;
+      font-size: 2em;
+      margin: 1em 0.5em 0 0.5em;
+    }
 }
 
-.home-title {
-  display: none;
-}
+  .slogan-mobile {
+    font-family: $body-font;
+    color: $primary-color;
+    font-size: 1.1em;
+    margin: 7.7em -6.3em 0 0;
+  }
 
-.home-subtitle {
-  font-size: 1.7em;
-}
 
-.home-buttons {
-  display: none;
-}
+  .home-title {
+    display: none;
+  }
+
+  .home-subtitle {
+    font-size: 1.7em;
+  }
+
+  .home-buttons {
+    display: none;
+  }
+
 }
