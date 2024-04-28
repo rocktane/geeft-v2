@@ -19,8 +19,15 @@
 <% end %>
 
 <h2>Liste de cadeaux :</h2>
+
+
+
+<% if @event.gift.nil? %>
+<h2>There is no gift for this event yet</h2>"
+<% else %>
 <ul data-controller="delete-gift">
   <% @event.gift.generated_list.each_with_index do |gift, index| %>
     <li><%= gift %><div data-action="click->delete-gift#delete">X</div></li>
   <% end %>
+<% end %>
 </ul>
