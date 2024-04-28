@@ -1,5 +1,5 @@
-<!-- J'ai réussi à adapté ton code avec les class css mais je n'arrive pas à
- enlever la div quand il n'y a plus d'event dans le mois - du JS à prévoir
+<!-- J'ai réussi à adapter ton code avec les class css mais il faut
+ enlever la "div" vide quand il n'y a plus d'event dans le mois - du JS à prévoir
  -->
 
 <ul data-controller="upcoming-events">
@@ -11,7 +11,7 @@
           <ul>
             <% events.each do |event| %>
               <%= link_to event_path(event) do %>
-                <li class="infos-event-calendar" data-upcoming-events-target="event" data-event-date-year="<%= event.date.year %>" data-event-date-month="<%= event.date.month %>" data-event-date-day="<%= event.date.day %>">
+                <li class="event-infos-calendar" data-upcoming-events-target="event" data-event-date-year="<%= event.date.year %>" data-event-date-month="<%= event.date.month %>" data-event-date-day="<%= event.date.day %>">
                   <div class="event-name"><%= event.name %></div>
                   <div class="event-date"><%= event.date.strftime("%d/%m") %></div>
                 </li>
@@ -19,7 +19,7 @@
             <% end %>
           </ul>
         <% else %>
-          <p class="infos-event-calendar">Aucun évènement ce mois-ci.</p>
+          <p class="event-infos-calendar">Aucun évènement ce mois-ci.</p>
         <% end %>
       </div>
     </li>
