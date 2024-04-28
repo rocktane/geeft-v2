@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    if current_user
+    if user_signed_in?
       @user = User.find(current_user.id)
       # Organisation des événements par mois
       @events = Event.all.order(:date)
