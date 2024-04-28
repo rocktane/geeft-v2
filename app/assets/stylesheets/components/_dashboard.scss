@@ -1,1 +1,16 @@
+.dashboard {
+  display: flex;
 
+}
+
+.dashboard-right {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px)  {
+  .dashboard-right {
+    display: none;
+  }
+
+}

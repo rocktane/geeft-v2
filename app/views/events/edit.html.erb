@@ -1,3 +1,9 @@
+  <div class="btn-back">
+      <%= link_to '< Retour', event_path %>
+    </div>
+
+
+
 <h1>Edit an event</h1>
 <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
   <h2><%= f.label :name, "Name" %></h2>

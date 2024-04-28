@@ -5,7 +5,8 @@
   align-items: center;
   width: 24em;
   height: 100%;
-  margin-left: -2.7em;
+  margin-left: -0.3em;
+  margin-top: -1.8em
 
 }
 
@@ -28,7 +29,7 @@
   }
 }
 
-.infos-event-calendar {
+.event-infos-calendar {
   font-family: $body-font;
   color: $primary-color;
   display: flex;
@@ -47,20 +48,14 @@
     margin: 0;
   }
 
-  .annual-calendar-container {
-    display: flex;
-    justify-content: center;
-  }
-
-
-
   .event-container-calendar {
     & h1 {
       font-size: 1em;
     }
   }
 
-  .infos-event-calendar {
+  .event-infos-calendar
+ {
     font-size: 1em;
   }
 }

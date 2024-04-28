@@ -51,6 +51,17 @@
       color: $primary-color;
     }
   }
+}
+
+.btn-back {
+  font-family: $headers-font;
+  margin-top: 0.5em;
+  padding-left: 20em;
+  a {
+    color: $primary-color;
+    opacity: 58%;
+  }
+
 
 }
 
@@ -82,5 +93,9 @@
 
   .btn-calendar {
     display: none;}
+
+  .btn-back {
+    display: none;
+  }
 
 }
