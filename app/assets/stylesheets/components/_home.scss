@@ -71,15 +71,15 @@
   .titles-btn {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    margin-top: 2em;
     & p {
-      margin-right: 2.2em;
+      margin: 0 1.4em 0 0.2em;
       font-size: 0.8em;
     }
   }
 
   .logged-out-buttons {
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
   }
