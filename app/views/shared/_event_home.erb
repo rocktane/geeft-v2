@@ -1,11 +1,13 @@
 <ul>
-  <% @events_by_month.each do |month, events| %>
+  <% (0..2).each do |i| %>
+    <% month = Date.today.beginning_of_month + i.months %>
     <li>
       <div class="event-container-home">
         <h1>En <%= "#{french_month(month)}" %></h1>
-        <% if events.any? %>
+        <% events_for_month = @events.select { |event| event.date.beginning_of_month == month } %>
+        <% if events_for_month.any? %>
           <ul>
-            <% events.each do |event| %>
+            <% events_for_month.each do |event| %>
               <%= link_to event_path(event) do %>
                 <li class="event-infos-home">
                   <div class="event-name"><%= event.name %></div>

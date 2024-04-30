@@ -1,0 +1,46 @@
+// CSS des pages New et Edit de User
+.user-container {
+  margin-left: 20em;
+  & h2 {
+    font-family: $headers-font;
+    color: $primary-color;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+  }
+  & label {
+    display: none;
+  }
+}
+
+.info-user{
+  width: 30em;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.3em;
+
+
+  & h3 {
+    font-family: $headers-font;
+    color: $primary-color;
+    font-size: 1.2em;
+    margin-bottom: 0.3em;
+  }
+  & input {
+    font-family: $body-font;
+    font-size: 1em;
+    color: $primary-color;
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid $primary-color;
+    background-color: $secondary-color;
+    border-radius: 5px;
+  }
+
+  & ::placeholder {
+    font-style: italic;
+    color: grey
+  }
+
+
+
+}

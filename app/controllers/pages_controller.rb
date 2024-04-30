@@ -1,16 +1,9 @@
 class PagesController < ApplicationController
-
   def home
-    if current_user
+    if user_signed_in?
       @user = User.find(current_user.id)
-      # Organisation des événements par mois
-      @events = Event.all.order(:date)
-      start_date = Date.today.beginning_of_month
-      end_date = 2.month.from_now.beginning_of_month
-      all_months = (start_date..end_date).map(&:beginning_of_month).uniq
-      @events_by_month = all_months.map do |month|
-        [month, @events.select { |e| e.date.beginning_of_month == month }]
-      end.to_h
+      # Récupérer tous les événements de l'utilisateur
+      @events = Event.where(user: current_user.id).order(:date)
     else
       @user = "guest"
     end
