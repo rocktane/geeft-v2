@@ -1,6 +1,8 @@
 // CSS des pages New et Edit de User
 .user-container {
-  margin-left: 20em;
+  margin: 1em 0 0 20em;
+  width: 20em;
+  position: relative;
   & h2 {
     font-family: $headers-font;
     color: $primary-color;
@@ -13,7 +15,6 @@
 }
 
 .info-user{
-  width: 30em;
   display: flex;
   flex-direction: column;
   margin-bottom: 0.3em;
@@ -37,10 +38,23 @@
   }
 
   & ::placeholder {
-    font-style: italic;
-    color: grey
+    color: $primary-color;
+    opacity: 58%;
+
   }
 
+  & .hint {
+    font-family: $body-font;
+    font-size: 0.8em;
+    color: $primary-color;
+    margin-top: 0.3em;
+  }
+}
 
+@media (max-width: 768px) {
+  .user-container {
+    margin: 1em 0 0 0;
+    width: 100%;
+  }
 
 }
