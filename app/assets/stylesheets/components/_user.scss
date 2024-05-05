@@ -9,16 +9,18 @@
     font-size: 1.5em;
     margin-bottom: 1em;
   }
-  & label {
-    display: none;
-  }
 }
+
 
 .info-user{
   display: flex;
   flex-direction: column;
   margin-bottom: 0.3em;
 
+  & label {
+    display: none;
+
+  }
 
   & h3 {
     font-family: $headers-font;
@@ -50,6 +52,23 @@
     margin-top: 0.3em;
   }
 }
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin: 0.5em 0 0.5em 0;
+
+  & input {
+    margin-right: 0.5em;
+  }
+
+  & label {
+    font-family: $body-font;
+    font-size: 1em;
+    color: $primary-color;
+  }
+}
+
 
 @media (max-width: 768px) {
   .user-container {

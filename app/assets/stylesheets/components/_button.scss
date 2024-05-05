@@ -56,7 +56,7 @@
 }
 
 
-// Bouton solo vert de base
+// Bouton carré
 .btn-square {
   position: absolute;
   right: 0;
@@ -70,10 +70,7 @@
   align-items: center;
   font-size: 1.1em;
 
-
 }
-
-
 
 
 // Bouton retour sur chaque page
@@ -87,6 +84,18 @@
   }
 
 
+}
+
+// Boutons HomePage Logged-out
+.btn-home {
+  margin-top: 0.3em;
+  font-family: $headers-font;
+  font-size: 1.5em;
+  border-radius: 12px;
+  text-decoration: none;
+  padding: 0.5em;
+  text-align: center;
+  width: 8em;
 }
 
 
@@ -115,8 +124,15 @@
     }
   }
 
+  .btn-home {
+    width: 6.5em;
+    font-size: 1.4em;
+  }
+
+
   .btn-calendar {
-    display: none;}
+    display: none;
+  }
 
   .btn-back {
     display: none;
