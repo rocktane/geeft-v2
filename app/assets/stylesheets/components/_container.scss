@@ -8,6 +8,16 @@
     color: $secondary-color;
   };
 }
+.content-container {
+  margin: 1em 0 0 21.4em;
+  position: relative;
+  & h1 {
+    font-family: $headers-font;
+    color: $primary-color;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+  }
+}
 
 .user-container {
   margin: 1em 0 0 21.4em;
@@ -21,20 +31,15 @@
   }
 }
 
-.content-container {
-  margin: 1em 0 0 21.4em;
-  position: relative;
-  & h1 {
-    font-family: $headers-font;
-    color: $primary-color;
-    font-size: 1.5em;
-    margin-bottom: 1em;
-  }
-}
 
 
 @media (max-width: 768px) {
   .body-container {
     padding: 1em 1em 5em 1em;
+  }
+
+
+  .user-container {
+    margin: 1em 0 0 0;
   }
 }

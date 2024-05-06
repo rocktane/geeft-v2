@@ -6,6 +6,8 @@
   <div class="content-container">
     <h1><%= @event.name %>, le <%= @event.date.strftime('%d/%m/%Y') %></h1>
 
+    
+
 
 
     <%= @event.description %>
@@ -21,7 +23,7 @@
       <%= link_to 'Generate list', new_event_gift_path(@event) %>
     <% end %>
 
-    
+
 
     <%= link_to 'Edit', edit_event_path(@event) %>
     <%= link_to 'Delete', event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
