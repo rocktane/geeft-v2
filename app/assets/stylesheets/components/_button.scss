@@ -59,10 +59,10 @@
 // Bouton carré
 .btn-square {
   position: absolute;
+  top: 0;
   right: 0;
   width: 3em;
   height: 3em;
-  margin-top: -28em;
   background-color: $accent-color;
   border-radius: 6px;
   display: flex;

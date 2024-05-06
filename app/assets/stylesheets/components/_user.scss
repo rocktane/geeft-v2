@@ -28,6 +28,16 @@
     font-size: 1.2em;
     margin-bottom: 0.3em;
   }
+
+  & p {
+    font-family: $body-font;
+    font-style: italic;
+    font-size: 0.7em;
+    color: $primary-color;
+    margin-bottom: 0.3em;
+  }
+
+
   & input {
     font-family: $body-font;
     font-size: 1em;
@@ -51,6 +61,7 @@
     color: $primary-color;
     margin-top: 0.3em;
   }
+
 }
 
 .remember-me {
@@ -67,6 +78,12 @@
     font-size: 1em;
     color: $primary-color;
   }
+}
+
+.forgot-password {
+  font-family: $body-font;
+  font-size: 1em;
+  margin-top: 0.5em;
 }
 
 
