@@ -4,8 +4,12 @@
 }
 
 // Homepage Logged-out
-.geeft-presentation {
+.home-page-logged-out {
   max-width: 50em;
+
+}
+
+.geeft-presentation {
   & p {
     font-family: $body-font;
     color: $primary-color;
@@ -14,26 +18,20 @@
   }
 }
 
-.titles-btn {
+.logged-out-btn-container {
+  margin-top: 3em;
+  display: flex;
   width: 50em;
+}
+
+.logged-out-btn {
   font-family: $headers-font;
   color: $primary-color;
-  font-size: 1.5em;
-  margin-top: 4em;
-  margin-bottom: 0.3em;
-  display: flex;
-  & p {
-    margin-right: 8.6em;
-  }
+  margin-right: 1em;
 
 }
 
-.logged-out-buttons {
-  margin-top: 0em;
-  display: flex;
-  justify-content: space-between;
-  width: 50em;
-}
+
 
 // Homepage Logged-in
 .home-title {
@@ -68,21 +66,13 @@
   display: none;
   }
 
-  .titles-btn {
+
+  .logged-out-btn-container {
     width: 100%;
-    display: flex;
-    margin-top: 2em;
-    & p {
-      margin: 0 1.4em 0 0.2em;
-      font-size: 0.8em;
-    }
   }
 
-  .logged-out-buttons {
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-  }
+
+
   // Navbar Homepage mobile
   .mobile-homepage {
     display: flex;

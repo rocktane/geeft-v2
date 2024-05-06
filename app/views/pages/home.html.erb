@@ -13,24 +13,29 @@
 
 <!-- homepage logged-out desktop -->
 <div class="body-container">
-  <% if @user == "guest" %>
-    <div class="geeft-presentation">
-      <h2 class="home-subtitle">Bienvenue sur geeft, la plateforme pour ne plus se prendre la tête avec les cadeaux</h2>
-      <p class="presentation-text">Grâce à geeft, l'appli rend la quête du cadeau parfait super facile. Il suffit de partager quelques infos clés, comme l'âge ou le budget, et hop, Geeft te propose une sélection d'idées personnalisées et originales qui devraient t'inspirer et assurer la joie de tes proches.</p>
-    </div>
-    <div class="titles-btn">
-      <p>Rejoins le Club !</p>
-      <p>Déjà inscrit ?</p>
-    </div>
-    <div class="logged-out-buttons">
-      <div class="btn btn-green">
-        <%= link_to 'Inscription', new_user_registration_path %>
+  <div class="home-page-logged-out">
+    <% if @user == "guest" %>
+      <div class="geeft-presentation">
+        <h2 class="home-subtitle">Bienvenue sur geeft, la plateforme pour ne plus se prendre la tête avec les cadeaux</h2>
+        <p class="presentation-text">Grâce à geeft, l'appli rend la quête du cadeau parfait super facile. Il suffit de partager quelques infos clés, comme l'âge ou le budget, et hop, Geeft te propose une sélection d'idées personnalisées et originales qui devraient t'inspirer et assurer la joie de tes proches.</p>
       </div>
-      <div class="btn btn-purple">
-        <%= link_to 'Connexion', new_user_session_path %>
+
+      <div class="logged-out-btn-container">
+        <div class="logged-out-btn">
+          <p>Rejoins le Club !</p>
+          <div class="btn-home btn-green">
+            <%= link_to 'Inscription', new_user_registration_path %>
+          </div>
+        </div>
+        <div class="logged-out-btn">
+          <p>Déjà inscrit ?</p>
+          <div class="btn-home btn-purple">
+            <%= link_to 'Connexion', new_user_session_path %>
+          </div>
+        </div>
       </div>
     </div>
-  <% else %>
+    <% else %>
 
 <!-- homepage logged-in desktop -->
     <div class="home-title">
