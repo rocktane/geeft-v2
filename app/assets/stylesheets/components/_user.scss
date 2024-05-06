@@ -1,21 +1,10 @@
 // CSS des pages New et Edit de User
-.user-container {
-  margin: 1em 0 0 20em;
-  width: 20em;
-  position: relative;
-  & h2 {
-    font-family: $headers-font;
-    color: $primary-color;
-    font-size: 1.5em;
-    margin-bottom: 1em;
-  }
-}
-
 
 .info-user{
   display: flex;
   flex-direction: column;
   margin-bottom: 0.3em;
+  width: 20em;
 
   & label {
     display: none;

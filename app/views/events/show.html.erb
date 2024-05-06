@@ -1,23 +1,30 @@
+<div class="body-container">
   <div class="btn-back">
-      <%= link_to '< Retour', dashboard_path %>
-    </div>
+    <%= link_to '< Retour', dashboard_path %>
+  </div>
 
-<h1>Show de l'event</h1>
+  <div class="content-container">
+    <h1><%= @event.name %>, le <%= @event.date.strftime('%d/%m/%Y') %></h1>
 
-<%= @event.name %>
-<%= @event.date.strftime('%d/%m/%Y') %>
-<%= @event.description %>
-<%= @event.url %>
-<br>
-<% if @event.gift.class.name != "NilClass" %>
-  <ul>
-  <% @event.gift.generated_list.each do |gift| %>
-    <li data-save-gift-target="gift"><%= gift %></li>
-  <% end %>
-  </ul>
-<% else %>
-  <%= link_to 'Generate list', new_event_gift_path(@event) %>
-<% end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %>
-<%= link_to 'Delete', event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
+    <%= @event.description %>
+    <%= @event.url %>
+    <br>
+    <% if @event.gift.class.name != "NilClass" %>
+      <ul>
+      <% @event.gift.generated_list.each do |gift| %>
+        <li data-save-gift-target="gift"><%= gift %></li>
+      <% end %>
+      </ul>
+    <% else %>
+      <%= link_to 'Generate list', new_event_gift_path(@event) %>
+    <% end %>
+
+    
+
+    <%= link_to 'Edit', edit_event_path(@event) %>
+    <%= link_to 'Delete', event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  </div>
+
+</div>
