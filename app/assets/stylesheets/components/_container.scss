@@ -8,18 +8,8 @@
     color: $secondary-color;
   };
 }
-.content-container {
-  margin: 1em 0 0 21.4em;
-  position: relative;
-  & h1 {
-    font-family: $headers-font;
-    color: $primary-color;
-    font-size: 1.5em;
-    margin-bottom: 1em;
-  }
-}
 
-.user-container {
+.primary-container {
   margin: 1em 0 0 21.4em;
   position: relative;
   width: 20em;
@@ -29,7 +19,49 @@
     font-size: 1.5em;
     margin-bottom: 1em;
   }
+  & h3 {
+    font-family: $headers-font;
+    color: $primary-color;
+    font-size: 1.2em;
+    margin: 0.5em 0 0.5em 0;
+  }
+
 }
+
+
+.secondary-container {
+  margin: 0.5em 0 0 0;
+  padding: 0.6em;
+  border: 3px solid $primary-color;
+  border-radius: 5px;
+  background-color: $secondary-color;
+  font-family: $body-font;
+  color: $primary-color;
+  font-size: 1em;
+  & h3 {
+    font-family: $body-font;
+    color: $primary-color;
+    font-size: 0.7em;
+    margin-bottom: 0.2em;
+  }
+}
+
+.geeft {
+  display: flex;
+  justify-content: space-between;
+
+  .gift-icon {
+    font-size: 1.5em;
+    color: $primary-color;
+    display: flex;
+  }
+  .gift {
+    font-size: 1em;
+    margin: 0.5em 0;
+  }
+}
+
+
 
 
 
@@ -39,7 +71,7 @@
   }
 
 
-  .user-container {
+  .primary-container {
     margin: 1em 0 0 0;
   }
 }

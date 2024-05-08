@@ -3,20 +3,48 @@
     <%= link_to '< Retour', dashboard_path %>
   </div>
 
-  <div class="content-container">
-    <h1><%= @event.name %>, le <%= @event.date.strftime('%d/%m/%Y') %></h1>
+  <div class="primary-container">
+    <h2>Mon évènement</h2>
 
-    
+    <div class="date-show">
+     <%= @event.date.strftime('%d/%m/%Y') %>
+    </div>
 
+    <div class="secondary-container">
+      <h3>Nom de l'évènement</h3>
+      <%= @event.name %>
+    </div>
 
+    <% if @event.description != "" %>
+      <div class="secondary-container">
+        <h3>Description</h3>
+        <%= @event.description %>
+      </div>
+    <% end %>
 
-    <%= @event.description %>
-    <%= @event.url %>
-    <br>
+    <% if @event.url != "" %>
+      <div class="secondary-container">
+        <h3>Lien</h3>
+        <%= @event.url %>
+      </div>
+    <% end %>
+
+    <h3>Mes idées cadeaux</h3>
+
     <% if @event.gift.class.name != "NilClass" %>
       <ul>
       <% @event.gift.generated_list.each do |gift| %>
-        <li data-save-gift-target="gift"><%= gift %></li>
+        <div class="secondary-container geeft">
+          <li data-save-gift-target="gift">
+            <div class="gift-icon">
+              <i class="fa-solid fa-gift"></i>
+            </div>
+            <div class="gift">
+              <%= gift %>
+            </div>
+          </li>
+        </div>
+
       <% end %>
       </ul>
     <% else %>
