@@ -8,8 +8,12 @@ module NavbarTitlesHelper
         events_titles
       when "gifts"
         gifts_titles
-      when "users"
-        users_titles
+      when "sessions"
+        sessions_titles
+      when "registrations"
+        registrations_titles
+      when "passwords"
+        passwords_titles
     end
   end
 end
@@ -45,28 +49,31 @@ def gifts_titles
   end
 end
 
-def users_titles
-  case controller_name
-  when "registrations"
-    case action_name
-    when "edit"
-      "> Modifier mon compte"
-    when "new"
-      "> Créer un compte"
-    when "update"
-      "> Mise à jour du compte"
-    end
-  when "sessions"
-    case action_name
+def sessions_titles
+  case action_name
     when "new"
       "> Connexion"
-    end
-  when "passwords"
-    case action_name
+    when "create"
+      "> Connexion"
+    when "destroy"
+      "> Déconnexion"
+  end
+end
+
+def registrations_titles
+  case action_name
     when "new"
-      "> Réinitialiser le mot de passe"
-    when "edit"
-      "> Modifier le mot de passe"
-    end
+      "> Inscription"
+    when "create"
+      "> Inscription"
+  end
+end
+
+def passwords_titles
+  case action_name
+    when "new"
+      "> Mot de passe oublié"
+    when "create"
+      "> Mot de passe oublié"
   end
 end

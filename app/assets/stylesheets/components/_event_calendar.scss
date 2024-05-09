@@ -14,7 +14,7 @@
   font-family: $body-font;
   background-color: $secondary-color;
   border: 3px solid $primary-color;
-  border-radius: 12px;
+  border-radius: var(--border-radius);;
   width: 18.7em;
   padding: 0.5em;
   margin: 0.7em 0 0.7em 0em;

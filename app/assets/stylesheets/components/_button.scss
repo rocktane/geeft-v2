@@ -2,7 +2,7 @@
 .btn {
   font-family: $headers-font;
   font-size: 1.5em;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   text-decoration: none;
   padding: 0.5em;
   text-align: center;
@@ -14,7 +14,7 @@
   font-family: $headers-font;
   margin-top: 0.7em;
   font-size: 1.1em;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   text-decoration: none;
   padding: 0.5em;
   text-align: center;
@@ -23,11 +23,11 @@
 // Bouton carré
 .btn-square {
   position: absolute;
-  top: 0;
+  top: -2em;
   right: 0;
   width: 3em;
   height: 3em;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +39,7 @@
   margin-top: 0.3em;
   font-family: $headers-font;
   font-size: 1.5em;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   text-decoration: none;
   padding: 0.5em;
   text-align: center;
@@ -107,6 +107,10 @@
       font-size: 2em;
       margin: 0.5em;
     }
+  }
+
+  .btn-square {
+    top: 0;
   }
 
   .btn-home {
