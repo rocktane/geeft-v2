@@ -35,7 +35,7 @@
     padding: 0.5em;
     border: 3px solid $primary-color;
     background-color: $secondary-color;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
   }
 
   & ::placeholder {

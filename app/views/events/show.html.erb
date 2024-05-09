@@ -48,10 +48,11 @@
       </ul>
     <% else %>
 
-    <div class="btn-secondary btn-green">
-      <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event) %>
-    </div>
-    <% end %>
+
+      <div class="btn-secondary btn-green">
+        <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event) %>
+      </div>
+      <% end %>
 
     <div class="btn-square btn-green">
       <%= link_to edit_event_path(@event), class: "icon-link" do %>
@@ -61,9 +62,6 @@
 
 
   <!-- Prévoir le bouton "Partager" -->
-
-
-
   <!-- <%= link_to 'Delete', event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> -->
   </div>
 

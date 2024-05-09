@@ -1,6 +1,6 @@
 .date-show {
   border: 3px solid $primary-color;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   height: 2.3em;
   width: 7.2em;
   background-color: $secondary-color;

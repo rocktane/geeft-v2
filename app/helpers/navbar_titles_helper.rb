@@ -8,8 +8,12 @@ module NavbarTitlesHelper
         events_titles
       when "gifts"
         gifts_titles
-      when "users"
-        users_titles
+      when "sessions"
+        sessions_titles
+      when "registrations"
+        registrations_titles
+      when "passwords"
+        passwords_titles
     end
   end
 end
@@ -42,5 +46,34 @@ def gifts_titles
       "> Trouve le cadeau parfait"
     when "show"
       "> Idées cadeaux"
+  end
+end
+
+def sessions_titles
+  case action_name
+    when "new"
+      "> Connexion"
+    when "create"
+      "> Connexion"
+    when "destroy"
+      "> Déconnexion"
+  end
+end
+
+def registrations_titles
+  case action_name
+    when "new"
+      "> Inscription"
+    when "create"
+      "> Inscription"
+  end
+end
+
+def passwords_titles
+  case action_name
+    when "new"
+      "> Mot de passe oublié"
+    when "create"
+      "> Mot de passe oublié"
   end
 end
