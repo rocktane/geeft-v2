@@ -3,28 +3,68 @@
     <%= link_to '< Retour', dashboard_path %>
   </div>
 
-  <div class="content-container">
-    <h1><%= @event.name %>, le <%= @event.date.strftime('%d/%m/%Y') %></h1>
+  <div class="primary-container">
+    <div class="title">Mon évènement</div>
 
+    <div class="date-show">
+     <%= @event.date.strftime('%d/%m/%Y') %>
+    </div>
 
+    <div class="secondary-container">
+      <h3>Nom de l'évènement</h3>
+      <%= @event.name %>
+    </div>
 
-    <%= @event.description %>
-    <%= @event.url %>
-    <br>
-    <% if @event.gift.class.name != "NilClass" %>
-      <ul>
-      <% @event.gift.generated_list.each do |gift| %>
-        <li data-save-gift-target="gift"><%= gift %></li>
-      <% end %>
-      </ul>
-    <% else %>
-      <%= link_to 'Generate list', new_event_gift_path(@event) %>
+    <% if @event.description != "" %>
+      <div class="secondary-container">
+        <h3>Description</h3>
+        <%= @event.description %>
+      </div>
     <% end %>
 
-    
+    <% if @event.url != "" %>
+      <div class="secondary-container">
+        <h3>Lien</h3>
+        <%= @event.url %>
+      </div>
+    <% end %>
 
-    <%= link_to 'Edit', edit_event_path(@event) %>
-    <%= link_to 'Delete', event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
+    <% if @event.gift.class.name != "NilClass" %>
+      <h3>Mes idées cadeaux</h3>
+      <ul>
+        <% @event.gift.generated_list.each do |gift| %>
+          <li data-save-gift-target="gift">
+            <div class="secondary-container geeft">
+              <div class="gift-icon">
+                <i class="fa-solid fa-gift"></i>
+              </div>
+              <div class="gift">
+                <%= gift %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+
+    <div class="btn-secondary btn-green">
+      <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event) %>
+    </div>
+    <% end %>
+
+    <div class="btn-square btn-green">
+      <%= link_to edit_event_path(@event), class: "icon-link" do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
+    </div>
+
+
+  <!-- Prévoir le bouton "Partager" -->
+
+
+
+  <!-- <%= link_to 'Delete', event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> -->
   </div>
 
 </div>

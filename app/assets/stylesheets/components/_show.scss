@@ -1,0 +1,13 @@
+.date-show {
+  border: 3px solid $primary-color;
+  border-radius: 5px;
+  height: 2.3em;
+  width: 7.2em;
+  background-color: $secondary-color;
+  font-family: $body-font;
+  color: $primary-color;
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

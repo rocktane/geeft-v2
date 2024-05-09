@@ -9,12 +9,49 @@
   width: 49%;
 }
 
+// Bouton solo de base
+.btn-secondary {
+  font-family: $headers-font;
+  margin-top: 0.7em;
+  font-size: 1.1em;
+  border-radius: 12px;
+  text-decoration: none;
+  padding: 0.5em;
+  text-align: center;
+  width: 100%;
+}
+// Bouton carré
+.btn-square {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3em;
+  height: 3em;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+// Boutons HomePage Logged-out
+.btn-home {
+  margin-top: 0.3em;
+  font-family: $headers-font;
+  font-size: 1.5em;
+  border-radius: 12px;
+  text-decoration: none;
+  padding: 0.5em;
+  text-align: center;
+  width: 8em;
+}
 // Green button styles
 .btn-green {
   background-color: $primary-color;
   color: $secondary-color;
   &:hover {
     background-color: $secondary-color;
+    color: $primary-color;
     a {
       color: $primary-color;
     }
@@ -34,44 +71,6 @@
 }
 
 
-// Bouton solo vert de base
-.btn-secondary {
-  font-family: $headers-font;
-  margin-top: 0.7em;
-  font-size: 1.1em;
-  border-radius: 12px;
-  text-decoration: none;
-  padding: 0.5em;
-  text-align: center;
-  width: 100%;
-  background-color: $primary-color;
-  color: $secondary-color;
-  &:hover {
-    background-color: $secondary-color;
-    color: $primary-color;
-    a {
-      color: $primary-color;
-    }
-  }
-}
-
-
-// Bouton carré
-.btn-square {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 3em;
-  height: 3em;
-  background-color: $accent-color;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.1em;
-
-}
-
 
 // Bouton retour sur chaque page
 .btn-back {
@@ -81,20 +80,6 @@
     color: $primary-color;
     opacity: 58%;
   }
-
-
-}
-
-// Boutons HomePage Logged-out
-.btn-home {
-  margin-top: 0.3em;
-  font-family: $headers-font;
-  font-size: 1.5em;
-  border-radius: 12px;
-  text-decoration: none;
-  padding: 0.5em;
-  text-align: center;
-  width: 8em;
 }
 
 
@@ -136,5 +121,4 @@
   .btn-back {
     display: none;
   }
-
 }

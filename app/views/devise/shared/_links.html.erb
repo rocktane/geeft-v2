@@ -1,7 +1,7 @@
 
 <%- if controller_name != 'sessions' %>
   <!--  <%= link_to "Log in", new_session_path(resource_name) %><br /> -->
-  <div class="btn-square">
+  <div class="btn-square btn-purple">
     <%= link_to new_session_path(resource_name) do %>
       <i class="fa-solid fa-sign-in-alt"></i>
     <% end %>
@@ -11,7 +11,7 @@
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <!-- <%= link_to "Sign up", new_registration_path(resource_name) %><br /> -->
-  <div class="btn-square">
+  <div class="btn-square btn-purple">
     <%= link_to new_registration_path(resource_name) do %>
       <i class="fa-solid fa-user-plus"></i>
     <% end %>

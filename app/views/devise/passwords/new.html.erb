@@ -2,7 +2,7 @@
   <div class="btn-back">
     <%= link_to '< Retour', user_session_path %>
   </div>
-  <div class="user-container">
+  <div class="primary-container">
     <h2>Mot de Passe</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -20,7 +20,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Nouveau mot de passe", class: "btn-secondary" %>
+        <%= f.button :submit, "Nouveau mot de passe", class: "btn-secondary btn-green" %>
       </div>
     <% end %>
 
