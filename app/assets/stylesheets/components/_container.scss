@@ -25,7 +25,9 @@
     font-size: 1.2em;
     margin: 1em 0 0.5em 0;
   }
-
+  & .title {
+    display: none;
+  }
 }
 
 
@@ -56,9 +58,7 @@
     color: $accent-color;
   }
 
-
 }
-
 
 
 
@@ -67,9 +67,15 @@
     padding: 1em 1em 5em 1em;
   }
 
-
   .primary-container {
     margin: 1em 0 0 0;
     width: 100%;
+    & .title {
+      display: block;
+      font-family: $headers-font;
+      color: $primary-color;
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }
   }
 }

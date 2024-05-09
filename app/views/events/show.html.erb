@@ -4,7 +4,7 @@
   </div>
 
   <div class="primary-container">
-    <h2>Mon évènement</h2>
+    <div class="title">Mon évènement</div>
 
     <div class="date-show">
      <%= @event.date.strftime('%d/%m/%Y') %>
@@ -47,13 +47,24 @@
         <% end %>
       </ul>
     <% else %>
-      <%= link_to 'Generate list', new_event_gift_path(@event) %>
+
+    <div class="btn-secondary btn-green">
+      <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event) %>
+    </div>
     <% end %>
 
+    <div class="btn-square btn-green">
+      <%= link_to edit_event_path(@event), class: "icon-link" do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
+    </div>
 
 
-    <%= link_to 'Edit', edit_event_path(@event) %>
-    <%= link_to 'Delete', event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <!-- Prévoir le bouton "Partager" -->
+
+
+
+  <!-- <%= link_to 'Delete', event_path(@event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> -->
   </div>
 
 </div>
