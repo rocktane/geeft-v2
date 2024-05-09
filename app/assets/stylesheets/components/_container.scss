@@ -23,7 +23,7 @@
     font-family: $headers-font;
     color: $primary-color;
     font-size: 1.2em;
-    margin: 0.5em 0 0.5em 0;
+    margin: 1em 0 0.5em 0;
   }
 
 }
@@ -42,25 +42,22 @@
     font-family: $body-font;
     color: $primary-color;
     font-size: 0.7em;
-    margin-bottom: 0.2em;
+    margin: 0em 0 0.5em 0;
   }
 }
 
 .geeft {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
 
   .gift-icon {
     font-size: 1.5em;
-    color: $primary-color;
-    display: flex;
+    margin-right: 0.5em;
+    color: $accent-color;
   }
-  .gift {
-    font-size: 1em;
-    margin: 0.5em 0;
-  }
-}
 
+
+}
 
 
 
@@ -73,5 +70,6 @@
 
   .primary-container {
     margin: 1em 0 0 0;
+    width: 100%;
   }
 }

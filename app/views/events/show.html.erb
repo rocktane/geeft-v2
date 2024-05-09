@@ -29,23 +29,22 @@
       </div>
     <% end %>
 
-    <h3>Mes idées cadeaux</h3>
 
     <% if @event.gift.class.name != "NilClass" %>
+      <h3>Mes idées cadeaux</h3>
       <ul>
-      <% @event.gift.generated_list.each do |gift| %>
-        <div class="secondary-container geeft">
+        <% @event.gift.generated_list.each do |gift| %>
           <li data-save-gift-target="gift">
-            <div class="gift-icon">
-              <i class="fa-solid fa-gift"></i>
-            </div>
-            <div class="gift">
-              <%= gift %>
+            <div class="secondary-container geeft">
+              <div class="gift-icon">
+                <i class="fa-solid fa-gift"></i>
+              </div>
+              <div class="gift">
+                <%= gift %>
+              </div>
             </div>
           </li>
-        </div>
-
-      <% end %>
+        <% end %>
       </ul>
     <% else %>
       <%= link_to 'Generate list', new_event_gift_path(@event) %>
