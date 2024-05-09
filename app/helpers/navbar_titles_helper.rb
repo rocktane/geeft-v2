@@ -44,3 +44,29 @@ def gifts_titles
       "> Idées cadeaux"
   end
 end
+
+def users_titles
+  case controller_name
+  when "registrations"
+    case action_name
+    when "edit"
+      "> Modifier mon compte"
+    when "new"
+      "> Créer un compte"
+    when "update"
+      "> Mise à jour du compte"
+    end
+  when "sessions"
+    case action_name
+    when "new"
+      "> Connexion"
+    end
+  when "passwords"
+    case action_name
+    when "new"
+      "> Réinitialiser le mot de passe"
+    when "edit"
+      "> Modifier le mot de passe"
+    end
+  end
+end
