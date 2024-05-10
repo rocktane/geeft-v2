@@ -1,8 +1,7 @@
-ul, li {
+ul,
+li {
   list-style-type: none;
 }
-
-
 
 // Container Evenements Home
 .event-container-home {
@@ -29,10 +28,17 @@ ul, li {
   color: $primary-color;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 1.1em;
   margin: 0.5em 0 0.5em 0em;
 }
 
+.event-date {
+  background-color: $accent-color;
+  padding: 0.25em 0.5em;
+  color: white;
+  border-radius: 5px;
+}
 
 @media (max-width: 768px) {
   .event-container-home {

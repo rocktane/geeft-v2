@@ -31,6 +31,7 @@ export default class extends Controller {
       altInput: true,
       altFormat: "F j, Y",
       dateFormat: "Y-m-d",
+      monthSelectorType: "static",
 
       onChange: function (selectedDates, dateStr, instance) {
         const event = new CustomEvent("dateChange", {
