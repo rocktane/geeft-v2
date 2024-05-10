@@ -22,13 +22,12 @@
       </div>
     <% end %>
 
-    <% if @event.url != "" %>
+    <% if @event.url != "" && !@event.url.nil? %>
       <div class="secondary-container">
         <h3>Lien</h3>
         <%= @event.url %>
       </div>
     <% end %>
-
 
     <% if @event.gift.class.name != "NilClass" %>
       <h3>Mes idées cadeaux</h3>
@@ -47,12 +46,8 @@
         <% end %>
       </ul>
     <% else %>
-
-
-      <div class="btn-secondary btn-green">
-        <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event) %>
-      </div>
-      <% end %>
+        <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event), class: 'btn-secondary btn-green' %>
+    <% end %>
 
     <div class="btn-square btn-green">
       <%= link_to edit_event_path(@event), class: "icon-link" do %>

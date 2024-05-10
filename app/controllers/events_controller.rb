@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     @event.user = current_user
     @event.gift = @gift
     if @event.save
-      redirect_to event_path(@event)
+      redirect_to event_path(@event), notice: "L'événement a été créé avec succès."
     else
       render :new
     end
