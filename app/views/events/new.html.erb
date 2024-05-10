@@ -16,6 +16,11 @@
   <%= f.text_field :description %>
   <%= f.label :url, "URL" %>
   <%= f.text_field :url %>
+  <% if @event.errors.has_key?(:url) %>
+    <div class="error-message">
+      <%= @event.errors[:url].first %>
+    </div>
+  <% end %>
   <%= f.submit %>
 <% end %>
 
