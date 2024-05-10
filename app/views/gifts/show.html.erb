@@ -1,7 +1,6 @@
   <div class="btn-back">
-      <%= link_to '< Retour', new_gift_path %>
+      <%= link_to '< Retour', :back %>
     </div>
-
 
 <%= @gift.occasion %>
 <%= @gift.relationship %>
@@ -18,12 +17,12 @@
   <% if (index < 5) %>
     <li data-save-gift-target="gift">
       <%= gift %>
-      <div data-action="click->refresh-gift#refresh">X</div>
+      <div data-action="click->refresh-gift#refresh"><span data-refresh-gift-target="refresh">X</span></div>
     </li>
   <% else %>
     <li data-refresh-gift-target="hiddenGift" style="display: none">
       <%= gift %>
-      <div data-action="click->refresh-gift#refresh">X</div>
+      <div data-action="click->refresh-gift#refresh"><span data-refresh-gift-target="refresh">X</span></div>
     </li>
     <% end %>
 <% end %>

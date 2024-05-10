@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="refresh-gift"
 export default class extends Controller {
-  static targets = ["hiddenGift"];
+  static targets = ["hiddenGift", "refresh"];
 
   connect() {}
 
@@ -11,7 +11,12 @@ export default class extends Controller {
       const li = gift.target.parentElement;
       const firstHiddenGift = this.hiddenGiftTargets[0];
       li.innerHTML = firstHiddenGift.innerHTML;
-      firstHiddenGift.remove();
+      if ((this.hiddenGiftTargets.length = 1)) {
+        firstHiddenGift.remove(); // remove the hidden gift
+        this.refreshTargets.forEach((span) => {
+          span.style.display = "none"; // hide the refresh button
+        });
+      }
     }
   }
 }

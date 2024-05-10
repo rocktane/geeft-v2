@@ -13,8 +13,39 @@ l'adaptant dynamiquement mais ça doit être fait en JS si pas de Bootstrap -->
     <!-- Voir Helper Navbar Titles -->
     <h1> <%= navbar_title %> </h1>
   </div>
-  <div class="navbar-right">
-    <!-- JS à prévoir pour le dropdown menu si on utilise pas Bootstrap -->
-    <i class="fa-solid fa-bars"></i>
-  </div>
+
+<div class="dropdown">
+        <button class="dropdown-toggle" style="border: none; background: none">
+            <span class="menu-bars">
+                <i class="fa-solid fa-bars"></i>
+            </span>
+        </button>
+        <ul class="dropdown-menu">
+          <li class="menu-item">
+            <span class="item-icon">
+                <i class='fa-solid fa-bars'></i>
+            </span>
+            <span class="item-txt">
+                Dashboard
+            </span>
+        </li>
+          <li class="menu-item">
+            <span class="item-icon">
+                <i class='fa-solid fa-bars'></i>
+            </span>
+            <span class="item-txt">
+                logout
+            </span>
+        </li>
+          <li class="menu-item">
+            <span class="item-icon">
+                <i class='fa-solid fa-bars' ></i>
+            </span>
+            <span class="item-txt">
+                setting
+            </span>
+        </li>
+        </ul>
+      </div>
+
 </div>

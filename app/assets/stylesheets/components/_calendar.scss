@@ -1,7 +1,6 @@
 .calendar {
- font-family: "ABeeZee-regular";
+  font-family: "ABeeZee-regular";
 }
-
 
 #dashboard-calendar > input {
   display: none;
@@ -13,29 +12,41 @@
 }
 
 .flatpickr-calendar.inline {
-  background-color: #BACDCC ;
+  background-color: #bacdcc;
 }
 
-.flatpickr-calendar.arrowTop:after, .flatpickr-calendar.arrowTop:before {
+.flatpickr-calendar.arrowTop:after,
+.flatpickr-calendar.arrowTop:before {
   display: none;
 }
 
-
-
-
+.flatpickr-current-month {
+  pointer-events: none;
+}
 
 .booked {
-  background: red !important;
+  background: #60365e;
   position: absolute;
-  width: 3px;
-  height: 3px;
+  width: 6px;
+  height: 6px;
   border-radius: 150px;
-  bottom: 3px;
-  left: calc(50% - 1.5px);
+  bottom: 0px;
+  left: calc(50% - 3px);
   content: " ";
   display: block;
 }
 
+// Complete plain circle for booked days
+// .booked {
+//   background: red !important;
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   border-radius: 150px;
+//   left: calc(50% - 18.5px);
+//   color: white;
+//   z-index: -1;
+// }
 
 // .flatpickr-calendar {
 //   border: none;
