@@ -30,26 +30,8 @@
   width: 6px;
   height: 6px;
   border-radius: 150px;
-  bottom: 0px;
+  bottom: 3px;
   left: calc(50% - 3px);
   content: " ";
   display: block;
 }
-
-// Complete plain circle for booked days
-// .booked {
-//   background: red !important;
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   border-radius: 150px;
-//   left: calc(50% - 18.5px);
-//   color: white;
-//   z-index: -1;
-// }
-
-// .flatpickr-calendar {
-//   border: none;
-//   -webkit-box-shadow: none;
-//   box-shadow: none !important;
-// }

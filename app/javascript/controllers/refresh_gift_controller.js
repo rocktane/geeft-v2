@@ -11,10 +11,10 @@ export default class extends Controller {
       const li = gift.target.parentElement;
       const firstHiddenGift = this.hiddenGiftTargets[0];
       li.innerHTML = firstHiddenGift.innerHTML;
-      if ((this.hiddenGiftTargets.length = 1)) {
-        firstHiddenGift.remove(); // remove the hidden gift
+      firstHiddenGift.remove();
+      if (this.hiddenGiftTargets.length == 0) {
         this.refreshTargets.forEach((span) => {
-          span.style.display = "none"; // hide the refresh button
+          span.style.color = "grey"; // greyed out the refresh button
         });
       }
     }

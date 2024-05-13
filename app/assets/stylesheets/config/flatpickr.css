@@ -223,10 +223,10 @@
 .flatpickr-months .flatpickr-next-month:hover {
   color: #959ea9;
 }
-.flatpickr-months .flatpickr-prev-month:hover svg,
+/* .flatpickr-months .flatpickr-prev-month:hover svg,
 .flatpickr-months .flatpickr-next-month:hover svg {
   fill: #f64747;
-}
+} */
 .flatpickr-months .flatpickr-prev-month svg,
 .flatpickr-months .flatpickr-next-month svg {
   width: 14px;
@@ -576,11 +576,11 @@ span.flatpickr-weekday {
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: #569ff7;
+  background: #fff3e1;
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: #fff;
-  border-color: #569ff7;
+  color: #000000;
+  border-color: #fff3e1;
 }
 .flatpickr-day.selected.startRange,
 .flatpickr-day.startRange.startRange,
@@ -595,8 +595,8 @@ span.flatpickr-weekday {
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
-  -webkit-box-shadow: -10px 0 0 #569ff7;
-  box-shadow: -10px 0 0 #569ff7;
+  -webkit-box-shadow: -10px 0 0 #fff3e1;
+  box-shadow: -10px 0 0 #fff3e1;
 }
 .flatpickr-day.selected.startRange.endRange,
 .flatpickr-day.startRange.startRange.endRange,
@@ -627,8 +627,8 @@ span.flatpickr-weekday {
 }
 .flatpickr-day.week.selected {
   border-radius: 0;
-  -webkit-box-shadow: -5px 0 0 #569ff7, 5px 0 0 #569ff7;
-  box-shadow: -5px 0 0 #569ff7, 5px 0 0 #569ff7;
+  -webkit-box-shadow: -5px 0 0 #fff3e1, 5px 0 0 #fff3e1;
+  box-shadow: -5px 0 0 #fff3e1, 5px 0 0 #fff3e1;
 }
 .flatpickr-day.hidden {
   visibility: hidden;
