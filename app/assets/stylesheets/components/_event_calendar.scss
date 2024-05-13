@@ -7,6 +7,11 @@
   height: 100%;
   margin-left: -0.3em;
   margin-top: -1.8em;
+  & > div {
+    width: 100%;
+    display: grid;
+    grid-gap: 0.5em;
+  }
 }
 
 .event-container-calendar {
@@ -14,9 +19,9 @@
   background-color: $secondary-color;
   border: 3px solid $primary-color;
   border-radius: var(--border-radius);
-  width: 18.7em;
+  // width: 18.7em;
   padding: 0.5em;
-  margin: 0.7em 0 0.7em 0em;
+  // margin: 0.7em 0 0.7em 0em;
   & h1 {
     font-family: $headers-font;
     color: $primary-color;
@@ -36,6 +41,11 @@
   font-size: 0.9em;
   margin: 0.5em 0 0.5em 0em;
   align-items: center;
+  padding: 0.5em;
+  &.date-selected {
+    background-color: rgb(186, 205, 204);
+    border-radius: 8px;
+  }
 }
 
 @media (max-width: 768px) {

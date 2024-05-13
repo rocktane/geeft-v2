@@ -7,11 +7,16 @@ class EventsController < ApplicationController
     # Pour avoir les evenements organisés par mois
     @events = Event.where(user: current_user).order(:date)
     @eventsDates = @events.map { |event| event.date.strftime("%Y-%m-%d") }
-    start_date = Date.today.beginning_of_month
-    end_date = 1.year.from_now.beginning_of_month
-    all_months = (start_date..end_date).map(&:beginning_of_month).uniq
-    @events_by_month = all_months.map do |month|
-      [month, @events.select { |e| e.date.beginning_of_month == month }]
+    # start_date = Date.today.beginning_of_month
+    # end_date = 1.year.from_now.beginning_of_month
+    start_date = [@events.first.date.beginning_of_month, Date.today.beginning_of_month].min
+    end_date = @events.last.date.beginning_of_month
+    @all_months = (start_date..end_date).map(&:beginning_of_month).uniq
+    @today = Date.today
+    @events_by_month = @all_months.map do |month|
+      unless @events.select { |e| e.date.beginning_of_month == month }.nil?
+        [month, @events.select { |e| e.date.beginning_of_month == month }]
+      end
     end.to_h
   end
 
