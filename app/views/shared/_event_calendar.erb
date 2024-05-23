@@ -6,7 +6,8 @@
   <% end %>
 
   <% years.each do |year| %>
-  <ul class="upcoming-year"><%= year %>
+  <ul class="upcoming-year">
+    <div class="year-events"><%= year %></div>
     <% @all_months.each do |month| %>
       <% next if month.year != year %>
       <% if !(@events_by_month[month].empty?) %>
