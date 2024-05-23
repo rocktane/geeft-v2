@@ -7,11 +7,6 @@
   height: 100%;
   margin-left: -0.3em;
   margin-top: -1.8em;
-  & > div {
-    width: 100%;
-    display: grid;
-    grid-gap: 0.5em;
-  }
 }
 
 .event-container-calendar {
@@ -42,9 +37,30 @@
   margin: 0.5em 0 0.5em 0em;
   align-items: center;
   padding: 0.5em;
+  gap: 0.3em;
   &.date-selected {
     background-color: rgb(186, 205, 204);
     border-radius: 8px;
+  }
+}
+
+.upcoming-year {
+  width: 100%;
+  display: grid;
+  grid-gap: 0.5em;
+}
+
+.year-events {
+  font-family: $headers-font;
+  color: $primary-color;
+  padding-left: 0.5em;
+  font-size: 1.2em;
+}
+
+.upcoming-month ul a:hover {
+  > li {
+    background-color: $background-color;
+    border-radius: 1em;
   }
 }
 

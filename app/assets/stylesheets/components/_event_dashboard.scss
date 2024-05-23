@@ -9,5 +9,20 @@
   font-family: $headers-font;
   color: $primary-color;
   font-size: 1.5em;
+  margin-top: 1em;
   margin-bottom: 0.5em;
+}
+
+.event-url {
+  display: inline-block;
+  background-color: $secondary-color;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  color: $primary-color;
+  transition: background-color 0.3s ease-in-out 0.3s;
+  transition: color 0.3s ease-in-out;
+  &:hover {
+    background-color: $accent-color;
+    color: $secondary-color;
+  }
 }

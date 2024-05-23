@@ -2,19 +2,18 @@
 <div class="event-container-dashboard">
 
     <% @events.each do |event| %>
-    <div class="event-dashboard-title">
-
-      <%= event.name %>
-      <%= event.date %>
-    </div>
-      <%= event.description %>
-      <%= event.url %>
-      <%= event.url %>
-      <%= event.gift_list %>
-
-
-
-
+      <%= link_to event_path(event) do %>
+        <div class="event-dashboard-title">
+          <%= event.name %> le <%= event.date.strftime("%d/%m/%Y") %>
+        </div>
+      <% end %>
+        <% if !event.url.nil? %>
+          <% if event.url.strip != "" %>
+                <%= link_to event.url do %>
+                  <div class="event-url"><i class="fa-solid fa-link"></i> <%= event.url.match(/\/\/(.*)/).captures[0] %></div>
+                <% end %>
+          <% end %>
+        <% end %>
+      <div class="event-descripton"><%= event.description %></div>
     <% end %>
-
     </div>
