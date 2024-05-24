@@ -2,16 +2,9 @@
       <%= link_to '< Retour', :back %>
     </div>
 
-<%= @gift.occasion %>
-<%= @gift.relationship %>
-<%= @gift.genre %>
-<%= @gift.interests %>
-<%= @gift.budget %>
-<%= @gift.age %>
-<br>
 <div data-controller="save-gift">
 
-<h1>List of gifts :</h1><br>
+<h1>La liste de cadeaux</h1><br>
 <ul data-controller="refresh-gift" data-save-gift-target="list">
 <% @gift.generated_list.each_with_index do |gift, index| %>
   <% if (index < 5) %>
@@ -23,19 +16,24 @@
     <li data-refresh-gift-target="hiddenGift" style="display: none">
     <% end %>
       <%= gift %>
-      <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh">X</span>
+      <% if @user == @gift.user %>
+        <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh">X</span>
+      <% end %>
     </li>
 <% end %>
 
-<%= form_with(url: gift_path, method: :patch) do |f| %>
-  <%= f.text_field :comment, as: :text %>
-  <%= f.submit %>
-<% end %>
+  <% if @user == @gift.user %>
+    <%= form_with(url: gift_path, method: :patch) do |f| %>
+      <h2>Une modification à effectuer ?</h2>
+      <%= f.text_field :comment, as: :text, placeholder: "Moins de coffrets, plus d'ateliers" %>
+      <%= f.submit "Envoyer"%>
+    <% end %>
 
-  <% if @event.id %>
-    <a href="" data-env=<%= Rails.env %> data-id=<%= @gift.id %> data-event-id=<%= @event.id %>
-    data-action="click->save-gift#save" data-save-gift-target="saveList">Ajouter à l'event</a>
-  <% else %>
-    <%= link_to 'Créer un event', updatelist_path(@gift), data: { env: Rails.env, id: @gift.id, action: "click->save-gift#save", save_gift_target: "saveList" } %>
+    <% if @event.id %>
+      <a href="" data-env=<%= Rails.env %> data-id=<%= @gift.id %> data-event-id=<%= @event.id %>
+      data-action="click->save-gift#save" data-save-gift-target="saveList">Ajouter à l'event</a>
+    <% else %>
+      <%= link_to 'Créer un event', updatelist_path(@gift), data: { env: Rails.env, id: @gift.id, action: "click->save-gift#save", save_gift_target: "saveList" } %>
+    <% end %>
   <% end %>
 </div>

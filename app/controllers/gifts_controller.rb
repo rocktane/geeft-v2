@@ -7,6 +7,7 @@ class GiftsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @event = params[:event_id] ? Event.find(params[:event_id]) : Event.new
     @gift = Gift.find(params[:id])
   end
