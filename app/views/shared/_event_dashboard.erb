@@ -4,7 +4,9 @@
     <% @events.each do |event| %>
       <%= link_to event_path(event) do %>
         <div class="event-dashboard-title">
-          <%= event.name %> le <%= event.date.strftime("%d/%m/%Y") %>
+          <% day = event.date.strftime("%d") %>
+          <% year = event.date.strftime("%Y") %>
+          <%= event.name %>, le <%= day %> <%= french_month(event.date) %> <%= year %>
         </div>
       <% end %>
         <% if !event.url.nil? %>

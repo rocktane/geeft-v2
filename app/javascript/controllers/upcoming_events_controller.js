@@ -128,11 +128,12 @@ export default class extends Controller {
   }
 
   only_six_months() {
+    const num_months = 6;
     const months_displayed = this.bobTargets.filter(
       (event) => event.style.display !== "none"
     );
-    if (months_displayed.length >= 6) {
-      months_displayed.slice(6).forEach((event) => {
+    if (months_displayed.length >= num_months) {
+      months_displayed.slice(num_months).forEach((event) => {
         event.style.display = "none";
       });
     }
