@@ -4,18 +4,36 @@
 
 <% model_to_use = [@event, @gift] || @gift %>
 
-<%= form_with(model: model_to_use, url: gifts_path(event_id: @event)) do |f| %>
-  <%= f.label :budget, "Budget" %>
-  <%= f.text_field :budget %>
-  <%= f.label :age, "Age" %>
-  <%= f.text_field :age %>
-  <%= f.label :genre, "Genre" %>
-  <%= f.select :genre, ['neutral', 'female', 'male'] %>
-  <%= f.label :occasion, "Occasion" %>
-  <%= f.select :occasion, Gift::OCCASIONS.sort %>
-  <%= f.label :relationship, "Relationship" %>
-  <%= f.select :relationship, Gift::RELATIONSHIPS.sort %>
-  <%= f.label :interests, "Interests" %>
-  <%= f.select :interests, Gift::INTERESTS.sort, { multiple: true } %>
+
+<%= simple_form_for(model_to_use, url: gifts_path(event_id: @event), class: "criteria-form") do |f| %>
+
+  <div class="age-genre">
+    <%= f.label :age, "Age", class: "criteria-title" %>
+
+    <%# <%= f.label :genre, "Genre", class: "criteria-title" %>
+    <%# <%= f.radio_button :genre, ['neutral', 'female', 'male'], as: :radio_buttons %>
+    <%= f.radio_button :genre, "neutral" %>
+    <%= f.label :genre, "neutral" %>
+    <%= f.radio_button :genre, "female" %>
+    <%= f.label :genre, "female" %>
+    <%= f.radio_button :genre, "male" %>
+    <%= f.label :genre, "male" %>
+  </div>
+  <div class="budget">
+    <%= f.label :budget, "Budget", class: "criteria-title" %>
+
+  </div>
+  <div class="occasion">
+    <%= f.label :occasion, "Occasion", class: "criteria-title" %>
+    <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, required: false %>
+  </div>
+  <div class="relationship">
+    <%= f.label :relationship, "Relation", class: "criteria-title" %>
+    <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, required: false %>
+  </div>
+  <div class="interests">
+    <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
+    <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, required: false %>
+  </div>
   <%= f.button :submit %>
 <% end %>
