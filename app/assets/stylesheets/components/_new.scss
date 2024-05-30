@@ -1,0 +1,54 @@
+.age-genre {
+  display: flex;
+}
+
+.age,
+.genre {
+  display: inline-block;
+}
+
+.criteria-form {
+  display: grid;
+  grid-gap: 1em;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+.radio_buttons span,
+.check_boxes span {
+  padding: 0 1em;
+}
+
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+  color: red;
+}
+
+.occasion,
+.relationship,
+.interests {
+  // width: 100%;
+  // height: fit-content;
+  // overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  // border: 1px solid #ccc;
+  // padding: 10px;
+  // box-sizing: border-box;
+}
+
+.occasion::-webkit-scrollbar,
+.relationship::-webkit-scrollbar,
+.interests::-webkit-scrollbar {
+  display: none; /* Chrome, Safari et Opera */
+}
+
+.occasion,
+.relationship,
+.interests {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}

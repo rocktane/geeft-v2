@@ -1,0 +1,16 @@
+.input-group,
+.genders {
+  height: 20px;
+}
+
+.input-group button {
+  height: 100%;
+  width: 20px;
+}
+
+.input-group > input {
+  height: 100%;
+  width: 50px;
+  padding: 0 0.1em;
+  text-align: center;
+}

@@ -4,18 +4,106 @@
 
 <% model_to_use = [@event, @gift] || @gift %>
 
-<%= form_with(model: model_to_use, url: gifts_path(event_id: @event)) do |f| %>
-  <%= f.label :budget, "Budget" %>
-  <%= f.text_field :budget %>
-  <%= f.label :age, "Age" %>
-  <%= f.text_field :age %>
-  <%= f.label :genre, "Genre" %>
-  <%= f.select :genre, ['neutral', 'female', 'male'] %>
-  <%= f.label :occasion, "Occasion" %>
-  <%= f.select :occasion, Gift::OCCASIONS.sort %>
-  <%= f.label :relationship, "Relationship" %>
-  <%= f.select :relationship, Gift::RELATIONSHIPS.sort %>
-  <%= f.label :interests, "Interests" %>
-  <%= f.select :interests, Gift::INTERESTS.sort, { multiple: true } %>
+
+<%= simple_form_for(model_to_use, url: gifts_path(event_id: @event), html: { class: "criteria-form"})  do |f| %>
+
+  <div class="age-genre">
+    <div class="age">
+      <%= f.label :age, class: "criteria-title" %>
+      <div class="input-group" style="display: flex">
+        <div class="input-group-prepend">
+          <button type="button" id="decrement" class="age-btn">-</button>
+        </div>
+        <%= f.input :age, as: :hidden, input_html: { id: 'age_input_hidden' }, required: false %>
+        <input type="text" id="age_input" value="30" readonly class="form-control text-center" />
+        <div class="input-group-append">
+          <button type="button" id="increment" class="age-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="genre">
+      <%= f.label :genre, "Genre", class: "criteria-title" %>
+      <div class="genders">
+        <%= f.input :genre, collection: ["neutral", "female", "male"], as: :radio_buttons, label: false, required: false %>
+      </div>
+    </div>
+  </div>
+  <div class="budget">
+    <%= f.label :budget, "Budget", class: "criteria-title" %>
+    <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', min: 0, max: 500, step: 1, value: 50 } %>
+    <div id="budget-value">50</div>
+  </div>
+  <div class="occasion">
+    <%= f.label :occasion, "Occasion", class: "criteria-title" %>
+    <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false  %>
+  </div>
+  <div class="relationship">
+    <%= f.label :relationship, "Relation", class: "criteria-title" %>
+    <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
+  </div>
+  <div class="interests">
+    <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
+    <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, label: false, required: false %>
+  </div>
   <%= f.button :submit %>
 <% end %>
+
+<script>
+  // À intégrer via Stimulus
+  document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById('budget-slider');
+    const output = document.getElementById('budget-value');
+
+    update_pos = function() {
+      const slider_element = slider.getBoundingClientRect();
+      const output_element = output.getBoundingClientRect();
+      const range = (slider_element.right - slider_element.left) / (slider.max - slider.min);
+      const size = output_element.width;
+
+      // Prendre en compte la largeur du 'bouton' du slider afin qu'il soit centré tout le temps
+      const value_int = parseInt(slider.value);
+      // const middle = (slider.max - slider.min) / 2;
+      const value_pos = slider_element.left + ((value_int - slider.min) * range) - (size / 2);
+      output.style.left = `${value_pos}px`
+
+      // Intégrer la hauteur dans le CSS
+      output.style.top = `${slider_element.top - 20}px`;
+    }
+
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+      update_pos();
+    }
+
+    update_pos();
+  });
+
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const decrementButton = document.getElementById('decrement');
+  const incrementButton = document.getElementById('increment');
+  const ageInput = document.getElementById('age_input');
+  const hiddenAgeField = document.getElementById('age_input_hidden');
+
+  decrementButton.addEventListener('click', function() {
+    let age = parseInt(ageInput.value, 10);
+    if (age > 0) {
+      age -= 1;
+      ageInput.value = age;
+      hiddenAgeField.value = age;
+    }
+  });
+
+  incrementButton.addEventListener('click', function() {
+    let age = parseInt(ageInput.value, 10);
+    if (age < 100) {
+      age += 1;
+      ageInput.value = age;
+      hiddenAgeField.value = age;
+    }
+  });
+});
+
+</script>
