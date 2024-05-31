@@ -34,14 +34,17 @@
     <div id="budget-value">50</div>
   </div>
   <div class="occasion">
+    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('occasion')">
     <%= f.label :occasion, "Occasion", class: "criteria-title" %>
-    <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false  %>
+    <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
   </div>
   <div class="relationship">
+    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('relationship')">
     <%= f.label :relationship, "Relation", class: "criteria-title" %>
     <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
   </div>
   <div class="interests">
+    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('interests')">
     <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
     <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, label: false, required: false %>
   </div>
@@ -106,4 +109,24 @@
   });
 });
 
+</script>
+
+<script>
+  function filterList(section_name) {
+  var input, filter, ul, li, i, txtValue;
+  var section = document.querySelector(`.${section_name}`);
+  input = section.querySelector('#searchInput');
+  filter = input.value.toUpperCase();
+  ul = document.querySelector(`.gift_${section_name}`);
+  span = ul.getElementsByTagName('span');
+
+    for (i = 0; i < span.length; i++) {
+      txtValue = span[i].textContent || span[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        span[i].style.display = "";
+      } else {
+        span[i].style.display = "none";
+      }
+    }
+  }
 </script>
