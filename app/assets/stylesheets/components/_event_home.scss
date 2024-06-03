@@ -37,7 +37,7 @@ li {
   background-color: $accent-color;
   padding: 0.25em 0.5em;
   color: white;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
 }
 
 @media (max-width: 768px) {
