@@ -21,7 +21,7 @@
       <%= @event.errors[:url].first %>
     </div>
   <% end %>
-  <%= f.submit %>
+  <%= f.submit, class: "btn-secondary btn-green" %>
 <% end %>
 
 <% if @gift[:id] %>
