@@ -6,7 +6,7 @@
   & a {
     text-decoration: none;
     color: $secondary-color;
-  };
+  }
 }
 
 .primary-container {
@@ -31,7 +31,6 @@
   }
 }
 
-
 .secondary-container {
   margin: 0.5em 0 0 0;
   padding: 0.6em;
@@ -47,12 +46,22 @@
     font-size: 0.7em;
     margin: 0em 0 0.5em 0;
   }
-  & input {
+  & input,
+  textarea {
     font-family: $body-font;
     font-size: 1em;
     color: $primary-color;
     background-color: $secondary-color;
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    white-space: pre-wrap;
   }
+}
+
+div[contenteditable] {
+  border: 1px solid black;
+  width: 200px;
 }
 
 .geeft {
@@ -64,10 +73,7 @@
     margin-right: 0.5em;
     color: $accent-color;
   }
-
 }
-
-
 
 @media (max-width: 768px) {
   .body-container {

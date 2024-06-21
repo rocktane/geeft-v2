@@ -6,9 +6,9 @@
     <div class="annual-calendar">
       <!-- J'ai mis le calendar en "component" pour plus de lisibilité -->
       <%= render 'shared/calendar' %>
-      <div class="btn-secondary btn-green">
-        <%= link_to raw("<i class='fa-solid fa-square-plus'></i> Nouvel évènement"), new_event_path %>
-      </div>
+      <%= link_to new_event_path, :class=> "btn-secondary btn-green btn-desktop" do %>
+        <i class='fa-solid fa-square-plus'></i> Nouvel évènement
+      <% end %>
         <!-- J'ai mis les events reliés au calendrier en "component" pour plus de lisibilité -->
         <%= render 'shared/event_calendar' %>
     </div>
@@ -19,7 +19,7 @@
   </div>
 
   <!-- Bouton rond mobile pour générer un nouvel event -->
-  <div class="btn-mobile">
-    <%= link_to raw('<i class="fa-solid fa-plus"></i>'), new_event_path %>
-  </div>
+  <%= link_to new_event_path, :class=> "btn-secondary btn-green btn-mobile" do %>
+    <i class='fa-solid fa-square-plus'></i>
+  <% end %>
 </div>
