@@ -9,19 +9,22 @@
 <%= form_with(model: model_to_use, url: events_path(gift_id: @gift.id)) do |f| %>
 
   <%= f.label :date, "Date" %>
-  <%= f.text_field :date %>
+  <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
   <%= f.label :name, "Nom" %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, class: 'no-box-input' %>
   <%= f.label :description, "Description" %>
-  <%= f.text_field :description %>
+  <%= f.text_field :description, class: 'no-box-input' %>
   <%= f.label :url, "URL" %>
-  <%= f.text_field :url %>
-  <% if @event.errors.has_key?(:url) %>
-    <div class="error-message">
-      <%= @event.errors[:url].first %>
-    </div>
+  <%= f.text_field :url, class: 'no-box-input' %>
+  <%# Need to find a way to display the error in case %>
+  <% if false  %>
+    <% if @event.errors.has_key?(:url) %>
+      <div class="error-message">
+        <%= @event.errors[:url].first %>
+      </div>
+    <% end %>
   <% end %>
-  <%= f.submit, class: "btn-secondary btn-green" %>
+  <%= f.submit "Créer l'évènement", class: "btn-secondary btn-green" %>
 <% end %>
 
 <% if @gift[:id] %>

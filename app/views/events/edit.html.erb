@@ -22,6 +22,7 @@
       <h3><%= f.label :url, "URL" %></h3>
     <%= f.text_field :url, class: 'no-box-input', placeholder: "www.google.fr" %>
     </div>
+    <% if !@event.gift.nil? %>
       <h3><%= f.label :generated_list, "Liste de cadeaux" %></h3>
       <div class="gift-list">
         <% @event.gift.generated_list.each do |gift| %>
@@ -30,7 +31,7 @@
           </div>
         <% end %>
       </div>
-    <div contenteditable></div>
+    <% end %>
     <%= f.submit class: "btn-secondary btn-green" %>
   <% end %>
 
@@ -46,15 +47,3 @@
   </ul>
   </div>
 </div>
-
-<script>
-  const el = document.querySelector('div[contenteditable]');
-  const li = document.querySelector('.gift-list')
-  const ct = li.getAllElements('input');
-
-  // Get value from element on input events
-  el.addEventListener('input', () => console.log(el.textContent));
-
-  // Set some value
-  el.textContent = 'Lorem ipsum curae magna venenatis mattis, purus luctus cubilia quisque in et, leo enim aliquam consequat.'
-</script>
