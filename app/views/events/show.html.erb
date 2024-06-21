@@ -1,9 +1,10 @@
 <div class="body-container">
-  <div class="btn-back">
-    <%= link_to '< Retour', :back %>
-  </div>
 
   <div class="primary-container">
+
+    <%= link_to :back, class: "btn-back" do %>
+      <i class="fa-solid fa-chevron-left"></i> Retour
+    <% end %>
 
     <div class="date-show">
      <%= @event.date.strftime('%d/%m/%Y') %>
@@ -45,10 +46,10 @@
         <% end %>
       </ul>
     <% else %>
-        <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event), class: 'btn-secondary btn-green' %>
+        <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event), class: 'btn btn-green' %>
     <% end %>
 
-      <%= link_to edit_event_path(@event), class: "btn-square btn-green" do %>
+      <%= link_to edit_event_path(@event), class: "btn btn-square btn-green" do %>
         <i class="fa-solid fa-pen"></i>
       <% end %>
 

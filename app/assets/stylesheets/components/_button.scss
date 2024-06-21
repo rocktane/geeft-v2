@@ -1,18 +1,22 @@
 // Boutons double de base
-.btn {
-  font-family: $headers-font;
-  font-size: 1.5em;
-  border-radius: var(--border-radius);
-  text-decoration: none;
-  padding: 0.5em;
-  text-align: center;
-  width: 49%;
-  transition: background-color 0.3s ease-in-out 0.1s,
-    color 0.3s ease-in-out 0.1s;
-}
+// .btn {
+// font-family: $headers-font;
+// font-size: 1.5em;
+// border-radius: var(--border-radius);
+// text-decoration: none;
+// padding: 0.5em;
+// text-align: center;
+// width: 49%;
+
+// margin: 0.7em 0;
+// font-size: 1.1em;
+
+// transition: background-color 0.3s ease-in-out 0.1s,
+//   color 0.3s ease-in-out 0.1s;
+// }
 
 // Bouton solo de base
-.btn-secondary {
+.btn {
   font-family: $headers-font;
   margin: 0.7em 0;
   font-size: 1.1em;
@@ -23,18 +27,26 @@
   padding: 0.5em;
   text-align: center;
   width: 100%;
+
+  transition: background-color 0.3s ease-in-out 0.1s,
+    color 0.3s ease-in-out 0.1s;
+
   &:hover {
     cursor: pointer;
   }
 }
+
+.btn-big {
+  font-size: 1.5em;
+}
+
 // Bouton carré
 .btn-square {
   position: absolute;
-  top: -2em;
-  right: 0;
+  top: 0px;
+  right: 0px;
   width: 3em;
   height: 3em;
-  border-radius: var(--border-radius);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,25 +86,35 @@
   color: $secondary-color;
   &:hover {
     background-color: $secondary-color;
-    a {
-      color: $accent-color;
-    }
+    color: $accent-color;
   }
 }
 
 // Bouton retour sur chaque page
 .btn-back {
   font-family: $headers-font;
-  margin: 0.5em 0 0 21.4em;
-  a {
-    color: $primary-color;
-    opacity: 58%;
-  }
+  // margin: 0.5em 0 0 21.4em;
+  display: inline-block;
+  // a {
+  //   color: $primary-color;
+  //   opacity: 58%;
+  // }
+}
+
+a.btn-back {
+  color: $primary-color;
+  opacity: 58%;
+  margin-bottom: 1em;
 }
 
 // Bouton mobile
 .btn-mobile {
   display: none;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1em;
 }
 
 @media (max-width: 768px) {

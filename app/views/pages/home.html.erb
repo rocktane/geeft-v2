@@ -46,12 +46,8 @@
     </div>
     <%= render 'shared/event_home' %>
     <div class="home-buttons">
-      <div class="btn btn-green">
-        <%= link_to 'Tableau de Bord', dashboard_path%>
-      </div>
-      <div class="btn btn-purple">
-        <%= link_to 'Trouver un cadeau', new_gift_path %>
-      </div>
+      <%= link_to 'Tableau de Bord', dashboard_path, class: "btn btn-big btn-green"%>
+      <%= link_to 'Trouver un cadeau', new_gift_path, class: "btn btn-big btn-purple" %>
     </div>
 
 

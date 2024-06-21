@@ -1,5 +1,6 @@
 .age-genre {
   display: flex;
+  gap: 0.4em;
 }
 
 .age,
@@ -19,13 +20,13 @@ input[type="checkbox"] {
 
 .radio_buttons span,
 .check_boxes span {
-  padding: 0 1em;
+  padding: 0 0.25em;
 }
 
-input[type="radio"]:checked + label,
-input[type="checkbox"]:checked + label {
-  color: red;
-}
+// input[type="radio"]:checked + label,
+// input[type="checkbox"]:checked + label {
+//   color: red;
+// }
 
 .occasion,
 .relationship,

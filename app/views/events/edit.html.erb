@@ -1,10 +1,9 @@
 <div class="body-container">
-  <div class="btn-back">
-    <%= link_to '< Retour', event_path %>
-  </div>
-
 
 <div class="primary-container">
+  <%= link_to :back, class: "btn-back" do %>
+    <i class="fa-solid fa-chevron-left"></i> Retour
+  <% end %>
   <div class="title">Modifier mon évènement</div>
   <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
     <div class="date-show">
@@ -32,7 +31,7 @@
         <% end %>
       </div>
     <% end %>
-    <%= f.submit class: "btn-secondary btn-green" %>
+    <%= f.submit class: "btn btn-green", value: "Mettre à jour" %>
   <% end %>
 
   <h2>Liste de cadeaux :</h2>

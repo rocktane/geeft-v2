@@ -1,19 +1,23 @@
 @font-face {
-  font-family: 'Otomanopee';
-  src: asset-url('Otomanopee.ttf') format('truetype');
-}
-
-
-@font-face {
-  font-family: 'ABeeZee-Regular';
-  src: asset-url('ABeeZee-Regular.ttf') format('truetype');
+  font-family: "Otomanopee";
+  src: asset-url("Otomanopee.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'ABeeZee-Italic';
-  src: asset-url('ABeeZee-Italic.ttf') format('truetype');
-
+  font-family: "ABeeZee-Regular";
+  src: asset-url("ABeeZee-Regular.ttf") format("truetype");
 }
 
-$body-font:  'ABeeZee-Regular';
-$headers-font: 'Otomanopee';
+@font-face {
+  font-family: "ABeeZee-Italic";
+  src: asset-url("ABeeZee-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Syncopate";
+  src: asset-url("Syncopate.ttf") format("truetype");
+}
+
+$body-font: "ABeeZee-Regular";
+$headers-font: "Otomanopee";
+$accent-font: "Syncopate";

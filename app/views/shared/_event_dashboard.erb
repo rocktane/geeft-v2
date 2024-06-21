@@ -9,6 +9,7 @@
           <%= event.name %>, le <%= day %> <%= french_month(event.date) %> <%= year %>
         </div>
       <% end %>
+      <!--
         <% if !event.url.nil? %>
           <% if event.url.strip != "" %>
                 <%= link_to event.url do %>
@@ -16,6 +17,15 @@
                 <% end %>
           <% end %>
         <% end %>
-      <div class="event-descripton"><%= event.description %></div>
+        -->
+      <h3>Description</h3>
+      <div class="event-descripton secondary-container"><%= event.description %></div>
+      <div class="action-buttons">
+        <%= link_to "Modifier", edit_event_path(event), class: "btn btn-green" %>
+        <%= link_to "Partager (soon)", "#", class: "btn btn-purple" %>
+      </div>
+      <div class="horizontal-line">
+        <span class="separator"></span>
+      </div>
     <% end %>
     </div>
