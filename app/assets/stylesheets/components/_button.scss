@@ -1,21 +1,4 @@
-// Boutons double de base
-// .btn {
-// font-family: $headers-font;
-// font-size: 1.5em;
-// border-radius: var(--border-radius);
-// text-decoration: none;
-// padding: 0.5em;
-// text-align: center;
-// width: 49%;
-
-// margin: 0.7em 0;
-// font-size: 1.1em;
-
-// transition: background-color 0.3s ease-in-out 0.1s,
-//   color 0.3s ease-in-out 0.1s;
-// }
-
-// Bouton solo de base
+// Bouton de base
 .btn {
   font-family: $headers-font;
   margin: 0.7em 0;
@@ -53,7 +36,7 @@
   font-size: 1.1em;
 }
 
-// Boutons HomePage Logged-out
+// Boutons HomePage Log-in/out
 .btn-home {
   margin-top: 0.3em;
   font-family: $headers-font;
@@ -67,7 +50,7 @@
     color 0.3s ease-in-out 0.1s;
 }
 
-// Green button styles
+// Green button style
 .btn-green {
   background-color: $primary-color;
   color: $secondary-color;
@@ -80,7 +63,7 @@
   }
 }
 
-// Purple button styles
+// Purple button style
 .btn-purple {
   background-color: $accent-color;
   color: $secondary-color;
@@ -90,15 +73,20 @@
   }
 }
 
+// Red button style
+.btn-purple {
+  background-color: rgb(184, 54, 54);
+  color: $secondary-color;
+  &:hover {
+    background-color: $secondary-color;
+    color: rgb(184, 54, 54);
+  }
+}
+
 // Bouton retour sur chaque page
 .btn-back {
   font-family: $headers-font;
-  // margin: 0.5em 0 0 21.4em;
   display: inline-block;
-  // a {
-  //   color: $primary-color;
-  //   opacity: 58%;
-  // }
 }
 
 a.btn-back {

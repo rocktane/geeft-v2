@@ -1,41 +1,50 @@
 <div class="body-container">
 
-  <div class="btn-back">
-      <%= link_to :back, class: "btn-back" do %>
-        <i class="fa-solid fa-chevron-left"></i> Retour
+  <div class="primary-container">
+    <%= link_to :back, class: "btn-back" do %>
+      <i class="fa-solid fa-chevron-left"></i> Retour
+    <% end %>
+
+    <% model_to_use = [@gift, @event] || @event %>
+    <%= form_with(model: model_to_use, url: events_path(gift_id: @gift.id)) do |f| %>
+      <div class="date-show">
+        <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
+      </div>
+
+      <div class="secondary-container">
+        <h3>Nom de l'événement</h3>
+        <%= f.text_field :name, class: 'no-box-input' %>
+      </div>
+
+      <div class="secondary-container">
+        <h3><%= f.label :description, "Description" %></h3>
+      <%= f.text_field :description, class: 'no-box-input' %>
+      </div>
+
+      <div class="secondary-container">
+        <h3><%= f.label :url, "URL" %></h3>
+      <%= f.text_field :url, class: 'no-box-input', placeholder: "www.google.fr" %>
+      </div>
+
+      <%# Need to find a way to display the error in case %>
+      <% if false  %>
+        <% if @event.errors.has_key?(:url) %>
+          <div class="error-message">
+            <%= @event.errors[:url].first %>
+          </div>
+        <% end %>
       <% end %>
+      <%= f.submit "Créer l'évènement", class: "btn btn-green" %>
+    <% end %>
+
+    <% if @gift[:id] %>
+      <h2>There is a Gift</h2>
+      <%= @gift.generated_list %>
+    <% else %>
+      <h2>There is no Gift</h2>
+    <% end %>
+
   </div>
 
-  <h1>Crée ton évènement</h1>
-
-  <% model_to_use = [@gift, @event] || @event %>
-
-  <%= form_with(model: model_to_use, url: events_path(gift_id: @gift.id)) do |f| %>
-
-    <%= f.label :date, "Date" %>
-    <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
-    <%= f.label :name, "Nom" %>
-    <%= f.text_field :name, class: 'no-box-input' %>
-    <%= f.label :description, "Description" %>
-    <%= f.text_field :description, class: 'no-box-input' %>
-    <%= f.label :url, "URL" %>
-    <%= f.text_field :url, class: 'no-box-input' %>
-    <%# Need to find a way to display the error in case %>
-    <% if false  %>
-      <% if @event.errors.has_key?(:url) %>
-        <div class="error-message">
-          <%= @event.errors[:url].first %>
-        </div>
-      <% end %>
-    <% end %>
-    <%= f.submit "Créer l'évènement", class: "btn btn-green" %>
-  <% end %>
-
-  <% if @gift[:id] %>
-    <h2>There is a Gift</h2>
-    <%= @gift.generated_list %>
-  <% else %>
-    <h2>There is no Gift</h2>
-  <% end %>
 
 </div>

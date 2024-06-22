@@ -1,12 +1,12 @@
 <div class="body-container">
 
 <div class="primary-container">
-  <%= link_to :back, class: "btn-back" do %>
-    <i class="fa-solid fa-chevron-left"></i> Retour
+  <%= link_to event_path(@event), class: "btn-back" do %>
+    <i class="fa-solid fa-chevron-left"></i> Annnuler
   <% end %>
-  <div class="title">Modifier mon évènement</div>
+
   <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
-    <div class="date-show">
+    <div class="date-section date-edit">
     <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
     </div>
     <div class="secondary-container">
@@ -18,8 +18,9 @@
     <%= f.text_field :description, class: 'no-box-input' %>
     </div>
     <div class="secondary-container">
-      <h3><%= f.label :url, "URL" %></h3>
-    <%= f.text_field :url, class: 'no-box-input', placeholder: "www.google.fr" %>
+      <h3><%= f.label :url, "Lien" %></h3>
+      <% url = @event.url.gsub(/https?:\/\/www\./, "") %>
+    <%= f.text_field :url, value: url, class: 'no-box-input', placeholder: "www.google.fr" %>
     </div>
     <% if !@event.gift.nil? %>
       <h3><%= f.label :generated_list, "Liste de cadeaux" %></h3>
@@ -44,5 +45,10 @@
     <% end %>
   <% end %>
   </ul>
+
+  <%= link_to event_path(@event), class: "btn btn-square btn-green", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+    <i class="fa-solid fa-trash"></i>
+  <% end %>
+
   </div>
 </div>

@@ -6,7 +6,7 @@
       <i class="fa-solid fa-chevron-left"></i> Retour
     <% end %>
 
-    <div class="date-show">
+    <div class="date-section date-show">
      <%= @event.date.strftime('%d/%m/%Y') %>
     </div>
 
@@ -25,7 +25,8 @@
     <% if @event.url != "" && !@event.url.nil? %>
       <div class="secondary-container">
         <h3>Lien</h3>
-        <%= @event.url %>
+        <% url = @event.url.gsub(/https?:\/\/www\./, "") %>
+        <%= link_to url, @event.url, target: :_blank %>
       </div>
     <% end %>
 

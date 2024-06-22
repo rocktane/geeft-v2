@@ -58,6 +58,9 @@
     box-sizing: border-box;
     white-space: pre-wrap;
   }
+  a {
+    color: $primary-color;
+  }
 }
 
 div[contenteditable] {
