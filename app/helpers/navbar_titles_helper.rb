@@ -32,11 +32,11 @@ def events_titles
     when "dashboard"
       "> Tableau de bord"
     when "new"
-      "> Créer mon événement"
+      "> Créer mon ènement"
     when "show"
-      "> Mon événement"
+      "> Mon évènement"
     when "edit"
-      "> Modifier mon événement"
+      "> Modifier mon évènement"
   end
 end
 

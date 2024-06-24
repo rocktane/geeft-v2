@@ -1,4 +1,16 @@
-.date-show {
+.date-section.date-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7.2em;
+}
+
+.date-section.date-edit {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+.date-section {
   border: 3px solid $primary-color;
   border-radius: var(--border-radius);
   height: 2.3em;
@@ -8,7 +20,8 @@
   color: $primary-color;
   font-size: 1em;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+.date-section input {
+  color: $primary-color;
+  font-family: $body-font;
 }

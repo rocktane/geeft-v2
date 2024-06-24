@@ -1,0 +1,23 @@
+.gift_relationship label,
+.gift_occasion label,
+.gift_interests label {
+  background-color: $secondary-color;
+  font-family: $body-font;
+  padding: 0.25em 0.5em;
+  display: inline-block;
+  border-radius: 0.8em;
+  border: 2px solid $primary-color;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 7px 10px -3px,
+    rgba(0, 0, 0, 0.3) 0px 4px 8px -4px;
+}
+
+// .radio:has(input[type="radio"]:checked) {
+//   background-color: $primary-color;
+//   color: $secondary-color;
+// }
+
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+  background-color: $primary-color;
+  color: $secondary-color;
+}

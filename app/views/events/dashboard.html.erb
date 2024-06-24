@@ -1,25 +1,25 @@
 <div class="body-container">
-  <div class="btn-back">
-    <%= link_to '< Retour', :back %>
-  </div>
   <div class="dashboard">
     <div class="annual-calendar">
       <!-- J'ai mis le calendar en "component" pour plus de lisibilité -->
       <%= render 'shared/calendar' %>
-      <%= link_to new_event_path, :class=> "btn-secondary btn-green btn-desktop" do %>
+      <%= link_to new_event_path, :class=> "btn btn-green btn-desktop" do %>
         <i class='fa-solid fa-square-plus'></i> Nouvel évènement
       <% end %>
         <!-- J'ai mis les events reliés au calendrier en "component" pour plus de lisibilité -->
         <%= render 'shared/event_calendar' %>
     </div>
     <div class="dashboard-right">
+      <%= link_to :back, class: "btn-back" do %>
+        <i class="fa-solid fa-chevron-left"></i> Retour
+      <% end %>
     <!-- J'ai mis les events reliés au dashboard en "component" pour plus de lisibilité -->
     <%= render 'shared/event_dashboard' %>
     </div>
   </div>
 
   <!-- Bouton rond mobile pour générer un nouvel event -->
-  <%= link_to new_event_path, :class=> "btn-secondary btn-green btn-mobile" do %>
+  <%= link_to new_event_path, :class=> "btn btn-green btn-mobile" do %>
     <i class='fa-solid fa-square-plus'></i>
   <% end %>
 </div>

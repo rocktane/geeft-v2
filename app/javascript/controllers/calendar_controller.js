@@ -4,7 +4,7 @@ import "flatpickr/dist/l10n/fr.js";
 
 export default class extends Controller {
   connect() {
-    console.log("Hello from calendar controller");
+    console.log(this.inputTarget);
     flatpickr(this.element, {
       altInput: true,
       altFormat: "d/m/Y",

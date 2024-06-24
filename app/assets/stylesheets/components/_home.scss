@@ -6,7 +6,6 @@
 // Homepage Logged-out
 .home-page-logged-out {
   max-width: 50em;
-
 }
 
 .geeft-presentation {
@@ -28,10 +27,7 @@
   font-family: $headers-font;
   color: $primary-color;
   margin-right: 1em;
-
 }
-
-
 
 // Homepage Logged-in
 .home-title {
@@ -41,7 +37,7 @@
   margin-left: 0em;
 }
 
-.home-subtitle{
+.home-subtitle {
   font-family: $headers-font;
   color: $primary-color;
   font-size: 1.6em;
@@ -50,35 +46,31 @@
 
 .home-buttons {
   display: flex;
+  gap: 1em;
   justify-content: space-between;
   width: 50em;
 }
 
-
 @media (max-width: 768px) {
-
   // Homepage Logged-out
   .geeft-presentation {
-    width: 100%
+    width: 100%;
   }
 
   .presentation-text {
-  display: none;
+    display: none;
   }
-
 
   .logged-out-btn-container {
     width: 100%;
   }
-
-
 
   // Navbar Homepage mobile
   .mobile-homepage {
     display: flex;
     margin-top: -2em;
     background-color: $secondary-color;
-    background-image: url('geeft-logo-mobile.png');
+    background-image: url("geeft-logo-mobile.png");
     background-repeat: no-repeat;
     background-size: 87%;
     background-position: center;
@@ -90,7 +82,7 @@
       font-size: 2em;
       margin: 1em 0.5em 0 0.5em;
     }
-}
+  }
 
   .slogan-mobile {
     font-family: $body-font;
@@ -111,5 +103,4 @@
   .home-buttons {
     display: none;
   }
-
 }

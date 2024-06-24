@@ -1,0 +1,62 @@
+<div class="body-container">
+
+  <div class="btn-back">
+      <%= link_to :back, class: "btn-back" do %>
+        <i class="fa-solid fa-chevron-left"></i> Retour
+      <% end %>
+  </div>
+
+  <% if @event.id %>
+    <div class="title">Modifier mon évènement</div>
+    <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
+  <% else %>
+    <div class="title">Crée ton évènement</div>
+    <% model_to_use = [@gift, @event] || @event %>
+    <%= form_with(model: model_to_use, url: events_path(gift_id: @gift.id)) do |f| %>
+  <% end %>
+
+      <div class="date-show">
+      <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
+      </div>
+      <div class="secondary-container">
+        <h3>Nom de l'ènement</h3>
+        <%= f.text_field :name, class: 'no-box-input' %>
+      </div>
+      <div class="secondary-container">
+        <h3><%= f.label :description, "Description" %></h3>
+      <%= f.text_field :description, class: 'no-box-input' %>
+      </div>
+      <div class="secondary-container">
+        <h3><%= f.label :url, "URL" %></h3>
+      <%= f.text_field :url, class: 'no-box-input', placeholder: "www.google.fr" %>
+      </div>
+      <% if !@event.gift.nil? %>
+        <h3><%= f.label :generated_list, "Liste de cadeaux" %></h3>
+        <div class="gift-list">
+          <% @event.gift.generated_list.each do |gift| %>
+            <div class="secondary-container">
+              <%= f.text_area :gift_list, value: gift, class: 'no-box-input' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @event.id %>
+        <%= f.submit class: "btn btn-green", value: "Mettre à jour" %>
+      <% else %>
+        <%= f.submit "Créer l'évènement", class: "btn btn-green" %>
+      <% end %>
+    <% end %>
+
+    <% if @event.gift.nil? %>
+    <h2>Pas encore d'idées cadeaux associées</h2>
+    <button>Trouver des cadeaux pour l'évènement</button>
+    <% else %>
+    <h2>Liste de cadeaux :</h2>
+    <ul data-controller="delete-gift">
+      <% @event.gift.generated_list.each_with_index do |gift, index| %>
+        <li><%= gift %><div data-action="click->delete-gift#delete">X</div></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+</div>

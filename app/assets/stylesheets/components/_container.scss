@@ -1,6 +1,6 @@
 .body-container {
   background-color: $background-color;
-  padding: 1em 1em 5em 3.2em;
+  padding: 1em 3.2em 5em 3.2em;
   min-height: 100vh;
   width: 100%;
   & a {
@@ -10,7 +10,8 @@
 }
 
 .primary-container {
-  margin: 1em 0 0 21.4em;
+  // margin: 1em 0 0 21.4em;
+  margin: 0 10% auto 20%;
   position: relative;
   width: 20em;
   & h2 {
@@ -57,6 +58,9 @@
     box-sizing: border-box;
     white-space: pre-wrap;
   }
+  a {
+    color: $primary-color;
+  }
 }
 
 div[contenteditable] {
@@ -76,10 +80,6 @@ div[contenteditable] {
 }
 
 @media (max-width: 768px) {
-  .body-container {
-    padding: 1em 1em 5em 1em;
-  }
-
   .primary-container {
     margin: 1em 0 0 0;
     width: 100%;

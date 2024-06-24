@@ -1,15 +1,27 @@
 .dashboard {
   display: flex;
-
 }
 
 .dashboard-right {
   width: 100%;
+  margin-left: 2.6em;
 }
 
-@media (max-width: 768px)  {
+.horizontal-line {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  height: 4px;
+  width: 200px;
+  background-color: $primary-color;
+  border-radius: 99px;
+  margin: 1.5em auto;
+}
+
+@media (max-width: 768px) {
   .dashboard-right {
     display: none;
   }
-
 }

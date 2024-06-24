@@ -1,55 +1,83 @@
+<div class="body-container">
+
   <div class="btn-back">
-      <%= link_to '< Retour', :back %>
-    </div>
+    <%= link_to :back, class: "btn-back" do %>
+      <i class="fa-solid fa-chevron-left"></i> Retour
+    <% end %>
+  </div>
 
 <% model_to_use = [@event, @gift] || @gift %>
-
-
 <%= simple_form_for(model_to_use, url: gifts_path(event_id: @event), html: { class: "criteria-form"})  do |f| %>
 
   <div class="age-genre">
-    <div class="age">
-      <%= f.label :age, class: "criteria-title" %>
-      <div class="input-group" style="display: flex">
-        <div class="input-group-prepend">
-          <button type="button" id="decrement" class="age-btn">-</button>
-        </div>
-        <%= f.input :age, as: :hidden, input_html: { id: 'age_input_hidden' }, required: false %>
+
+    <div class="new-form-section age">
+      <%= f.label :age, class: "criteria-title", required: false %>
+      <div class="age-user">
+          <button type="button" id="decrement" class="age-btn"><i class="fa-solid fa-minus"></i></button>
+        <%= f.input :age, as: :hidden, input_html: { id: 'age_input_hidden' } %>
         <input type="text" id="age_input" value="30" readonly class="form-control text-center" />
-        <div class="input-group-append">
-          <button type="button" id="increment" class="age-btn">+</button>
-        </div>
+          <button type="button" id="increment" class="age-btn"><i class="fa-solid fa-plus"></i></button>
       </div>
     </div>
-    <div class="genre">
+
+    <div class="new-form-section genre">
       <%= f.label :genre, "Genre", class: "criteria-title" %>
       <div class="genders">
-        <%= f.input :genre, collection: ["neutral", "female", "male"], as: :radio_buttons, label: false, required: false %>
+        <% genders = ["female", "neutral","male"] %>
+        <%= f.input :genre, collection: genders, as: :radio_buttons, label: false, required: false do %>
+          <div class="radio-buttons">
+            <% genders.each do |genre| %>
+              <div class="radio-button">
+                <%= f.radio_button :genre, genre, id: "genre_#{genre}" %>
+                <label for="genre_<%= genre %>">
+                  <% case genre %>
+                  <% when "female" %>
+                    <i class="fa-solid fa-venus"></i>
+                  <% when "neutral" %>
+                    <i class="fa-solid fa-mars-and-venus"></i>
+                  <% when "male" %>
+                    <i class="fa-solid fa-mars"></i>
+                  <% end %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
       </div>
     </div>
+
   </div>
-  <div class="budget">
-    <%= f.label :budget, "Budget", class: "criteria-title" %>
-    <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', min: 0, max: 500, step: 1, value: 50 } %>
-    <div id="budget-value">50</div>
-  </div>
-  <div class="occasion">
-    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('occasion')">
-    <%= f.label :occasion, "Occasion", class: "criteria-title" %>
-    <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
-  </div>
-  <div class="relationship">
-    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('relationship')">
+
+  <div class="new-form-section relationship">
     <%= f.label :relationship, "Relation", class: "criteria-title" %>
+    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('relationship')">
     <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
   </div>
-  <div class="interests">
-    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('interests')">
+
+  <div class="new-form-section occasion">
+    <%= f.label :occasion, "Occasion", class: "criteria-title" %>
+    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('occasion')">
+    <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
+  </div>
+
+  <div class="new-form-section budget">
+    <%= f.label :budget, "Budget", class: "criteria-title" %>
+    <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', min: 0, max: 500, step: 1, value: 50 }, required: false, label: false %>
+    <div id="budget-value">50</div>
+  </div>
+
+  <div class="new-form-section interests">
     <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
+    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('interests')">
     <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, label: false, required: false %>
   </div>
-  <%= f.button :submit %>
+
+  <%= f.button :submit, class: "btn-green", value: "Let's geeft it" %>
 <% end %>
+
+</div>
 
 <script>
   // À intégrer via Stimulus
@@ -112,17 +140,21 @@
 </script>
 
 <script>
+  function normalizeText(text) {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/·/g, "").toUpperCase();
+  }
+
   function filterList(section_name) {
-  var input, filter, ul, li, i, txtValue;
-  var section = document.querySelector(`.${section_name}`);
-  input = section.querySelector('#searchInput');
-  filter = input.value.toUpperCase();
-  ul = document.querySelector(`.gift_${section_name}`);
-  span = ul.getElementsByTagName('span');
+    var input, filter, ul, li, i, txtValue;
+    var section = document.querySelector(`.${section_name}`);
+    input = section.querySelector('#searchInput');
+    filter = normalizeText(input.value);
+    ul = document.querySelector(`.gift_${section_name}`);
+    span = ul.getElementsByTagName('span');
 
     for (i = 0; i < span.length; i++) {
       txtValue = span[i].textContent || span[i].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      if (normalizeText(txtValue).indexOf(filter) > -1) {
         span[i].style.display = "";
       } else {
         span[i].style.display = "none";
