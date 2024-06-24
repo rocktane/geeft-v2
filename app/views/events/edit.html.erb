@@ -7,28 +7,46 @@
 <div class="primary-container">
   <div class="title">Modifier mon évènement</div>
   <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
+    <div class="date-show">
+    <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
+    </div>
     <div class="secondary-container">
       <h3>Nom de l'événement</h3>
       <%= f.text_field :name, class: 'no-box-input' %>
     </div>
+<<<<<<< HEAD
 
 
 
     <%= f.label :date, "Date" %>
     <%= f.text_field :date, class: 'no-box-input' %>
     <%= f.label :description, "Description" %>
+=======
+    <div class="secondary-container">
+      <h3><%= f.label :description, "Description" %></h3>
+>>>>>>> 9d2663e3b8ba9d6e0704f3575b1cb92f3c8b9caa
     <%= f.text_field :description, class: 'no-box-input' %>
-    <%= f.label :url, "URL" %>
-    <%= f.text_field :url, class: 'no-box-input' %>
-    <%= f.submit %>
+    </div>
+    <div class="secondary-container">
+      <h3><%= f.label :url, "URL" %></h3>
+    <%= f.text_field :url, class: 'no-box-input', placeholder: "www.google.fr" %>
+    </div>
+    <% if !@event.gift.nil? %>
+      <h3><%= f.label :generated_list, "Liste de cadeaux" %></h3>
+      <div class="gift-list">
+        <% @event.gift.generated_list.each do |gift| %>
+          <div class="secondary-container">
+            <%= f.text_area :gift_list, value: gift, class: 'no-box-input' %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <%= f.submit class: "btn-secondary btn-green" %>
   <% end %>
 
   <h2>Liste de cadeaux :</h2>
-
-
-
   <% if @event.gift.nil? %>
-  <h2>There is no gift for this event yet</h2>"
+  <h2>Pas encore d'idées cadeaux associées</h2>
   <% else %>
   <ul data-controller="delete-gift">
     <% @event.gift.generated_list.each_with_index do |gift, index| %>
