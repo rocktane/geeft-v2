@@ -103,7 +103,23 @@ a.btn-back {
 .action-buttons {
   display: flex;
   gap: 1em;
+  margin-top: 1em;
+  width: 100%;
+  justify-content: flex-end;
+
 }
+.btn-dashboard {
+  font-family: $headers-font;
+  font-size: 0.9em;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  padding: 0.5em;
+  text-align: center;
+  width: 10em;
+  transition: background-color 0.3s ease-in-out 0.1s,
+    color 0.3s ease-in-out 0.1s;
+}
+
 
 @media (max-width: 768px) {
   // Bouton mobile

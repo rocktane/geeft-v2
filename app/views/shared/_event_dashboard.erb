@@ -1,7 +1,5 @@
-
-<div class="event-container-dashboard">
-
-    <% @events.each do |event| %>
+  <% @events.each do |event| %>
+    <div class="event-container-dashboard">
       <%= link_to event_path(event) do %>
         <div class="event-dashboard-title">
           <% day = event.date.strftime("%d") %>
@@ -9,23 +7,21 @@
           <%= event.name %>, le <%= day %> <%= french_month(event.date) %> <%= year %>
         </div>
       <% end %>
-      <!--
-        <% if !event.url.nil? %>
-          <% if event.url.strip != "" %>
-                <%= link_to event.url do %>
-                  <div class="event-url"><i class="fa-solid fa-link"></i> <%= event.url.match(/\/\/(.*)/).captures[0] %></div>
-                <% end %>
-          <% end %>
-        <% end %>
-        -->
-      <h3>Description</h3>
-      <div class="event-descripton secondary-container"><%= event.description %></div>
-      <div class="action-buttons">
-        <%= link_to "Modifier", edit_event_path(event), class: "btn btn-green" %>
-        <%= link_to "Partager (soon)", "#", class: "btn btn-purple" %>
-      </div>
-      <div class="horizontal-line">
-        <span class="separator"></span>
-      </div>
-    <% end %>
+          <!--
+            <% if !event.url.nil? %>
+              <% if event.url.strip != "" %>
+                    <%= link_to event.url do %>
+                      <div class="event-url"><i class="fa-solid fa-link"></i> <%= event.url.match(/\/\/(.*)/).captures[0] %></div>
+                    <% end %>
+              <% end %>
+            <% end %>
+            -->
+        <div class="event-dashboard-description">
+          <div><%= event.description %></div>
+        </div>
+        <div class="action-buttons">
+         <%= link_to "Voir en détails", event_path(event), class: "btn-dashboard btn-green " %>
+          <%= link_to "Partager", "#", class: "btn-dashboard btn-purple" %>
+        </div>
     </div>
+  <% end %>
