@@ -12,18 +12,18 @@
       </div>
 
       <div class="secondary-container">
-        <h3>Nom de l'événement</h3>
-        <%= f.text_field :name, class: 'no-box-input' %>
+        <h3>Nom de l'évènement</h3>
+        <%= f.text_field :name, class: 'no-box-input', placeholder: "Anniversaire de ..." %>
       </div>
 
       <div class="secondary-container">
         <h3><%= f.label :description, "Description" %></h3>
-      <%= f.text_field :description, class: 'no-box-input' %>
+      <%= f.text_field :description, class: 'no-box-input', placeholder: "Pour le cadeau commun de ..." %>
       </div>
 
       <div class="secondary-container">
         <h3><%= f.label :url, "URL" %></h3>
-      <%= f.text_field :url, class: 'no-box-input', placeholder: "www.google.fr" %>
+      <%= f.text_field :url, class: 'no-box-input', placeholder: "leetchi.com" %>
       </div>
 
       <%# Need to find a way to display the error in case %>

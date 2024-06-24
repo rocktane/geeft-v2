@@ -60,10 +60,20 @@
   font-size: 1.2em;
 }
 
+.upcoming-month ul a {
+  > li {
+    // background-color: $background-color;
+    border-bottom: 2px solid transparent;
+    border-radius: 0.5em;
+    transition: 0.25s ease-in-out;
+  }
+}
+
 .upcoming-month ul a:hover {
   > li {
-    background-color: $background-color;
-    border-radius: 1em;
+    // background-color: $background-color;
+    border-bottom: 2px solid $accent-color;
+    border-radius: 0.5em;
   }
 }
 

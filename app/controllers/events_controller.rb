@@ -36,7 +36,7 @@ class EventsController < ApplicationController
     @event.user = current_user
     @event.gift = @gift
     if @event.save
-      redirect_to event_path(@event), notice: "L'événement a été créé avec succès."
+      redirect_to event_path(@event), notice: "L'évènement a été créé avec succès."
     else
       render :new
     end
@@ -47,7 +47,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to event_path(@event), notice: 'L\'événement a été mis à jour.'
+      redirect_to event_path(@event), notice: 'L\'évènement a été mis à jour.'
     else
       flash.now[:alert] = "L'URL n'est pas valide ou il y a d'autres erreurs dans le formulaire."
       render :edit

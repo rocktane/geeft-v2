@@ -8,9 +8,12 @@
   <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
     <div class="date-section date-edit">
     <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
+      <a class="input-button" title="toggle">
+        <i class="fa-solid fa-calendar"></i>
+      </a>
     </div>
     <div class="secondary-container">
-      <h3>Nom de l'événement</h3>
+      <h3>Nom de l'évènement</h3>
       <%= f.text_field :name, class: 'no-box-input' %>
     </div>
     <div class="secondary-container">
@@ -46,7 +49,7 @@
   <% end %>
   </ul>
 
-  <%= link_to event_path(@event), class: "btn btn-square btn-green", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+  <%= link_to event_path(@event), class: "btn btn-square btn-red", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
     <i class="fa-solid fa-trash"></i>
   <% end %>
 

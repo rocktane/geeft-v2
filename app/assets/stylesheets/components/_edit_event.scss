@@ -1,4 +1,4 @@
-input.input {
+input.date-show {
   width: 6.8em;
   height: 100%;
   display: flex;
@@ -9,4 +9,8 @@ input.input {
   background-color: #fff3e1;
   font-size: 1em;
   font-weight: 500;
+}
+
+a.input-button i {
+  color: $primary-color;
 }
