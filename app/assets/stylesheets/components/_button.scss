@@ -106,7 +106,6 @@ a.btn-back {
   margin-top: 1em;
   width: 100%;
   justify-content: flex-end;
-
 }
 .btn-dashboard {
   font-family: $headers-font;
@@ -119,7 +118,6 @@ a.btn-back {
   transition: background-color 0.3s ease-in-out 0.1s,
     color 0.3s ease-in-out 0.1s;
 }
-
 
 @media (max-width: 768px) {
   // Bouton mobile

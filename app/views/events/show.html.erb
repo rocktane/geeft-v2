@@ -7,7 +7,8 @@
     <% end %>
 
     <div class="date-section date-show">
-     <%= @event.date.strftime('%d/%m/%Y') %>
+     <span id="date"><%= @event.date.strftime('%d/%m/%Y') %></span>
+     <i class="fa-solid fa-calendar"></i>
     </div>
 
     <div class="secondary-container">

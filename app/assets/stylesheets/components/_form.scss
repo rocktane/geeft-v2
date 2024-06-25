@@ -19,6 +19,10 @@
   }
 }
 
+input.input {
+  padding-top: 2px;
+}
+
 input#event_name::placeholder,
 input#event_description::placeholder,
 input#event_url::placeholder {

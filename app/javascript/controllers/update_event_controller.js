@@ -8,6 +8,9 @@ export default class extends Controller {
     console.log("description", this.descriptionTarget.value);
     console.log("url", this.urlTarget.value);
     console.log("date", this.dateTarget.value);
+    const date = new Date(this.dateTarget.value);
+    console.log("new Date", date);
+    console.log(typeof date);
   }
 
   async update(event) {
@@ -42,6 +45,7 @@ export default class extends Controller {
         },
         body: JSON.stringify({
           gift_list: newList,
+          date: new Date(this.dateTarget.value),
           name: this.nameTarget.value,
           url: this.urlTarget.value,
           description: this.descriptionTarget.value,
