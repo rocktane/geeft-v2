@@ -29,5 +29,7 @@ input#event_url::placeholder {
 
 input:-webkit-autofill {
   -webkit-text-fill-color: $primary-color !important;
+  font-family: $body-font;
+  color: red;
   -webkit-background-clip: text;
 }

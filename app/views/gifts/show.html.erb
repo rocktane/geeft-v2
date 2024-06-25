@@ -29,11 +29,21 @@
       <%= f.submit "Envoyer"%>
     <% end %>
 
-    <% if @event.id %>
-      <a href="" data-env=<%= Rails.env %> data-id=<%= @gift.id %> data-event-id=<%= @event.id %>
-      data-action="click->save-gift#save" data-save-gift-target="saveList">Ajouter à l'event</a>
-    <% else %>
-      <%= link_to 'Créer un event', updatelist_path(@gift), data: { env: Rails.env, id: @gift.id, action: "click->save-gift#save", save_gift_target: "saveList" } %>
-    <% end %>
   <% end %>
+
+    <!--
+      <a href="" data-env=<%= Rails.env %> data-id=<%= @gift.id %> data-event-id=<%= @event.id %>
+      data-action="click->save-gift#save" data-save-gift-target="saveList">Ajouter à l'évènement</a>
+    -->
+    <% text = @event.id ? "Ajouter à l'évènement" : 'Créer un event' %>
+    <% data_attributes = {
+      data: {
+        env: Rails.env,
+        id: @gift.id,
+        action: "click->save-gift#save",
+        save_gift_target: "saveList"
+        }
+    } %>
+    <% data_attributes[:event_id] = @event.id if @event.id %>
+    <%= link_to text, new_event_path(), data_attributes %>
 </div>
