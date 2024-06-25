@@ -41,6 +41,7 @@
   font-family: $body-font;
   color: $primary-color;
   font-size: 1em;
+  transition: 0.25s ease-in-out;
   & h3 {
     font-family: $body-font;
     color: $primary-color;
@@ -71,12 +72,22 @@ div[contenteditable] {
 .geeft {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   .gift-icon {
     font-size: 1.5em;
     margin-right: 0.5em;
     color: $accent-color;
   }
+}
+
+.geeft-left {
+  display: flex;
+  align-items: center;
+}
+
+.geeft-right {
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

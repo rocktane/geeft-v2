@@ -7,8 +7,8 @@
 
     <% model_to_use = [@gift, @event] || @event %>
     <%= form_with(model: model_to_use, url: events_path(gift_id: @gift.id)) do |f| %>
-      <div class="date-show">
-        <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
+      <div class="secondary-container date-section date-show">
+        <%= f.text_field :date, value: Date.today, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
       </div>
 
       <div class="secondary-container">
@@ -34,15 +34,30 @@
           </div>
         <% end %>
       <% end %>
+
+      <% if @gift[:id] %>
+        <h3>La liste de cadeaux</h3>
+        <ul>
+          <% @event.gift.generated_list.each do |gift| %>
+            <li data-save-gift-target="gift">
+              <div class="secondary-container geeft">
+                <div class="gift-icon">
+                  <i class="fa-solid fa-gift"></i>
+                </div>
+                <div class="gift">
+                  <%= gift %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <h2>There is no Gift</h2>
+      <% end %>
+
       <%= f.submit "Créer l'évènement", class: "btn btn-green" %>
     <% end %>
 
-    <% if @gift[:id] %>
-      <h2>There is a Gift</h2>
-      <%= @gift.generated_list %>
-    <% else %>
-      <h2>There is no Gift</h2>
-    <% end %>
 
   </div>
 

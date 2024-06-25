@@ -2,13 +2,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 7.2em;
+  width: fit-content;
+  padding-left: 0.6em;
+  i {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+  }
+  span {
+    padding-top: 2px;
+  }
 }
 
 .date-section.date-edit {
   display: flex;
   align-items: center;
   width: fit-content;
+  i {
+    padding-right: 0.6em;
+  }
 }
 .date-section {
   border: 3px solid $primary-color;
