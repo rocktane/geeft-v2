@@ -6,76 +6,78 @@
     <% end %>
   </div>
 
-<% model_to_use = [@event, @gift] || @gift %>
-<%= simple_form_for(model_to_use, url: gifts_path(event_id: @event), html: { class: "criteria-form"})  do |f| %>
+  <% model_to_use = [@event, @gift] || @gift %>
+  <%= simple_form_for(model_to_use, url: gifts_path(event_id: @event), html: { class: "criteria-form"})  do |f| %>
 
-  <div class="age-genre">
+    <div class="age-genre">
 
-    <div class="new-form-section age">
-      <%= f.label :age, class: "criteria-title", required: false %>
-      <div class="age-user">
-          <button type="button" id="decrement" class="age-btn"><i class="fa-solid fa-minus"></i></button>
-        <%= f.input :age, as: :hidden, input_html: { id: 'age_input_hidden' } %>
-        <input type="text" id="age_input" value="30" readonly class="form-control text-center" />
-          <button type="button" id="increment" class="age-btn"><i class="fa-solid fa-plus"></i></button>
+      <div class="new-form-section age">
+        <%= f.label :age, class: "criteria-title", required: false %>
+        <div class="age-user">
+            <button type="button" id="decrement" class="age-btn"><i class="fa-solid fa-minus"></i></button>
+          <%= f.input :age, as: :hidden, input_html: { id: 'age_input_hidden' } %>
+          <input type="text" id="age_input" value="30" class="form-control text-center" />
+            <button type="button" id="increment" class="age-btn"><i class="fa-solid fa-plus"></i></button>
+        </div>
       </div>
+
+      <div class="new-form-section genre">
+        <%= f.label :genre, "Genre", class: "criteria-title" %>
+        <div class="genders">
+          <% genders = ["female", "neutral","male"] %>
+          <%= f.input :genre, collection: genders, as: :radio_buttons, label: false, required: false do %>
+            <div class="radio-buttons">
+              <% genders.each do |genre| %>
+                <div class="radio-button">
+                  <%= f.radio_button :genre, genre, id: "genre_#{genre}" %>
+                  <label for="genre_<%= genre %>">
+                    <% case genre %>
+                    <% when "female" %>
+                      <i class="fa-solid fa-venus"></i>
+                    <% when "neutral" %>
+                      <i class="fa-solid fa-mars-and-venus"></i>
+                    <% when "male" %>
+                      <i class="fa-solid fa-mars"></i>
+                    <% end %>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+
     </div>
 
-    <div class="new-form-section genre">
-      <%= f.label :genre, "Genre", class: "criteria-title" %>
-      <div class="genders">
-        <% genders = ["female", "neutral","male"] %>
-        <%= f.input :genre, collection: genders, as: :radio_buttons, label: false, required: false do %>
-          <div class="radio-buttons">
-            <% genders.each do |genre| %>
-              <div class="radio-button">
-                <%= f.radio_button :genre, genre, id: "genre_#{genre}" %>
-                <label for="genre_<%= genre %>">
-                  <% case genre %>
-                  <% when "female" %>
-                    <i class="fa-solid fa-venus"></i>
-                  <% when "neutral" %>
-                    <i class="fa-solid fa-mars-and-venus"></i>
-                  <% when "male" %>
-                    <i class="fa-solid fa-mars"></i>
-                  <% end %>
-                </label>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-
-      </div>
+    <div class="new-form-section relationship">
+      <%= f.label :relationship, "Relation", class: "criteria-title" %>
+      <input type="text" id="searchRelationshipInput" placeholder="Search..." onkeyup="filterList('relationship')">
+      <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
     </div>
 
-  </div>
+    <div class="new-form-section occasion">
+      <%= f.label :occasion, "Occasion", class: "criteria-title" %>
+      <input type="text" id="searchOccasionInput" placeholder="Search..." onkeyup="filterList('occasion')">
+      <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
+    </div>
 
-  <div class="new-form-section relationship">
-    <%= f.label :relationship, "Relation", class: "criteria-title" %>
-    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('relationship')">
-    <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
-  </div>
+    <div class="new-form-section budget">
+      <%= f.label :budget, "Budget", class: "criteria-title" %>
+      <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', min: 0, max: 500, step: 1, value: 50 }, required: false, label: false %>
+      <div id="budget-value">50</div>
+    </div>
 
-  <div class="new-form-section occasion">
-    <%= f.label :occasion, "Occasion", class: "criteria-title" %>
-    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('occasion')">
-    <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
-  </div>
+    <div class="new-form-section interests">
+      <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
+      <input type="text" id="searchInterestsInput" placeholder="Search..." onkeyup="filterList('interests')">
+      <i class="fa-solid fa-xmark" id="x-mark" onclick="empty()"></i>
+      <span id="reset" onclick="reset()">Réinitiliser</span>
+      <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, label: false, required: false %>
+    </div>
 
-  <div class="new-form-section budget">
-    <%= f.label :budget, "Budget", class: "criteria-title" %>
-    <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', min: 0, max: 500, step: 1, value: 50 }, required: false, label: false %>
-    <div id="budget-value">50</div>
-  </div>
-
-  <div class="new-form-section interests">
-    <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
-    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('interests')">
-    <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, label: false, required: false %>
-  </div>
-
-  <%= f.button :submit, class: "btn-green", value: "Let's geeft it" %>
-<% end %>
+    <%= f.button :submit, class: "btn-green", value: "Let's geeft it" %>
+  <% end %>
 
 </div>
 
@@ -145,20 +147,122 @@
   }
 
   function filterList(section_name) {
-    var input, filter, ul, li, i, txtValue;
-    var section = document.querySelector(`.${section_name}`);
-    input = section.querySelector('#searchInput');
+    // if (document.querySelectorAll('.interests input[type="checkbox"]')) {
+    //   const checkboxes = document.querySelectorAll('.interests input[type="checkbox"]');
+    //   checkboxes.forEach((checkbox) => {
+    //     if (checkbox.checked === false) {
+    //       checkbox.parentElement.remove();
+    //     }
+    //   });
+    // }
+
+    let input, filter, ul, li, i, txtValue, atLeastOneVisible = false, span, creation;
+    const capitalized = section_name.charAt(0).toUpperCase() + section_name.slice(1)
+    const section = document.querySelector(`.${section_name}`);
+    const div = document.querySelector('div.gift_interests');
+    input = section.querySelector(`#search${capitalized}Input`);
     filter = normalizeText(input.value);
     ul = document.querySelector(`.gift_${section_name}`);
     span = ul.getElementsByTagName('span');
+
+
+    if (document.querySelectorAll('[id^="new-gift-"]')) {
+      const newGifts = document.querySelectorAll('[id^="new-gift-"]');
+      newGifts.forEach((newGift) => {
+        if (newGift.parentElement.querySelector('input').checked === false) {
+          newGift.parentElement.remove();
+        }
+      });
+    }
 
     for (i = 0; i < span.length; i++) {
       txtValue = span[i].textContent || span[i].innerText;
       if (normalizeText(txtValue).indexOf(filter) > -1) {
         span[i].style.display = "";
+        if (section_name === 'interests') {
+          atLeastOneVisible = true;
+        }
       } else {
         span[i].style.display = "none";
       }
     }
+
+    if (!atLeastOneVisible) {
+      const search = input.value.charAt(0).toUpperCase() + input.value.slice(1)
+      const div = document.querySelector('div.gift_interests');
+      const content = `
+          <input class="check_boxes optional" type="checkbox" value="${search}" name="gift[interests][]">
+          <label class="collection_check_boxes" for="gift_interests_${search.toLowerCase().replace(/\s/g, '')}" id="new-gift-${search.toLowerCase().replace(/\s/g, '')}"><i class="fa-solid fa-square-plus"></i>${search}</label>
+        `
+      const span = document.createElement('span')
+      span.classList.add('checkbox');
+      div.appendChild(span);
+      span.innerHTML = content;
+    }
+  }
+</script>
+
+<%# <script>
+  function newGift() {
+    const newGift = document.getElementById('new-gift')
+    newGift.classList.toggle('new-gift-checked');
+  }
+</script> %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function interestsList() {
+      const interests = document.querySelector('.gift_interests');
+      let arrayFromList = [], arrayFromNew = [];
+      interests.addEventListener('click', function(event) {
+        event.preventDefault();
+        const parent = event.target.parentElement;
+        const input = parent.querySelector('input');
+        input.checked = !input.checked;
+
+        const inputs = document.querySelectorAll('.interests input[type="checkbox"]:checked');
+
+        // if (event.target.getAttribute('id') === `new-gift-${event.target.textContent.toLowerCase()}`) {
+        //   arrayFromNew = [];
+        //   if (input.checked === true) {
+        //     arrayFromNew.push(event.target.textContent);
+        //   }
+        // } else {
+          arrayFromList = [];
+          inputs.forEach((element) => {
+            arrayFromList.push(element.value);
+          });
+        // }
+
+        // console.log(arrayFromList.concat(arrayFromNew));
+        console.log(arrayFromList);
+        // console.log(arrayFromNew);
+
+        return arrayFromList.concat(arrayFromNew);
+      });
+    }
+    interestsList();
+  });
+</script>
+
+<script>
+  function empty() {
+    document.getElementById('searchInterestsInput').value = '';
+    filterList('interests');
+  }
+
+  function reset() {
+    this.empty();
+    const checkboxes = document.querySelectorAll('.interests input[type="checkbox"]:checked');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+    if (document.querySelectorAll('[id^="new-gift-"]')) {
+      const newGifts = document.querySelectorAll('[id^="new-gift-"]');
+      newGifts.forEach((newGift) => {
+        newGift.parentElement.remove();
+      });
+    }
+    filterList('interests');
   }
 </script>
