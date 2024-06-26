@@ -11,13 +11,18 @@
     rgba(0, 0, 0, 0.3) 0px 4px 8px -4px;
 }
 
-// .radio:has(input[type="radio"]:checked) {
-//   background-color: $primary-color;
-//   color: $secondary-color;
-// }
+input[type="checkbox"] + label {
+  color: $primary-color;
+  i {
+    color: $primary-color;
+  }
+}
 
 input[type="radio"]:checked + label,
 input[type="checkbox"]:checked + label {
   background-color: $primary-color;
   color: $secondary-color;
+  i {
+    color: $secondary-color;
+  }
 }
