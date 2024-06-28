@@ -24,6 +24,7 @@ export default class extends Controller {
     const posCalculated =
       startPoint + (sliderElement.width - thumbSize) * percentage;
     input.style.left = `${posCalculated}px`;
+    input.style.opacity = "1";
   }
 
   updateValue() {
