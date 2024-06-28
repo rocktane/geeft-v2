@@ -13,6 +13,7 @@
 .age-user {
   display: flex;
   align-items: center;
+  margin-top: 0.6em;
   height: 2em;
   width: fit-content;
   border-radius: 0.6em;
@@ -46,5 +47,9 @@
     border: none;
     background-color: $secondary-color;
     height: 100%;
+    &:focus-visible {
+      outline: none;
+      border: none;
+    }
   }
 }

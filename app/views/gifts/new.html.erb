@@ -28,17 +28,22 @@
           <%= f.input :genre, collection: genders, as: :radio_buttons, label: false, required: false do %>
             <div class="radio-buttons">
               <% genders.each do |genre| %>
-                <div class="radio-button">
+                <div class="radio-button <%= genre %>">
                   <%= f.radio_button :genre, genre, id: "genre_#{genre}" %>
+                  <% french_gender = 'neutre' %>
                   <label for="genre_<%= genre %>">
                     <% case genre %>
                     <% when "female" %>
                       <i class="fa-solid fa-venus"></i>
+                      <% french_gender = 'femme' %>
                     <% when "neutral" %>
                       <i class="fa-solid fa-mars-and-venus"></i>
+                      <% french_gender = 'neutre' %>
                     <% when "male" %>
                       <i class="fa-solid fa-mars"></i>
+                      <% french_gender = 'homme' %>
                     <% end %>
+                  <span class="gender-info <%= genre %>"><%= french_gender %></span>
                   </label>
                 </div>
               <% end %>
@@ -50,30 +55,49 @@
 
     </div>
 
-    <div class="new-form-section relationship">
-      <%= f.label :relationship, "Relation", class: "criteria-title" %>
-      <input type="text" id="searchRelationshipInput" placeholder="Search..." onkeyup="filterList('relationship')">
-      <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
-    </div>
+    <div class="sections" data-controller="search-input">
+      <div class="new-form-section relationship">
+        <%= f.label :relationship, "Relation", class: "criteria-title" %>
+        <div class="background"></div>
+        <div class="search">
+          <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="relationship">🔎</span>
+          <input type="text" id="searchRelationshipInput" data-action="keyup->search-input#filterList">
+        </div>
+        <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
+      </div>
 
-    <div class="new-form-section occasion">
-      <%= f.label :occasion, "Occasion", class: "criteria-title" %>
-      <input type="text" id="searchOccasionInput" placeholder="Search..." onkeyup="filterList('occasion')">
-      <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
-    </div>
+      <div class="new-form-section occasion">
+        <%= f.label :occasion, "Occasion", class: "criteria-title" %>
+        <div class="background"></div>
+        <div class="search">
+          <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="occasion">🔎</span>
+          <input type="text" id="searchOccasionInput" data-action="keyup->search-input#filterList">
+        </div>
+        <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
+      </div>
 
-    <div class="new-form-section budget">
-      <%= f.label :budget, "Budget", class: "criteria-title" %>
-      <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', min: 0, max: 500, step: 1, value: 50 }, required: false, label: false %>
-      <div id="budget-value">50</div>
-    </div>
+      <%# <div class="new-form-section budget" data-controller="budget-slider"> %>
+      <div class="new-form-section budget"> <!-- without data-controller="budget-slider"> -->
+        <%= f.label :budget, "Budget", class: "criteria-title" %>
+        <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', budget_slider_target: 'slider', min: 0, max: 500, step: 1, value: 50 }, label: false %>
+        <div id="budget-value" budget-slider-target="value">50</div>
+        <div id="budget-value2">50</div>
+        <%# <div id="drag_div">
+            <div id="hit_div"></div>
+        </div> %>
+      </div>
 
-    <div class="new-form-section interests">
-      <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
-      <input type="text" id="searchInterestsInput" placeholder="Search..." onkeyup="filterList('interests')">
-      <i class="fa-solid fa-xmark" id="x-mark" onclick="empty()"></i>
-      <span id="reset" onclick="reset()">Réinitiliser</span>
-      <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, label: false, required: false %>
+      <div class="new-form-section interests">
+        <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
+        <div class="background"></div>
+        <div class="search">
+          <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="interests">🔎</span>
+          <input type="text" id="searchInterestInput" data-action="keyup->search-input#filterList">
+        </div>
+        <i class="fa-solid fa-xmark" id="x-mark" onclick="empty()"></i>
+        <i class="fa-solid fa-rotate-right" id="reset" onclick="reset()"></i>
+        <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, label: false, required: false %>
+      </div>
     </div>
 
     <%= f.button :submit, class: "btn-green", value: "Let's geeft it" %>
@@ -85,22 +109,20 @@
   // À intégrer via Stimulus
   document.addEventListener("DOMContentLoaded", function() {
     const slider = document.getElementById('budget-slider');
+    const slider_element = slider.getBoundingClientRect();
     const output = document.getElementById('budget-value');
+    const output_element = output.getBoundingClientRect();
 
     update_pos = function() {
-      const slider_element = slider.getBoundingClientRect();
-      const output_element = output.getBoundingClientRect();
-      const range = (slider_element.right - slider_element.left) / (slider.max - slider.min);
-      const size = output_element.width;
+      const budget = parseInt(slider.value);
+      const percentage = budget / (slider.max - slider.min);
+      const size = 40
+      const variableSize = size * (1 + percentage )
+      const size_px = variableSize + 'px'
 
-      // Prendre en compte la largeur du 'bouton' du slider afin qu'il soit centré tout le temps
-      const value_int = parseInt(slider.value);
-      // const middle = (slider.max - slider.min) / 2;
-      const value_pos = slider_element.left + ((value_int - slider.min) * range) - (size / 2);
-      output.style.left = `${value_pos}px`
-
-      // Intégrer la hauteur dans le CSS
-      output.style.top = `${slider_element.top - 20}px`;
+      output.style.width = size_px
+      output.style.height = size_px
+      output.style.left = `${(slider_element.width - size )* percentage}px`;
     }
 
     slider.oninput = function() {
@@ -111,6 +133,41 @@
     update_pos();
   });
 
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('budget-slider');
+    const sliderElement = slider.getBoundingClientRect();
+    const input = document.getElementById('budget-value2');
+    const inputElement = input.getBoundingClientRect();
+
+    update_pos = function() {
+      const budget = parseInt(slider.value); // 50
+      const percentage = budget / (slider.max - slider.min); // 0.1
+      const inputSize = inputElement.width // 27
+      const thumbSize = 40 // FIND THE VALUE IN BUDGET_SLIDER.SCSS
+      const padding = 22 // FIND THE VALUE IN FORM.SCSS
+
+      input.style.top = '36px';
+      // input.style.left = `${sliderElement.x + sliderElement.width * percentage - thumbSize - (thumbSize / 3 / 0.25) * percentage}px`;
+      const posCalculated = sliderElement.x + sliderElement.width * percentage - padding
+      input.style.left = `${posCalculated}px`;
+      console.log('slider pos', sliderElement.x)
+      console.log('input pos',inputElement.x)
+      console.log('slider width * %',sliderElement.width * percentage)
+      console.log('input width',inputElement.width)
+      console.log('pos calculated', input.style.left)
+      // console.log('diff', sliderElement.x - inputElement.x)
+      console.log('diff', ((sliderElement.width * percentage - thumbSize / 2) - posCalculated))
+    }
+
+    slider.oninput = function() {
+      input.innerHTML = this.value;
+      update_pos();
+    }
+    update_pos();
+  });
 </script>
 
 <script>
@@ -140,74 +197,6 @@
 });
 
 </script>
-
-<script>
-  function normalizeText(text) {
-    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/·/g, "").toUpperCase();
-  }
-
-  function filterList(section_name) {
-    // if (document.querySelectorAll('.interests input[type="checkbox"]')) {
-    //   const checkboxes = document.querySelectorAll('.interests input[type="checkbox"]');
-    //   checkboxes.forEach((checkbox) => {
-    //     if (checkbox.checked === false) {
-    //       checkbox.parentElement.remove();
-    //     }
-    //   });
-    // }
-
-    let input, filter, ul, li, i, txtValue, atLeastOneVisible = false, span, creation;
-    const capitalized = section_name.charAt(0).toUpperCase() + section_name.slice(1)
-    const section = document.querySelector(`.${section_name}`);
-    const div = document.querySelector('div.gift_interests');
-    input = section.querySelector(`#search${capitalized}Input`);
-    filter = normalizeText(input.value);
-    ul = document.querySelector(`.gift_${section_name}`);
-    span = ul.getElementsByTagName('span');
-
-
-    if (document.querySelectorAll('[id^="new-gift-"]')) {
-      const newGifts = document.querySelectorAll('[id^="new-gift-"]');
-      newGifts.forEach((newGift) => {
-        if (newGift.parentElement.querySelector('input').checked === false) {
-          newGift.parentElement.remove();
-        }
-      });
-    }
-
-    for (i = 0; i < span.length; i++) {
-      txtValue = span[i].textContent || span[i].innerText;
-      if (normalizeText(txtValue).indexOf(filter) > -1) {
-        span[i].style.display = "";
-        if (section_name === 'interests') {
-          atLeastOneVisible = true;
-        }
-      } else {
-        span[i].style.display = "none";
-      }
-    }
-
-    if (!atLeastOneVisible) {
-      const search = input.value.charAt(0).toUpperCase() + input.value.slice(1)
-      const div = document.querySelector('div.gift_interests');
-      const content = `
-          <input class="check_boxes optional" type="checkbox" value="${search}" name="gift[interests][]">
-          <label class="collection_check_boxes" for="gift_interests_${search.toLowerCase().replace(/\s/g, '')}" id="new-gift-${search.toLowerCase().replace(/\s/g, '')}"><i class="fa-solid fa-square-plus"></i>${search}</label>
-        `
-      const span = document.createElement('span')
-      span.classList.add('checkbox');
-      div.appendChild(span);
-      span.innerHTML = content;
-    }
-  }
-</script>
-
-<%# <script>
-  function newGift() {
-    const newGift = document.getElementById('new-gift')
-    newGift.classList.toggle('new-gift-checked');
-  }
-</script> %>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

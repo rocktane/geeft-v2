@@ -14,6 +14,12 @@
   }
 }
 
+.radio-button.neutral,
+.radio-button.male,
+.radio-button.female {
+  position: relative;
+}
+
 .radio-button:has(input[type="radio"]:checked) {
   background-color: $primary-color;
   color: $secondary-color;
@@ -21,10 +27,30 @@
 
 .genders {
   height: 2em;
+  margin: 0.6em;
   .input {
     height: 100%;
     display: flex;
     align-items: center;
     margin: 0;
   }
+}
+
+span.gender-info {
+  background-color: $primary-color;
+  color: $secondary-color;
+  border-radius: 1em;
+  font-family: $body-font;
+  visibility: hidden;
+  font-size: 0.8em;
+  padding: 0.25em 0.5em;
+  position: absolute;
+  translate: -60% 140%;
+  z-index: 1;
+}
+
+.radio-button.neutral:hover span.gender-info.neutral,
+.radio-button.male:hover span.gender-info.male,
+.radio-button.female:hover span.gender-info.female {
+  visibility: visible;
 }
