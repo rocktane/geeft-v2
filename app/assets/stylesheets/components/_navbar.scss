@@ -111,12 +111,12 @@ button:focus ~ .dropdown-menu {
 }
 
 // Style Mobile
-@media screen and (max-width: 768px) {
+@media (max-width: 800px) {
   body.home-page .navbar {
     display: none;
   }
   .navbar {
-    height: 8em;
+    height: 10em;
   }
 
   .chevron-mobile {
@@ -129,9 +129,9 @@ button:focus ~ .dropdown-menu {
   .navbar-left {
     margin: 0;
     & img {
-      width: 6.8em;
-      height: 6em;
-      margin: 0.3em 0 0 0;
+      width: 100%;
+      height: 9em;
+      margin: 0;
     }
     & h1 {
       display: none;
@@ -141,4 +141,5 @@ button:focus ~ .dropdown-menu {
   .navbar-right {
     margin-right: 0.7em;
   }
+
 }
