@@ -1,0 +1,12 @@
+.gift-container {
+  display: flex;
+  align-items: center;
+
+  & img {
+    width: 3em;
+  }
+}
+
+.gift-name {
+  margin-left: 0.5em;
+}

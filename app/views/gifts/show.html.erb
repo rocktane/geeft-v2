@@ -1,49 +1,56 @@
-  <div class="btn-back">
-      <%= link_to '< Retour', :back %>
-    </div>
-
-<div data-controller="save-gift">
-
-<h1>La liste de cadeaux</h1><br>
-<ul data-controller="refresh-gift" data-save-gift-target="list">
-<% @gift.generated_list.each_with_index do |gift, index| %>
-  <% if (index < 5) %>
-    <li data-save-gift-target="gift">
-      <%# <%= gift %>
-      <%# <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh">X</span>
-    </li> %>
-  <% else %>
-    <li data-refresh-gift-target="hiddenGift" style="display: none">
+<div class="body-container">
+  <div class="primary-container">
+    <%= link_to dashboard_path, class: "btn-back" do %>
+      <i class="fa-solid fa-chevron-left"></i> Retour
     <% end %>
-      <%= gift %>
+
+    <div data-controller="save-gift">
+      <ul data-controller="refresh-gift" data-save-gift-target="list">
+        <% @gift.generated_list.each_with_index do |gift, index| %>
+          <% if (index < 5) %>
+            <div class="secondary-container">
+              <li class="gift-container" data-save-gift-target="gift">
+                <%= image_tag('open-gift.png') %>
+                <div class="gift-name">
+                  <%= gift %>
+                </div>
+                <% if @user == @gift.user %>
+                  <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh" class ="gift-delete">
+                  <%= image_tag('refresh.svg') %>
+                  </span>
+                <% end %>
+              </li>
+            </div>
+          <% else %>
+            <li data-refresh-gift-target="hiddenGift" style="display: none">
+              <%= gift %>
+              <% if @user == @gift.user %>
+                <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh">X</span>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+
       <% if @user == @gift.user %>
-        <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh">X</span>
+        <%= form_with(url: gift_path, method: :patch) do |f| %>
+          <h2>Une modification à effectuer ?</h2>
+          <%= f.text_field :comment, as: :text, placeholder: "Moins de coffrets, plus d'ateliers" %>
+          <%= f.submit "Envoyer"%>
+        <% end %>
       <% end %>
-    </li>
-<% end %>
 
-  <% if @user == @gift.user %>
-    <%= form_with(url: gift_path, method: :patch) do |f| %>
-      <h2>Une modification à effectuer ?</h2>
-      <%= f.text_field :comment, as: :text, placeholder: "Moins de coffrets, plus d'ateliers" %>
-      <%= f.submit "Envoyer"%>
-    <% end %>
-
-  <% end %>
-
-    <!--
-      <a href="" data-env=<%= Rails.env %> data-id=<%= @gift.id %> data-event-id=<%= @event.id %>
-      data-action="click->save-gift#save" data-save-gift-target="saveList">Ajouter à l'évènement</a>
-    -->
-    <% text = @event.id ? "Ajouter à l'évènement" : 'Créer un event' %>
-    <% data_attributes = {
-      data: {
-        env: Rails.env,
-        id: @gift.id,
-        action: "click->save-gift#save",
-        save_gift_target: "saveList"
+      <% text = @event.id ? "Ajouter à l'évènement" : 'Créer un event' %>
+      <% data_attributes = {
+        data: {
+          env: Rails.env,
+          id: @gift.id,
+          action: "click->save-gift#save",
+          save_gift_target: "saveList"
         }
-    } %>
-    <% data_attributes[:event_id] = @event.id if @event.id %>
-    <%= link_to text, new_event_path(), data_attributes %>
+      } %>
+      <% data_attributes[:event_id] = @event.id if @event.id %>
+      <%= link_to text, new_event_path(), data_attributes %>
+    </div>
+  </div>
 </div>

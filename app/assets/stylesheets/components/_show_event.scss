@@ -36,3 +36,10 @@
   color: $primary-color;
   font-family: $body-font;
 }
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+}

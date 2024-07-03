@@ -19,6 +19,8 @@ class EventsController < ApplicationController
         [month, @events.select { |e| e.date.beginning_of_month == month }]
       end
     end.to_h
+
+
   end
 
   def show
