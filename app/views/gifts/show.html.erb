@@ -4,39 +4,16 @@
       <i class="fa-solid fa-chevron-left"></i> Retour
     <% end %>
 
-    <div data-controller="save-gift">
-      <ul data-controller="refresh-gift" data-save-gift-target="list">
-        <% @gift.generated_list.each_with_index do |gift, index| %>
-          <% if (index < 5) %>
-            <div class="secondary-container">
-              <li class="gift-container" data-save-gift-target="gift">
-                <%= image_tag('open-gift.png') %>
-                <div class="gift-name">
-                  <%= gift %>
-                </div>
-                <% if @user == @gift.user %>
-                  <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh" class ="gift-delete">
-                  <%= image_tag('refresh.svg') %>
-                  </span>
-                <% end %>
-              </li>
-            </div>
-          <% else %>
-            <li data-refresh-gift-target="hiddenGift" style="display: none">
-              <%= gift %>
-              <% if @user == @gift.user %>
-                <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh">X</span>
-              <% end %>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
+    <!-- Je l'ai mis en "component" pour plus de lisibilité-->
+    <%= render 'shared/gift_infos' %>
+
+
 
       <% if @user == @gift.user %>
         <%= form_with(url: gift_path, method: :patch) do |f| %>
           <h2>Une modification à effectuer ?</h2>
           <%= f.text_field :comment, as: :text, placeholder: "Moins de coffrets, plus d'ateliers" %>
-          <%= f.submit "Envoyer"%>
+          <%= f.submit "Envoyer" %>
         <% end %>
       <% end %>
 
@@ -50,7 +27,7 @@
         }
       } %>
       <% data_attributes[:event_id] = @event.id if @event.id %>
-      <%= link_to text, new_event_path(), data_attributes %>
+      <%= link_to text, new_event_path, data_attributes %>
     </div>
   </div>
 </div>
