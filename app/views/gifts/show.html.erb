@@ -1,26 +1,39 @@
 <div class="body-container">
-  <div class="primary-container">
+  <div class="primary-container" data-controller="refresh-gift">
     <%= link_to dashboard_path, class: "btn-back" do %>
       <i class="fa-solid fa-chevron-left"></i> Retour
     <% end %>
 
     <div data-controller="save-gift">
-      <ul data-controller="refresh-gift" data-save-gift-target="list">
+    <%# From CodePen %>
+      <%# <div id="main">
+        <div id="container">
+          <div id="slide1">Slide #1</div>
+          <div id="slide2">Slide #2</div>
+          <div id="slide3">Slide #3</div>
+          <div id="slide4">Slide #4</div>
+        </div>
+      </div> %>
+      <ul data-save-gift-target="list" data-refresh-gift-target="list">
         <% @gift.generated_list.each_with_index do |gift, index| %>
           <% if (index < 5) %>
-            <div class="secondary-container">
-              <li class="gift-container" data-save-gift-target="gift">
-                <%= image_tag('open-gift.png') %>
-                <div class="gift-name">
-                  <%= gift %>
-                </div>
-                <% if @user == @gift.user %>
-                  <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh" class ="gift-delete">
-                  <%= image_tag('refresh.svg') %>
-                  </span>
-                <% end %>
-              </li>
+          <div class="main">
+            <div class="wrapper">
+              <div class="secondary-container" data-refresh-gift-target="gift">
+                <li class="gift-container" data-save-gift-target="gift">
+                  <%= image_tag('open-gift.png') %>
+                  <div class="gift-name">
+                    <%= gift %>
+                  </div>
+                  <% if @user == @gift.user %>
+                    <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh" class ="gift-delete">
+                    <%= image_tag('refresh.svg') %>
+                    </span>
+                  <% end %>
+                </li>
+              </div>
             </div>
+          </div>
           <% else %>
             <li data-refresh-gift-target="hiddenGift" style="display: none">
               <%= gift %>

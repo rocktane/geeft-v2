@@ -19,3 +19,69 @@
 @import "gender";
 @import "pill";
 @import "show_gift";
+
+#main {
+  left: 100px;
+  top: 600px;
+  width: 400px;
+  height: 100px;
+  position: absolute;
+  overflow: hidden;
+  background: grey;
+}
+
+#container {
+  width: 16000px;
+  height: 100px;
+  background: grey;
+  transform: translate(-400px);
+}
+
+#slide1,
+#slide4 {
+  width: 400px;
+  height: 100%;
+  background: red;
+  float: left;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 25px;
+  color: white;
+}
+
+#slide2 {
+  width: 400px;
+  height: 100%;
+  background: green;
+  float: left;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 25px;
+  color: white;
+}
+
+#slide3 {
+  width: 400px;
+  height: 100%;
+  background: blue;
+  float: left;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 25px;
+  color: white;
+}
+
+// #slide4 {
+//   width: 400px;
+//   height: 100%;
+//   background: red;
+//   float: left;
+//   font-size: 30px;
+//   text-align: center;
+//   padding-top: 25px;
+//   color: white;
+// }
+
+.is-animating {
+  transition: transform 200ms;
+}
