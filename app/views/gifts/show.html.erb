@@ -5,15 +5,6 @@
     <% end %>
 
     <div data-controller="save-gift">
-    <%# From CodePen %>
-      <%# <div id="main">
-        <div id="container">
-          <div id="slide1">Slide #1</div>
-          <div id="slide2">Slide #2</div>
-          <div id="slide3">Slide #3</div>
-          <div id="slide4">Slide #4</div>
-        </div>
-      </div> %>
       <ul data-save-gift-target="list" data-refresh-gift-target="list">
         <% @gift.generated_list.each_with_index do |gift, index| %>
           <% if (index < 5) %>
@@ -45,11 +36,13 @@
         <% end %>
       </ul>
 
+    <%= render 'shared/gift_infos' %>
+
       <% if @user == @gift.user %>
         <%= form_with(url: gift_path, method: :patch) do |f| %>
           <h2>Une modification à effectuer ?</h2>
           <%= f.text_field :comment, as: :text, placeholder: "Moins de coffrets, plus d'ateliers" %>
-          <%= f.submit "Envoyer"%>
+          <%= f.submit "Envoyer" %>
         <% end %>
       <% end %>
 
@@ -63,7 +56,7 @@
         }
       } %>
       <% data_attributes[:event_id] = @event.id if @event.id %>
-      <%= link_to text, new_event_path(), data_attributes %>
+      <%= link_to text, new_event_path, data_attributes %>
     </div>
   </div>
 </div>
