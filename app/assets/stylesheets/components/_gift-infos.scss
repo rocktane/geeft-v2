@@ -1,0 +1,71 @@
+.gift-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & span {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+}
+
+.logo-gift {
+  width: 3em;
+}
+
+
+.refresh-container {
+  position: relative;
+  display: inline-block;
+}
+
+.refresh-text {
+  display: none; /* Cacher le texte par défaut */
+  position: absolute;
+  top: 50%;
+  right: 100%; /* Placer à gauche de l'élément parent */
+  transform: translateY(-50%);
+  background-color: #e0e0e0;
+  padding: 5px;
+  border-radius: 3px;
+  z-index: 1;
+  white-space: nowrap; /* Empêcher le texte de se casser en plusieurs lignes */
+}
+
+.refresh-container:hover .refresh-text {
+  display: block; /* Afficher le texte quand on survole le conteneur */
+}
+
+.refresh-arrow {
+  // display: inline-block;
+  display: flex;
+  transition: transform 5s ease;
+
+  & img {
+    width: 1em;
+  }
+
+  &:hover {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+.gift-left {
+  display: flex;
+  align-items: center;
+}
+
+.gift-name {
+  margin-left: 0.5em;
+}
