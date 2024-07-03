@@ -4,7 +4,7 @@
         <div class="event-dashboard-title">
           <% day = event.date.strftime("%d") %>
           <% year = event.date.strftime("%Y") %>
-          <%= event.name %>, le <%= day %> <%= french_month(event.date) %> <%= year %>
+          <%= event.name %> - le <%= day %> <%= french_month(event.date) %> <%= year %>
         </div>
       <% end %>
         <div class="event-dashboard-description">

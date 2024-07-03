@@ -48,10 +48,10 @@
   display: flex;
   gap: 1em;
   justify-content: space-between;
-  width: 50em;
+  width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   // Homepage Logged-out
   .geeft-presentation {
     width: 100%;
@@ -68,13 +68,12 @@
   // Navbar Homepage mobile
   .mobile-homepage {
     display: flex;
-    margin-top: -2em;
     background-color: $secondary-color;
-    background-image: url("geeft-logo-mobile.svg");
-    background-repeat: no-repeat;
-    background-size: 87%;
-    background-position: center;
-    height: 16em;
+    // background-image: url("geeft-logo-mobile.svg");
+    // width: 100%;
+    // height: 100%;
+    // background-repeat: no-repeat;
+    // background-position: center;
     justify-content: space-between;
     align-items: center;
     & i {
@@ -82,13 +81,30 @@
       font-size: 2em;
       margin: 1em 0.5em 0 0.5em;
     }
+    & img {
+      width: 88%;
+      margin-bottom: 5%;
+    }
+
+    & a {
+      display: flex;
+      justify-content: center;
+
+    }
+
   }
+
+  .top-page-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 
   .slogan-mobile {
     font-family: $body-font;
     color: $primary-color;
     font-size: 1.1em;
-    margin: 7.7em -6.3em 0 0;
   }
 
   // Homepage Logged-in

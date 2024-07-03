@@ -1,5 +1,6 @@
 .dashboard {
   display: flex;
+  justify-content: center;
 }
 
 .dashboard-right {
@@ -20,7 +21,7 @@
   margin: 1.5em auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .dashboard-right {
     display: none;
   }
