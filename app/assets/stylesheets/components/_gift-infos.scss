@@ -20,27 +20,10 @@
   display: inline-block;
 }
 
-.refresh-text {
-  display: none; /* Cacher le texte par défaut */
-  position: absolute;
-  top: 50%;
-  right: 100%; /* Placer à gauche de l'élément parent */
-  transform: translateY(-50%);
-  background-color: #e0e0e0;
-  padding: 5px;
-  border-radius: 3px;
-  z-index: 1;
-  white-space: nowrap; /* Empêcher le texte de se casser en plusieurs lignes */
-}
-
-.refresh-container:hover .refresh-text {
-  display: block; /* Afficher le texte quand on survole le conteneur */
-}
-
 .refresh-arrow {
   // display: inline-block;
   display: flex;
-  transition: transform 5s ease;
+  transition: transform 0.5s ease;
 
   & img {
     width: 1em;
@@ -50,6 +33,27 @@
     transform: rotate(360deg);
   }
 }
+
+.refresh-text {
+  position: absolute;
+  top: 50%;
+  left: -120px; /* Position initiale en dehors de la vue à gauche */
+  transform: translateX(50px) translateY(-50%);
+  color: $accent-color;
+  font-family: $headers-font;
+  padding: 5px;
+  border-radius: 3px;
+  z-index: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transition: transform 0.5s ease 0.5s, opacity 0.5s ease 0.5s; /* Débuter l'animation après 0.5s */
+}
+
+.refresh-container:hover .refresh-text {
+  transform: translateX(0) translateY(-50%); /* Déplace le texte de droite à gauche */
+  opacity: 1;
+}
+
 
 
 
