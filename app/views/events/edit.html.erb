@@ -1,53 +1,58 @@
 <div class="body-container">
 
-<div class="primary-container">
+<div class="primary-container" data-controller="update-event">
   <%= link_to event_path(@event), class: "btn-back" do %>
     <i class="fa-solid fa-chevron-left"></i> Annnuler
   <% end %>
 
   <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
     <div class="date-section date-edit">
-    <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
-      <a class="input-button" title="toggle">
+        <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar", update_event_target: "date" } %>
         <i class="fa-solid fa-calendar"></i>
-      </a>
     </div>
     <div class="secondary-container">
       <h3>Nom de l'évènement</h3>
-      <%= f.text_field :name, class: 'no-box-input' %>
+      <%= f.text_field :name, class: 'no-box-input', data: { update_event_target: "name" } %>
     </div>
     <div class="secondary-container">
       <h3><%= f.label :description, "Description" %></h3>
-    <%= f.text_field :description, class: 'no-box-input' %>
+    <%= f.text_field :description, class: 'no-box-input', data: { update_event_target: "description" } %>
     </div>
     <div class="secondary-container">
       <h3><%= f.label :url, "Lien" %></h3>
       <% url = @event.url.gsub(/https?:\/\/www\./, "") %>
-    <%= f.text_field :url, value: url, class: 'no-box-input', placeholder: "www.google.fr" %>
+    <%= f.text_field :url, value: url, class: 'no-box-input', placeholder: "www.google.fr", data: { update_event_target: "url" } %>
     </div>
     <% if !@event.gift.nil? %>
-      <h3><%= f.label :generated_list, "Liste de cadeaux" %></h3>
-      <div class="gift-list">
-        <% @event.gift.generated_list.each do |gift| %>
-          <div class="secondary-container">
-            <%= f.text_area :gift_list, value: gift, class: 'no-box-input' %>
-          </div>
+      <h3>La liste de cadeaux</h3>
+      <ul data-controller="delete-gift">
+        <% @event.gift_list.each do |gift| %>
+          <li data-update-event-target="gift">
+            <div class="secondary-container geeft">
+              <div class="geeft-left">
+                <div class="gift-icon">
+                  <i class="fa-solid fa-gift"></i>
+                </div>
+                <div class="gift">
+                  <%= gift %>
+                </div>
+              </div>
+              <div class="geeft-right" data-action="click->delete-gift#delete">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+          </li>
         <% end %>
-      </div>
+      </ul>
     <% end %>
-    <%= f.submit class: "btn btn-green", value: "Mettre à jour" %>
+    <%= link_to 'Mettre à jour', event_path(@event), class: "btn btn-green",
+      data: {
+        env: Rails.env,
+        gift_id: @event.gift.id,
+        event_id: @event.id,
+        action: "click->update-event#update"
+        } %>
   <% end %>
-
-  <h2>Liste de cadeaux :</h2>
-  <% if @event.gift.nil? %>
-  <h2>Pas encore d'idées cadeaux associées</h2>
-  <% else %>
-  <ul data-controller="delete-gift">
-    <% @event.gift.generated_list.each_with_index do |gift, index| %>
-      <li><%= gift %><div data-action="click->delete-gift#delete">X</div></li>
-    <% end %>
-  <% end %>
-  </ul>
 
   <%= link_to event_path(@event), class: "btn btn-square btn-red", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
     <i class="fa-solid fa-trash"></i>

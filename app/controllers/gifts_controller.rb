@@ -24,7 +24,16 @@ class GiftsController < ApplicationController
     @gift.event = @event
     @gift.user = current_user
     @gift.interests = @gift.interests.compact_blank
-    @gift.generated_list = @gift.gen_gifts($client, @gift.budget, @gift.age, @gift.genre, @gift.occasion, @gift.interests, @gift.relationship).split(/\d+\.\s+/).map(&:strip).compact_blank
+    raise
+    @gift.generated_list = @gift.gen_gifts(
+                                $client,
+                                @gift.budget,
+                                @gift.age,
+                                @gift.genre,
+                                @gift.occasion,
+                                @gift.interests,
+                                @gift.relationship)
+                                .split(/\d+\.\s+/).map(&:strip).compact_blank
     if @gift.save
       redirect_to gift_path(@gift, event_id: @event)
     else

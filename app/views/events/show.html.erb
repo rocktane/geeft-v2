@@ -7,7 +7,8 @@
     <% end %>
 
     <div class="date-section date-show">
-     <%= @event.date.strftime('%d/%m/%Y') %>
+     <span id="date"><%= @event.date.strftime('%d/%m/%Y') %></span>
+     <i class="fa-solid fa-calendar"></i>
     </div>
 
     <div class="secondary-container">
@@ -31,16 +32,18 @@
     <% end %>
 
     <% if @event.gift.class.name != "NilClass" %>
-      <h3>Mes idées cadeaux</h3>
+      <h3>La liste de cadeaux</h3>
       <ul>
-        <% @event.gift.generated_list.each do |gift| %>
+        <% @event.gift_list.each do |gift| %>
           <li data-save-gift-target="gift">
             <div class="secondary-container geeft">
-              <div class="gift-icon">
-                <i class="fa-solid fa-gift"></i>
-              </div>
-              <div class="gift">
-                <%= gift %>
+              <div class="geeft-left">
+                <div class="gift-icon">
+                  <i class="fa-solid fa-gift"></i>
+                </div>
+                <div class="gift">
+                  <%= gift %>
+                </div>
               </div>
             </div>
           </li>

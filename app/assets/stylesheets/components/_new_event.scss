@@ -1,55 +1,66 @@
-.age-genre {
-  display: flex;
-  gap: 0.4em;
-}
-
-.age,
-.genre {
-  display: inline-block;
-}
-
-.criteria-form {
-  display: grid;
-  grid-gap: 1em;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-  display: none;
-}
-
-.radio_buttons span,
-.check_boxes span {
-  padding: 0 0.25em;
-}
-
-// input[type="radio"]:checked + label,
-// input[type="checkbox"]:checked + label {
-//   color: red;
+// .age-genre {
+//   display: flex;
+//   gap: 0.4em;
 // }
 
-.occasion,
-.relationship,
-.interests {
-  // width: 100%;
-  // height: fit-content;
-  // overflow-y: hidden;
-  overflow-x: auto;
-  white-space: nowrap;
-  // border: 1px solid #ccc;
-  // padding: 10px;
-  // box-sizing: border-box;
-}
+// .age,
+// .genre {
+//   display: inline-block;
+// }
 
-.occasion::-webkit-scrollbar,
-.relationship::-webkit-scrollbar,
-.interests::-webkit-scrollbar {
-  display: none; /* Chrome, Safari et Opera */
-}
+// .criteria-form {
+//   display: grid;
+//   grid-gap: 1em;
+// }
 
-.occasion,
-.relationship,
-.interests {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
+// input[type="radio"],
+// input[type="checkbox"] {
+//   display: none;
+// }
+
+// .radio_buttons span,
+// .check_boxes span {
+//   padding: 0 0.25em;
+// }
+
+// // input[type="radio"]:checked + label,
+// // input[type="checkbox"]:checked + label {
+// //   color: red;
+// // }
+
+// .occasion,
+// .relationship,
+// .interests {
+//   overflow: hidden;
+//   white-space: nowrap;
+// }
+
+// .occasion div.input,
+// .relationship div.input,
+// .interests div.input {
+//   // width: 100%;
+//   // height: fit-content;
+//   // overflow-y: hidden;
+//   box-sizing: border-box;
+//   overflow-x: auto;
+//   white-space: nowrap;
+//   // border: 1px solid #ccc;
+//   padding-bottom: 1em;
+//   // box-sizing: border-box;
+//   &:hover {
+//     overflow-y: scroll;
+//   }
+// }
+
+// // .occasion::-webkit-scrollbar,
+// // .relationship::-webkit-scrollbar,
+// // .interests::-webkit-scrollbar {
+// //   display: none; /* Chrome, Safari et Opera */
+// // }
+
+// // .occasion,
+// // .relationship,
+// // .interests {
+// //   -ms-overflow-style: none; /* Internet Explorer 10+ */
+// //   scrollbar-width: none; /* Firefox */
+// // }

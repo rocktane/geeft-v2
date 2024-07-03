@@ -6,99 +6,127 @@
     <% end %>
   </div>
 
-<% model_to_use = [@event, @gift] || @gift %>
-<%= simple_form_for(model_to_use, url: gifts_path(event_id: @event), html: { class: "criteria-form"})  do |f| %>
+  <% model_to_use = [@event, @gift] || @gift %>
+  <%= simple_form_for(model_to_use, url: gifts_path(event_id: @event), html: { class: "criteria-form"})  do |f| %>
 
-  <div class="age-genre">
+    <div class="age-genre">
 
-    <div class="new-form-section age">
-      <%= f.label :age, class: "criteria-title", required: false %>
-      <div class="age-user">
-          <button type="button" id="decrement" class="age-btn"><i class="fa-solid fa-minus"></i></button>
-        <%= f.input :age, as: :hidden, input_html: { id: 'age_input_hidden' } %>
-        <input type="text" id="age_input" value="30" readonly class="form-control text-center" />
-          <button type="button" id="increment" class="age-btn"><i class="fa-solid fa-plus"></i></button>
+      <div class="new-form-section age" data-controller="age-buttons">
+        <%= f.label :age, class: "criteria-title", required: false %>
+        <div class="age-user">
+            <button type="button" class="age-btn" data-action="click->age-buttons#minusOne">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+          <%= f.input :age, as: :hidden, input_html: { data: { age_buttons_target: 'hiddenInput' } } %>
+          <input type="text" id="age_input" value="30" class="form-control text-center" data-age-buttons-target="input" />
+            <button type="button" class="age-btn" data-action="click->age-buttons#plusOne">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+      </div>
+
+      <div class="new-form-section genre">
+        <%= f.label :genre, "Genre", class: "criteria-title" %>
+        <div class="genders">
+          <% genders = ["female", "neutral","male"] %>
+          <%= f.input :genre, collection: genders, as: :radio_buttons, label: false, required: false do %>
+            <div class="radio-buttons">
+              <% genders.each do |genre| %>
+                <div class="radio-button <%= genre %>">
+                  <%= f.radio_button :genre, genre, id: "genre_#{genre}" %>
+                  <% french_gender = 'neutre' %>
+                  <label for="genre_<%= genre %>">
+                    <% case genre %>
+                    <% when "female" %>
+                      <i class="fa-solid fa-venus"></i>
+                      <% french_gender = 'femme' %>
+                    <% when "neutral" %>
+                      <i class="fa-solid fa-mars-and-venus"></i>
+                      <% french_gender = 'neutre' %>
+                    <% when "male" %>
+                      <i class="fa-solid fa-mars"></i>
+                      <% french_gender = 'homme' %>
+                    <% end %>
+                  <span class="gender-info <%= genre %>"><%= french_gender %></span>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sections" data-controller="search-input">
+      <div class="new-form-section relationship">
+        <%= f.label :relationship, "Relation", class: "criteria-title" %>
+        <div class="background"></div>
+        <div class="search">
+          <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="relationship">🔎</span>
+          <input type="text" id="searchRelationshipInput" data-action="keyup->search-input#filterList">
+        </div>
+        <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
+      </div>
+
+      <div class="new-form-section occasion">
+        <%= f.label :occasion, "Occasion", class: "criteria-title" %>
+        <div class="background"></div>
+        <div class="search">
+          <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="occasion">🔎</span>
+          <input type="text" id="searchOccasionInput" data-action="keyup->search-input#filterList">
+        </div>
+        <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
+      </div>
+
+      <div class="new-form-section budget" data-controller="budget-slider">
+      <%# <div class="new-form-section budget"> <!-- without data-controller="budget-slider"> --> %>
+        <%= f.label :budget, "Budget", class: "criteria-title" %>
+        <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', min: 0, max: 500, step: 1, value: 50 , data: { action: "input->budget-slider#updateValue", budget_slider_target: "slider" } },label: false %>
+        <%# <div id="budget-value">50</div> %>
+        <div id="budget-value" data-budget-slider-target="input">50</div>
+        <%# <div id="drag_div">
+            <div id="hit_div"></div>
+        </div> %>
+      </div>
+
+      <div class="new-form-section interests">
+        <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
+        <div class="background"></div>
+        <div class="search">
+          <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="interests">🔎</span>
+          <input type="text" id="searchInterestInput" data-action="keyup->search-input#filterList" data-search-input-target="input">
+        </div>
+        <i class="fa-solid fa-xmark" id="x-mark" data-action="click->search-input#empty"></i>
+        <i class="fa-solid fa-rotate-right" id="reset" data-action="click->search-input#reset"></i>
+        <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, label: false, required: false %>
       </div>
     </div>
 
-    <div class="new-form-section genre">
-      <%= f.label :genre, "Genre", class: "criteria-title" %>
-      <div class="genders">
-        <% genders = ["female", "neutral","male"] %>
-        <%= f.input :genre, collection: genders, as: :radio_buttons, label: false, required: false do %>
-          <div class="radio-buttons">
-            <% genders.each do |genre| %>
-              <div class="radio-button">
-                <%= f.radio_button :genre, genre, id: "genre_#{genre}" %>
-                <label for="genre_<%= genre %>">
-                  <% case genre %>
-                  <% when "female" %>
-                    <i class="fa-solid fa-venus"></i>
-                  <% when "neutral" %>
-                    <i class="fa-solid fa-mars-and-venus"></i>
-                  <% when "male" %>
-                    <i class="fa-solid fa-mars"></i>
-                  <% end %>
-                </label>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-
-      </div>
-    </div>
-
-  </div>
-
-  <div class="new-form-section relationship">
-    <%= f.label :relationship, "Relation", class: "criteria-title" %>
-    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('relationship')">
-    <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
-  </div>
-
-  <div class="new-form-section occasion">
-    <%= f.label :occasion, "Occasion", class: "criteria-title" %>
-    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('occasion')">
-    <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
-  </div>
-
-  <div class="new-form-section budget">
-    <%= f.label :budget, "Budget", class: "criteria-title" %>
-    <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', min: 0, max: 500, step: 1, value: 50 }, required: false, label: false %>
-    <div id="budget-value">50</div>
-  </div>
-
-  <div class="new-form-section interests">
-    <%= f.label :interests, "Centres d'intérêts", class: "criteria-title" %>
-    <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterList('interests')">
-    <%= f.input :interests, collection: Gift::INTERESTS.sort, as: :check_boxes, label: false, required: false %>
-  </div>
-
-  <%= f.button :submit, class: "btn-green", value: "Let's geeft it" %>
-<% end %>
+    <%= f.button :submit, class: "btn-green", value: "Let's geeft it" %>
+  <% end %>
 
 </div>
 
-<script>
+<%# <script>
   // À intégrer via Stimulus
   document.addEventListener("DOMContentLoaded", function() {
     const slider = document.getElementById('budget-slider');
+    const slider_element = slider.getBoundingClientRect();
     const output = document.getElementById('budget-value');
+    const output_element = output.getBoundingClientRect();
 
     update_pos = function() {
-      const slider_element = slider.getBoundingClientRect();
-      const output_element = output.getBoundingClientRect();
-      const range = (slider_element.right - slider_element.left) / (slider.max - slider.min);
-      const size = output_element.width;
+      const budget = parseInt(slider.value);
+      const percentage = budget / (slider.max - slider.min);
+      const size = 40
+      const variableSize = size * (1 + percentage )
+      const size_px = variableSize + 'px'
 
-      // Prendre en compte la largeur du 'bouton' du slider afin qu'il soit centré tout le temps
-      const value_int = parseInt(slider.value);
-      // const middle = (slider.max - slider.min) / 2;
-      const value_pos = slider_element.left + ((value_int - slider.min) * range) - (size / 2);
-      output.style.left = `${value_pos}px`
-
-      // Intégrer la hauteur dans le CSS
-      output.style.top = `${slider_element.top - 20}px`;
+      output.style.width = size_px
+      output.style.height = size_px
+      output.style.left = `${(slider_element.width - size )* percentage}px`;
     }
 
     slider.oninput = function() {
@@ -109,9 +137,53 @@
     update_pos();
   });
 
-</script>
+</script> %>
 
-<script>
+<%# <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('budget-slider');
+    const sliderElement = slider.getBoundingClientRect();
+    const input = document.getElementById('budget-value2');
+    const inputElement = input.getBoundingClientRect();
+
+    update_pos = function() {
+      const budget = parseInt(slider.value); // 50
+      const percentage = budget / (slider.max - slider.min); // 0.1
+      const inputSize = inputElement.width // 27
+      const thumbSize = 40 // FIND THE VALUE IN BUDGET_SLIDER.SCSS
+      const padding = 22 // FIND THE VALUE IN FORM.SCSS
+
+      input.style.top = '36px';
+      input.style.width = 'fit-content';
+      // input.style.left = `${sliderElement.x + sliderElement.width * percentage - thumbSize - (thumbSize / 3 / 0.25) * percentage}px`;
+      // const posCalculated = sliderElement.x + (sliderElement.width - thumbSize) * percentage - padding - inputSize / 2
+      console.log(inputSize);
+      console.log(inputElement.width);
+      console.log((inputElement.right - inputElement.left));
+      const posCalculated = inputSize - 6 + (thumbSize)
+      input.style.left = `${posCalculated}px`;
+
+      slider.style.border = '1px solid red';
+      input.style.border = '1px solid red';
+
+      // console.log('slider pos', sliderElement.x)
+      // console.log('input pos',inputElement.x)
+      // console.log('slider width', (sliderElement.width * percentage))
+      // console.log('input width',inputElement.width)
+      // console.log('pos calculated', input.style.left)
+      // console.log('diff', sliderElement.x - inputElement.x)
+      // console.log('diff', (((sliderElement.width - thumbSize) * percentage - thumbSize / 2) - posCalculated))
+    }
+
+    slider.oninput = function() {
+      input.innerHTML = this.value;
+      update_pos();
+    }
+    update_pos();
+  });
+</script> %>
+
+<%# <script>
   document.addEventListener('DOMContentLoaded', function() {
   const decrementButton = document.getElementById('decrement');
   const incrementButton = document.getElementById('increment');
@@ -137,28 +209,62 @@
   });
 });
 
-</script>
+</script> %>
 
-<script>
-  function normalizeText(text) {
-    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/·/g, "").toUpperCase();
-  }
+<%# <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function interestsList() {
+      const interests = document.querySelector('.gift_interests');
+      let arrayFromList = [], arrayFromNew = [];
+      interests.addEventListener('click', function(event) {
+        event.preventDefault();
+        const parent = event.target.parentElement;
+        const input = parent.querySelector('input');
+        input.checked = !input.checked;
 
-  function filterList(section_name) {
-    var input, filter, ul, li, i, txtValue;
-    var section = document.querySelector(`.${section_name}`);
-    input = section.querySelector('#searchInput');
-    filter = normalizeText(input.value);
-    ul = document.querySelector(`.gift_${section_name}`);
-    span = ul.getElementsByTagName('span');
+        const inputs = document.querySelectorAll('.interests input[type="checkbox"]:checked');
 
-    for (i = 0; i < span.length; i++) {
-      txtValue = span[i].textContent || span[i].innerText;
-      if (normalizeText(txtValue).indexOf(filter) > -1) {
-        span[i].style.display = "";
-      } else {
-        span[i].style.display = "none";
-      }
+        // if (event.target.getAttribute('id') === `new-gift-${event.target.textContent.toLowerCase()}`) {
+        //   arrayFromNew = [];
+        //   if (input.checked === true) {
+        //     arrayFromNew.push(event.target.textContent);
+        //   }
+        // } else {
+          arrayFromList = [];
+          inputs.forEach((element) => {
+            arrayFromList.push(element.value);
+          });
+        // }
+
+        // console.log(arrayFromList.concat(arrayFromNew));
+        console.log(arrayFromList);
+        // console.log(arrayFromNew);
+
+        return arrayFromList.concat(arrayFromNew);
+      });
     }
+    interestsList();
+  });
+</script> %>
+
+<%# <script>
+  function empty() {
+    document.getElementById('searchInterestsInput').value = '';
+    filterList('interests');
   }
-</script>
+
+  function reset() {
+    this.empty();
+    const checkboxes = document.querySelectorAll('.interests input[type="checkbox"]:checked');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+    if (document.querySelectorAll('[id^="new-gift-"]')) {
+      const newGifts = document.querySelectorAll('[id^="new-gift-"]');
+      newGifts.forEach((newGift) => {
+        newGift.parentElement.remove();
+      });
+    }
+    filterList('interests');
+  }
+</script> %>

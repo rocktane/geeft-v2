@@ -4,19 +4,27 @@
   font-weight: 900;
   border-radius: 0.3em;
   font-size: 1.5rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  // &:hover {
-  // background-color: #c8c8c8;
-  // cursor: text;
-  // }
+  // font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  //   Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.sections {
+  overflow-x: hidden;
+  & > div {
+    margin-top: 0.5em;
+  }
 }
 
 .new-form-section {
-  padding-bottom: 1em;
-  .input {
-    margin-top: 0.5em;
-  }
+  position: relative;
+}
+
+.new-form-section .input {
+  margin-top: 0.5em;
+}
+
+input.input {
+  padding-top: 2px;
 }
 
 input#event_name::placeholder,
@@ -29,5 +37,159 @@ input#event_url::placeholder {
 
 input:-webkit-autofill {
   -webkit-text-fill-color: $primary-color !important;
+  font-family: $body-font;
+  color: red;
   -webkit-background-clip: text;
+}
+
+.search {
+  position: relative;
+  display: inline-flex;
+  // width: fit-content;
+  // width: 100%;
+  // overflow: visible;
+}
+
+#searchRelationshipInput,
+#searchOccasionInput,
+#searchInterestInput {
+  font-size: 1em;
+  // padding: 0.25em 0.5em 0.25em 2.5em;
+  margin-left: 0.5em;
+  // border: 1px solid #ccc;
+  border: none;
+  border-radius: 0.3em;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  outline: none;
+  position: absolute;
+  top: 2px;
+  left: -8px;
+  width: 0;
+  z-index: 0;
+  transition: width 1s ease;
+}
+
+.search-icon {
+  background-color: $secondary-color;
+  color: $primary-color;
+  border: 2px solid $primary-color;
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 3;
+}
+
+#new-gift {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  // padding-top: 1px;
+  i {
+    color: $primary-color;
+  }
+}
+
+#x-mark {
+  margin-left: 15em;
+}
+
+#x-mark,
+#reset {
+  display: inline-flex;
+  opacity: 0;
+  width: 1.5em;
+  height: 1.5em;
+  background-color: $primary-color;
+  color: $secondary-color;
+  border-radius: 1em;
+  font-size: 0.8em;
+  line-height: 0.8em;
+  &i {
+    text-align: center;
+  }
+  &:hover {
+    background-color: $secondary-color;
+    color: $primary-color;
+    cursor: pointer;
+  }
+  transition: opacity 0.5s ease-in;
+}
+
+i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.age-genre {
+  display: flex;
+  gap: 0.4em;
+}
+
+.age,
+.genre {
+  display: inline-block;
+}
+
+.criteria-form {
+  display: grid;
+  grid-gap: 1em;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+.radio_buttons span,
+.check_boxes span {
+  padding: 0 0.25em;
+}
+
+.occasion,
+.relationship,
+.interests {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.occasion div.input,
+.relationship div.input,
+.interests div.input {
+  box-sizing: border-box;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  &:hover {
+    overflow-y: scroll;
+  }
+}
+
+.background {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3.3em;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    $background-color 0%,
+    rgba(255, 255, 255, 0) 2%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0) 98%,
+    $background-color 100%
+  );
+}
+
+.new-form-section.budget .input {
+  padding: 0 22px;
 }

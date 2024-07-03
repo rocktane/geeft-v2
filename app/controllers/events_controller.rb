@@ -48,11 +48,24 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @event.update(event_params)
-      redirect_to event_path(@event), notice: 'L\'évènement a été mis à jour.'
-    else
-      flash.now[:alert] = "L'URL n'est pas valide ou il y a d'autres erreurs dans le formulaire."
-      render :edit
+    logger.debug "Event before update: #{@event.inspect}"
+    respond_to do |format|
+      if @event.update(event_params)
+        logger.debug "Event after update: #{@event.inspect}"
+        format.html { redirect_to event_path(@event), notice: 'L\'évènement a été mis à jour.' }
+        format.json { render json: { message: 'L\'évènement a été mis à jour.', event: @event }, status: :ok }
+      else
+        format.html do
+          flash.now[:alert] = "L'URL n'est pas valide ou il y a d'autres erreurs dans le formulaire."
+          render :edit
+        end
+        format.json { render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity }
+      end
+    end
+  rescue StandardError => e
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/500.html", layout: false, status: :internal_server_error }
+      format.json { render json: { error: e.message }, status: :internal_server_error }
     end
   end
 
@@ -81,7 +94,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :description, :url, :gift_list, :user_id, :gift_id, :event_id)
+    params.require(:event).permit(:name, :date, :description, :url, :user_id, :gift_id, :event_id, gift_list: [])
   end
 
   def set_event
