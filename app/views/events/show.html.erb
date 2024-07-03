@@ -26,7 +26,7 @@
     <% if @event.url != "" && !@event.url.nil? %>
       <div class="secondary-container">
         <h3>Lien</h3>
-        <% url = @event.url.gsub(/https?:\/\/www\./, "") %>
+        <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
         <%= link_to url, @event.url, target: :_blank %>
       </div>
     <% end %>

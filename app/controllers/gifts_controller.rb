@@ -24,7 +24,6 @@ class GiftsController < ApplicationController
     @gift.event = @event
     @gift.user = current_user
     @gift.interests = @gift.interests.compact_blank
-    raise
     @gift.generated_list = @gift.gen_gifts(
                                 $client,
                                 @gift.budget,

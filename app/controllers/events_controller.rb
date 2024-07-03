@@ -13,6 +13,7 @@ class EventsController < ApplicationController
     end_date = @events.last.date.beginning_of_month
     @all_months = (start_date..end_date).map(&:beginning_of_month).uniq
     @today = Date.today
+    @future_events = Event.where(user: current_user).where("date >= ?", @today).order(:date)
     @events_by_month = @all_months.map do |month|
       unless @events.select { |e| e.date.beginning_of_month == month }.nil?
         [month, @events.select { |e| e.date.beginning_of_month == month }]

@@ -20,7 +20,7 @@
     </div>
     <div class="secondary-container">
       <h3><%= f.label :url, "Lien" %></h3>
-      <% url = @event.url.gsub(/https?:\/\/www\./, "") %>
+      <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
     <%= f.text_field :url, value: url, class: 'no-box-input', placeholder: "www.google.fr", data: { update_event_target: "url" } %>
     </div>
     <% if !@event.gift.nil? %>
@@ -45,13 +45,11 @@
         <% end %>
       </ul>
     <% end %>
-    <%= link_to 'Mettre à jour', event_path(@event), class: "btn btn-green",
-      data: {
-        env: Rails.env,
-        gift_id: @event.gift.id,
-        event_id: @event.id,
-        action: "click->update-event#update"
-        } %>
+
+    <%= link_to event_path(@event), class: "btn btn-green", data: { env: Rails.env, event_id: @event.id, action: "click->update-event#update" }.merge(@event.gift.nil? ? {} : { gift_id: @event.gift.id }) do %>
+      Mettre à jour
+    <% end %>
+
   <% end %>
 
   <%= link_to event_path(@event), class: "btn btn-square btn-red", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
