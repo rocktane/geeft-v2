@@ -9,6 +9,8 @@
 }
 
 .sections {
+  display: grid;
+  grid-gap: 1em;
   overflow-x: hidden;
   & > div {
     margin-top: 0.5em;
@@ -70,6 +72,7 @@ input:-webkit-autofill {
   width: 0;
   z-index: 0;
   transition: width 1s ease;
+  background-color: $secondary-color;
 }
 
 .search-icon {

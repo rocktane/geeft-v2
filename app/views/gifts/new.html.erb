@@ -65,7 +65,7 @@
         <div class="background"></div>
         <div class="search">
           <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="relationship">🔎</span>
-          <input type="text" id="searchRelationshipInput" data-action="keyup->search-input#filterList">
+          <input type="text" id="searchRelationshipInput" data-action="keyup->search-input#filterList" data-search-input-target="relationshipInput">
         </div>
         <%= f.input :relationship, collection: Gift::RELATIONSHIPS.sort, as: :radio_buttons, label: false, required: false %>
       </div>
@@ -75,7 +75,7 @@
         <div class="background"></div>
         <div class="search">
           <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="occasion">🔎</span>
-          <input type="text" id="searchOccasionInput" data-action="keyup->search-input#filterList">
+          <input type="text" id="searchOccasionInput" data-action="keyup->search-input#filterList" data-search-input-target="occasionInput">
         </div>
         <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>
       </div>
@@ -96,7 +96,7 @@
         <div class="background"></div>
         <div class="search">
           <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="interests">🔎</span>
-          <input type="text" id="searchInterestInput" data-action="keyup->search-input#filterList" data-search-input-target="input">
+          <input type="text" id="searchInterestInput" data-action="input->search-input#filterList" data-search-input-target="interestsInput">
         </div>
         <i class="fa-solid fa-xmark" id="x-mark" data-action="click->search-input#empty"></i>
         <i class="fa-solid fa-rotate-right" id="reset" data-action="click->search-input#reset"></i>
