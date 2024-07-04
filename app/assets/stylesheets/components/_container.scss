@@ -42,12 +42,15 @@
   color: $primary-color;
   font-size: 1em;
   transition: 0.25s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;;
+
   & h3 {
     font-family: $body-font;
     color: $primary-color;
     font-size: 0.7em;
     margin: 0em 0 0.5em 0;
   }
+
   & input,
   textarea {
     font-family: $body-font;

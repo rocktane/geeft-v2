@@ -39,11 +39,13 @@
       </div>
     <% end %>
 
+
+
     <% if @event.gift.class.name != "NilClass" %>
       <h3>La liste de cadeaux</h3>
       <ul>
         <% @event.gift_list.each do |gift| %>
-          <li data-save-gift-target="gift">
+          <%# <li data-save-gift-target="gift"> %>
             <div class="secondary-container geeft">
               <div class="geeft-left">
                 <div class="gift-icon">
@@ -57,6 +59,7 @@
           </li>
         <% end %>
       </ul>
+
     <% else %>
         <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event), class: 'btn btn-green' %>
     <% end %>
