@@ -1,0 +1,109 @@
+.gift-container {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-areas: "gl . rf";
+  grid-auto-rows: max-content;
+  & span {
+    display: flex;
+    flex-direction: row-reverse;
+    grid-area: rf;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    position: relative;
+  }
+}
+
+.logo-gift {
+  width: 3em;
+}
+
+.refresh-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.refresh-arrow {
+  // display: inline-block;
+  display: flex;
+  transition: transform 0.5s ease;
+
+  & img {
+    width: 1em;
+  }
+
+  // &:hover {
+  //   transform: rotate(360deg);
+  // }
+}
+
+.refresh-text {
+  position: absolute;
+  left: 0;
+  left: 0;
+  padding-bottom: 0.2em;
+  color: $accent-color;
+  font-family: $headers-font;
+  opacity: 0;
+  transition: transform 0.3s ease 0.3s, opacity 0.3s ease 0.3s; /* Débuter l'animation après 0.5s */
+}
+
+.refresh-container:hover {
+  & .refresh-text {
+    transform: translateX(-5.3em); /* Déplace le texte de droite à gauche */
+    opacity: 1;
+  }
+  & .refresh-arrow {
+    transform: rotate(360deg);
+  }
+}
+
+.gift-left {
+  display: flex;
+  align-items: center;
+}
+
+.gift-name {
+  margin-left: 0.5em;
+  transform: translateY(0);
+  transition: transform 0.3s ease 0.3s;
+}
+
+.form-comment {
+  display: flex;
+  align-items: center;
+  height: 3em;
+  gap: 1em;
+}
+
+#comment {
+  border: 2px solid $primary-color;
+  border-radius: var(--border-radius);
+  background-color: $secondary-color;
+  font-family: $body-font;
+  color: $primary-color;
+  font-size: 1em;
+  width: 45%;
+  padding: 0 1em;
+  align-self: stretch;
+  + input[name="commit"] {
+    width: fit-content;
+    margin: 0;
+    padding: 0 1em;
+    align-self: stretch;
+    // text-align: center;
+  }
+  &:focus-visible {
+    outline: none;
+    border: 2px solid $primary-color;
+  }
+}
+
+.gift-comment {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

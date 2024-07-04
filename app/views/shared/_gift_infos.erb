@@ -1,7 +1,6 @@
-    <div data-controller="save-gift">
-      <ul data-controller="refresh-gift" data-save-gift-target="list">
-        <% @gift.generated_list.each_with_index do |gift, index| %>
-          <% if (index < 5) %>
+<div data-controller="refresh-gift">
+  <ul data-controller="save-gift" data-save-gift-target="list">
+    <% @gifts_to_display.each do | gift | %>
             <div class="secondary-container">
               <li class="gift-container" data-save-gift-target="gift">
                 <div class="gift-left">
@@ -11,7 +10,7 @@
                   </div>
                 </div>
                 <% if @user == @gift.user %>
-                  <span class="refresh-container" data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh">
+                  <span class="refresh-container" data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh" class ="gift-delete">
                     <div class="refresh-arrow">
                       <%= image_tag('refresh.svg', class: "logo-refresh") %>
                     </div>
@@ -22,13 +21,6 @@
                 <% end %>
               </li>
             </div>
-          <% else %>
-            <li class="hidden-gift" data-refresh-gift-target="hiddenGift" style="display: none">
-              <%= gift %>
-              <% if @user == @gift.user %>
-                <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh">X</span>
-              <% end %>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
+    <% end %>
+  </ul>
+</div>

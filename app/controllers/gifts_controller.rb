@@ -10,6 +10,12 @@ class GiftsController < ApplicationController
     @user = current_user
     @event = params[:event_id] ? Event.find(params[:event_id]) : Event.new
     @gift = Gift.find(params[:id])
+    @gifts_to_display = @gift.generated_list.take(5)
+
+    respond_to do |format|
+      format.html # Render default template if HTML format is requested
+      format.json { render json: @gift } # Render JSON response if JSON format is requested
+    end
   end
 
   def new
