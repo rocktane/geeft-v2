@@ -109,10 +109,6 @@ export default class extends Controller {
     );
     const lastElement = checkboxes[checkboxes.length - 1];
 
-    console.log("lastElement", lastElement);
-    console.log("value last input", lastElement.querySelector("input").value);
-    console.log("searchLower", searchLower);
-
     const content = `
           <input class="check_boxes optional tempGift" type="checkbox" value="${search}" name="gift[interests][]" id="gift_interests_${searchLower}">
           <label class="collection_check_boxes" for="gift_interests_${searchLower}" id="new-gift-${searchLower}">

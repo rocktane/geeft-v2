@@ -12,14 +12,14 @@
 .primary-container {
   // margin: 1em 0 0 21.4em;
   // margin: 0 10% auto 20%;
-  position: relative;
-  width: 40em;
+  // position: relative;
+  // width: 40em; // TEST POUR SLIDE
   & h2 {
     font-family: $headers-font;
     color: $primary-color;
     font-size: 1.5em;
     margin-bottom: 1em;
-    display: none;
+    // display: none;
   }
   & h3 {
     font-family: $headers-font;
@@ -41,6 +41,7 @@
   font-family: $body-font;
   color: $primary-color;
   font-size: 1em;
+  overflow: hidden;
   transition: 0.25s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;;
 
@@ -67,6 +68,11 @@
   }
 }
 
+.secondary-container[data-refresh-gift-target="gift"] {
+  width: 50%;
+  margin: 0;
+}
+
 div[contenteditable] {
   border: 1px solid black;
   width: 200px;
@@ -87,6 +93,7 @@ div[contenteditable] {
 .geeft-left {
   display: flex;
   align-items: center;
+  grid-area: "gl";
 }
 
 .geeft-right {
@@ -112,5 +119,38 @@ div[contenteditable] {
   .body-container {
     padding: 2em;
   }
+}
 
+.main {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+
+.main + .main {
+  transform: translateY(110%);
+}
+
+.main + .main + .main {
+  transform: translateY(220%);
+}
+
+.main + .main + .main + .main {
+  transform: translateY(330%);
+}
+
+.main + .main + .main + .main + .main {
+  transform: translateY(440%);
+}
+
+.wrapper {
+  width: 200%;
+  display: inline-flex;
+  height: fit-content;
+  justify-content: end;
+  transform: translateX(-50%);
+}
+
+.is-animating {
+  transition: transform 200ms;
 }
