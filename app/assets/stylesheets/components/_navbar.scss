@@ -39,7 +39,7 @@
   }
 
 
-  .item details summary {
+  details summary {
     list-style: none;
     border: 1px solid #ccc;
     width: max-content;
@@ -48,23 +48,28 @@
     cursor: pointer;
    }
 
-   .item details {
+   details {
     position: relative;
    }
 
-   .item details ul {
+   details ul {
     position: absolute;
-    bottom: 0;
-    left: 130%;
+   // bottom: 0;
+   // left: 130%;
     background-color: #f1f1f1;
     border: 1px solid #ccc;
     box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
     list-style: none;
     padding: 10px;
     border-radius: var(--border-radius);
+    left: unset;
+    right: 0;
+    bottom: unset;
+    z-index: 999;
+
    }
 
-   .item details ul li {
+   details ul li {
     width: 160px;
     border-radius: var(--border-radius);
     color: #333;
@@ -80,7 +85,7 @@
     transition: 0.5s;
    }
 
-   .item details ul li:hover {
+   details ul li:hover {
     background-color: #f1f1f1;
     color: #333;
    }
