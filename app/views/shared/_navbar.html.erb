@@ -1,15 +1,18 @@
 <div class="navbar">
 
-  <!-- À faire -->
-  <div class="chevron-mobile">
+  <!-- Bouton Back Mobile -->
+  <%= link_to :back, class: 'chevron-mobile' do %>
     <i class="fa-solid fa-chevron-left"></i>
-  </div>
+  <% end %>
 
   <div class="navbar-left">
     <%= link_to image_tag('geeft-logo-mobile.svg', alt: 'Geeft logo'), root_path %>
     <!-- Voir Helper Navbar Titles -->
     <h1> <%= navbar_title %> </h1>
   </div>
+
+
+
 
   <div class="dropdown-menu">
       <details>
@@ -18,7 +21,9 @@
         </summary>
         <ul>
           <li>
-            Dashboard
+            <%= link_to root_path do %>
+              <%= image_tag('dashboard.svg', alt: 'Dash') %> Dashboard
+            <% end %>
           </li>
           <li>
             Paramètres
@@ -29,7 +34,6 @@
         </ul>
       </details>
   </div>
-
 </div>
 
   <%# <div class="dropdown">
