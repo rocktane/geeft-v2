@@ -41,12 +41,22 @@
 
   details summary {
     list-style: none;
-    border: 1px solid #ccc;
     width: max-content;
-    padding: 5px 15px;
-    border-radius: var(--border-radius);
     cursor: pointer;
+
+
    }
+
+   .menu {
+    width: 3em;
+    margin-right: 3em;
+   }
+
+   .menu-items {
+    width: 2em;
+   }
+
+
 
    details {
     position: relative;
@@ -91,14 +101,6 @@
    }
 
 
-   details img {
-    width: 20px;
-    height: 20px;
-   }
-
-
-
-
 
 
   // Style Mobile
@@ -134,79 +136,6 @@
     }
 
   }
-
-  // .dropdown {
-//   // height: fit-content;
-//   // width: 400px;
-//   margin-right: 3em;
-//   // font-size: 2.4em;
-//   // color: $primary-color;
-//   position: relative;
-//   display: inline-block;
-// }
-
-// .dropdown-toggle {
-//   background-color: #f1f1f1;
-//   color: #333;
-//   padding: 0.75rem 2.5rem;
-//   border: none;
-//   border-radius: 0.5rem;
-//   cursor: pointer;
-//   width: 400px;
-// }
-
-// .dropdown-menu {
-//   position: absolute;
-//   top: 120%;
-//   right: 0px;
-//   background-color: #f1f1f1;
-//   border: 1px solid #ccc;
-//   border-radius: 1rem;
-//   padding: 0;
-//   list-style: none;
-//   display: none;
-// }
-
-// .dropdown-menu .menu-item:first-child {
-//   border-radius: 1rem 1rem 0 0;
-// }
-
-// .dropdown-menu .menu-item:last-child {
-//   border-radius: 0 0 1rem 1rem;
-// }
-
-// .menu-item {
-//   width: 250px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: 1rem 3rem;
-//   background-color: white;
-//   border: none;
-//   font-size: 1.1rem;
-// }
-
-// .menu-bars {
-//   font-size: 1.5rem;
-// }
-
-// .item-icon {
-//   font-size: 1.5rem;
-// }
-
-// .item-txt {
-//   width: 50%;
-//   text-align: left;
-// }
-
-// .menu-item:hover {
-//   cursor: pointer;
-//   color: rgb(19, 98, 255);
-// }
-
-// button:focus ~ .dropdown-menu {
-//   display: block;
-// }
 
 // Style Mobile
 @media (max-width: 800px) {

@@ -12,63 +12,30 @@
   </div>
 
 
-
-
   <div class="dropdown-menu">
-      <details>
-        <summary>
-          <i class="fa-solid fa-bars"></i>
-        </summary>
-        <ul>
-          <li>
-            <%= link_to root_path do %>
-              <%= image_tag('dashboard.svg', alt: 'Dash') %> Dashboard
-            <% end %>
-          </li>
-          <li>
+    <details>
+      <summary>
+        <%= image_tag('menu.svg', alt: 'Menu', class:'menu') %>
+      </summary>
+      <ul>
+        <li>
+          <%= link_to root_path do %>
+            <%= image_tag('dashboard.svg', alt: 'Dash', class:'menu-items') %>
+            Dashboard
+          <% end %>
+        </li>
+        <li>
+          <%= link_to edit_user_registration_path do  %>
+            <%= image_tag('settings.svg', alt: 'Settings', class:'menu-items') %>
             Paramètres
-          </li>
-          <li>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
             Déconnexion
-          </li>
-        </ul>
-      </details>
+          <% end %>
+        </li>
+      </ul>
+    </details>
   </div>
 </div>
-
-  <%# <div class="dropdown">
-    <button class="dropdown-toggle" style="border: none; background: none">
-      <span class="menu-bars">
-        <i class="fa-solid fa-bars"></i>
-      </span>
-    </button>
-
-        <ul class="dropdown-menu">
-          <li class="menu-item">
-            <span class="item-icon">
-                <i class='fa-solid fa-bars'></i>
-            </span>
-            <span class="item-txt">
-                Dashboard
-            </span>
-        </li>
-          <li class="menu-item">
-            <span class="item-icon">
-                <i class='fa-solid fa-bars'></i>
-            </span>
-            <span class="item-txt">
-              <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete} %>
-              <%# <%= current_user %>
-              <%# <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
-            <%# </span>
-        </li>
-          <li class="menu-item">
-            <span class="item-icon">
-                <i class='fa-solid fa-bars' ></i>
-            </span>
-            <span class="item-txt">
-                setting
-            </span>
-        </li>
-        </ul>
-      </div> %>
