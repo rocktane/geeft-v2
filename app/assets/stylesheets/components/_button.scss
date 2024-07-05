@@ -19,9 +19,9 @@
   }
 }
 
-.btn-big {
-  font-size: 1.5em;
-}
+// .btn-big {
+//   font-size: 1.5em;
+// }
 
 // Bouton carré
 .btn-square {
@@ -53,9 +53,11 @@
   background-color: $primary-color;
   color: $secondary-color;
   border: 3px solid $primary-color;
+
   &:hover {
     background-color: $secondary-color;
     color: $primary-color;
+
     a {
       color: $primary-color;
     }
@@ -67,6 +69,7 @@
   background-color: $accent-color;
   color: $secondary-color;
   border: 3px solid $accent-color;
+
   &:hover {
     background-color: $secondary-color;
     color: $accent-color;
@@ -78,6 +81,7 @@
   background-color: rgb(184, 54, 54);
   color: $secondary-color;
   border: 3px solid rgb(184, 54, 54);
+
   &:hover {
     background-color: $secondary-color;
     color: rgb(184, 54, 54);
@@ -108,6 +112,7 @@ a.btn-back {
   width: 100%;
   justify-content: flex-end;
 }
+
 .btn-dashboard {
   font-family: $headers-font;
   font-size: 0.9em;
@@ -121,6 +126,7 @@ a.btn-back {
 }
 
 @media (max-width: 900px) {
+
   // Bouton mobile
   .btn-mobile {
     position: fixed;
@@ -133,6 +139,7 @@ a.btn-back {
     display: flex;
     justify-content: center;
     align-items: center;
+
     & i {
       font-size: 2em;
       margin: 0.5em;

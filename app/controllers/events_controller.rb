@@ -1,26 +1,24 @@
 class EventsController < ApplicationController
   before_action :set_cache_headers
   before_action :authenticate_user!
-  before_action :set_event , only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: %i[show edit update destroy]
 
   def dashboard
     # Pour avoir les evenements organisés par mois
     @events = Event.where(user: current_user).order(:date)
-    @eventsDates = @events.map { |event| event.date.strftime("%Y-%m-%d") }
+    @eventsDates = @events.map { |event| event.date.strftime('%Y-%m-%d') }
     # start_date = Date.today.beginning_of_month
     # end_date = 1.year.from_now.beginning_of_month
     start_date = [@events.first.date.beginning_of_month, Date.today.beginning_of_month].min
     end_date = @events.last.date.beginning_of_month
     @all_months = (start_date..end_date).map(&:beginning_of_month).uniq
     @today = Date.today
-    @future_events = Event.where(user: current_user).where("date >= ?", @today).order(:date)
+    @future_events = Event.where(user: current_user).where('date >= ?', @today).order(:date)
     @events_by_month = @all_months.map do |month|
       unless @events.select { |e| e.date.beginning_of_month == month }.nil?
         [month, @events.select { |e| e.date.beginning_of_month == month }]
       end
     end.to_h
-
-
   end
 
   def show
@@ -45,8 +43,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     logger.debug "Event before update: #{@event.inspect}"
@@ -69,7 +66,6 @@ class EventsController < ApplicationController
       format.json { render json: { error: e.message }, status: :internal_server_error }
     end
   end
-
 
   def link
     @event = Event.find(params[:event_id])
@@ -103,9 +99,8 @@ class EventsController < ApplicationController
   end
 
   def set_cache_headers
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
   end
-
 end

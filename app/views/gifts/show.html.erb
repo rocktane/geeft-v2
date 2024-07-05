@@ -1,5 +1,5 @@
 <div class="body-container">
-  <div class="primary-container">
+  <div class="primary-container" data-controller="save-gift">
     <%= link_to dashboard_path, class: "btn-back" do %>
       <i class="fa-solid fa-chevron-left"></i> Retour
     <% end %>
@@ -12,7 +12,9 @@
             <h2>Une modification à effectuer ?</h2>
             <div class="form-comment">
               <%= f.text_field :comment, as: :text, placeholder: "Moins de coffrets, plus d'ateliers" %>
-              <%= f.submit "Envoyer", class: "btn btn-green" %>
+              <%= f.button(type: 'submit', class: 'btn btn-square btn-green') do %>
+                <i class="fas fa-paper-plane"></i>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -22,13 +24,13 @@
       <% data_attributes = {
         data: {
           env: Rails.env,
-          id: @gift.id,
+          gift_id: @gift.id,
           action: "click->save-gift#save",
           save_gift_target: "saveList"
         },
         class: "btn btn-green"
       } %>
-      <% data_attributes[:event_id] = @event.id if @event.id %>
+      <% data_attributes[:data][:event_id] = @event.id if @event.id %>
       <%= link_to text, new_event_path, data_attributes %>
     </div>
   </div>

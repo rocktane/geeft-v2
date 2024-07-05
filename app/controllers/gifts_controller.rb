@@ -8,8 +8,9 @@ class GiftsController < ApplicationController
 
   def show
     @user = current_user
-    @event = params[:event_id] ? Event.find(params[:event_id]) : Event.new
+    # @event = params[:event_id] ? Event.find(params[:event_id]) : Event.new
     @gift = Gift.find(params[:id])
+    @event = @gift.event_id ? Event.find(@gift.event_id) : Event.new
     @gifts_to_display = @gift.generated_list.take(5)
 
     respond_to do |format|
@@ -31,13 +32,14 @@ class GiftsController < ApplicationController
     @gift.user = current_user
     @gift.interests = @gift.interests.compact_blank
     @gift.generated_list = @gift.gen_gifts(
-                                $client,
-                                @gift.budget,
-                                @gift.age,
-                                @gift.genre,
-                                @gift.occasion,
-                                @gift.interests,
-                                @gift.relationship)
+      $client,
+      @gift.budget,
+      @gift.age,
+      @gift.genre,
+      @gift.occasion,
+      @gift.interests,
+      @gift.relationship
+    )
                                 .split(/\d+\.\s+/).map(&:strip).compact_blank
     if @gift.save
       redirect_to gift_path(@gift, event_id: @event)
@@ -49,7 +51,8 @@ class GiftsController < ApplicationController
   def update
     @gift = Gift.find(params[:id])
     comment = params[:comment]
-    @gift.update(generated_list: @gift.update_gifts($client, comment, @gift.interests).split(/\d+\.\s+/).map(&:strip).compact_blank)
+    @gift.update(generated_list: @gift.update_gifts($client, comment,
+                                                    @gift.interests).split(/\d+\.\s+/).map(&:strip).compact_blank)
     if @gift.save
       redirect_to gift_path(@gift)
     else
@@ -72,11 +75,11 @@ class GiftsController < ApplicationController
   private
 
   def gift_params
-    params.require(:gift).permit(:budget, :age, :genre, :occasion, [interests: []], :relationship, :generated_list, :comment, :user_id, :event_id)
+    params.require(:gift).permit(:budget, :age, :genre, :occasion, [interests: []], :relationship, :generated_list,
+                                 :comment, :user_id, :event_id)
   end
 
   def set_client
-    $client = $client ? $client : OpenAI::Client.new
+    $client ||= OpenAI::Client.new
   end
-
 end
