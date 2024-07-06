@@ -6,6 +6,7 @@
 .dashboard-right {
   width: 100%;
   margin-left: 2.6em;
+  position: relative;
 }
 
 .horizontal-line {
@@ -21,7 +22,7 @@
   margin: 1.5em auto;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .dashboard-right {
     display: none;
   }

@@ -1,7 +1,7 @@
 // Bouton de base
 .btn {
   font-family: $headers-font;
-  margin: 0.7em 0;
+  // margin: 0.7em 0;
   font-size: 1.1em;
   border: none;
   border-radius: var(--border-radius);
@@ -19,9 +19,9 @@
   }
 }
 
-.btn-big {
-  font-size: 1.5em;
-}
+// .btn-big {
+//   font-size: 1.5em;
+// }
 
 // Bouton carré
 .btn-square {
