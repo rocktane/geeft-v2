@@ -29,35 +29,16 @@ export default class extends Controller {
       env = "https://www.geeft.club";
     }
 
-    // let url, redirection, newList;
-
-    // if (this.saveListTarget.dataset.eventId) {
-    //   // Test if the event id is present
-    //   const eventId = this.saveListTarget.dataset.eventId;
-    //   const urlToMatch = `${env}/events/${eventId}/edit`;
-    //   if (urlToMatch == location) {
-    //     // If the url matches the event edit page we need to patch the event
-    //     url = `${env}/events/${eventId}`;
-    //     redirection = `${env}/events/${eventId}`;
-    //     newList = this.giftTargets.map((gift) => gift.innerText);
-    //   } else {
-    //     // If the url does not match the event edit page we need to create an event
-    //     url = `${env}/updatelist/${giftId}`;
-    //     redirection = `${env}/events/${eventId}`;
-    //     newList = this.giftTargets.map((gift) =>
-    //       gift.firstChild.nodeValue.trim()
-    //     );
-    //   }
-    // } else {
-    //   // If the event id is not present we need to patch the gift
-    //   console.log("No event id");
-    //   url = `${env}/updatelist/${giftId}`;
-    //   redirection = `${env}/gifts/${giftId}/events/new`;
-    //   newList = this.newList();
-    // }
-
     const url = `${env}/updatelist/${giftId}`;
-    const redirection = `${env}/gifts/${giftId}`;
+    const origin = window.location.href;
+    const showGiftUrl = `${env}/gifts/${giftId}`;
+    let redirection = `${env}/gifts/${giftId}/events/new`;
+
+    if (origin === !showGiftUrl) {
+      redirection = `${env}/events/${eventId}`;
+    }
+
+    const newList = this.newList();
 
     try {
       const response = await fetch(url, {
