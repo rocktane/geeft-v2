@@ -42,6 +42,7 @@
   display: block;
   position: relative;
   top: 2px;
+  margin-bottom: 1em;
 }
 .flatpickr-calendar.static {
   position: absolute;

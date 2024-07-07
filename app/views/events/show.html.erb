@@ -17,26 +17,29 @@
         <% end %>
     </div>
 
-    <div class="secondary-container">
-      <h3>Nom de l'évènement</h3>
-      <%= @event.name %>
+    <div class="form-container">
+      <div class="secondary-container">
+        <h3>Nom de l'évènement</h3>
+        <%= @event.name %>
+      </div>
+
+      <% if @event.url != "" && !@event.url.nil? %>
+        <div class="secondary-container">
+          <h3>Lien</h3>
+          <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
+          <%= link_to url, @event.url, target: :_blank %>
+        </div>
+      <% end %>
+
+
+      <% if @event.description != "" %>
+        <div class="secondary-container">
+          <h3>Description</h3>
+          <%= @event.description %>
+        </div>
+      <% end %>
     </div>
 
-    <% if @event.url != "" && !@event.url.nil? %>
-      <div class="secondary-container">
-        <h3>Lien</h3>
-        <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
-        <%= link_to url, @event.url, target: :_blank %>
-      </div>
-    <% end %>
-
-
-    <% if @event.description != "" %>
-      <div class="secondary-container">
-        <h3>Description</h3>
-        <%= @event.description %>
-      </div>
-    <% end %>
 
 
 
