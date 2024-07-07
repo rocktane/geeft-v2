@@ -31,7 +31,7 @@
         class: "btn btn-green"
       } %>
       <% data_attributes[:data][:event_id] = @event.id if @event.id %>
-      <%= link_to text, new_event_path, data_attributes %>
+      <%= link_to text, new_gift_event_path(@gift), data_attributes %>
     </div>
   </div>
 </div>

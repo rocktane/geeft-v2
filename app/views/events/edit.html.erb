@@ -1,28 +1,41 @@
 <div class="body-container">
 
 <div class="primary-container" data-controller="update-event">
+
+
   <%= link_to event_path(@event), class: "btn-back" do %>
-    <i class="fa-solid fa-chevron-left"></i> Annnuler
+    <i class="fa-solid fa-chevron-left"></i> Annuler
   <% end %>
 
-  <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
-    <div class="date-section date-edit">
-        <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar", update_event_target: "date" } %>
-        <i class="fa-solid fa-calendar"></i>
-    </div>
-    <div class="secondary-container">
-      <h3>Nom de l'évènement</h3>
-      <%= f.text_field :name, class: 'no-box-input', data: { update_event_target: "name" } %>
-    </div>
-    <div class="secondary-container">
-      <h3><%= f.label :description, "Description" %></h3>
-    <%= f.text_field :description, class: 'no-box-input', data: { update_event_target: "description" } %>
-    </div>
-    <div class="secondary-container">
-      <h3><%= f.label :url, "Lien" %></h3>
-      <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
-    <%= f.text_field :url, value: url, class: 'no-box-input', placeholder: "www.google.fr", data: { update_event_target: "url" } %>
-    </div>
+
+
+    <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
+      <div class="top-section">
+        <div class="date-section date-edit">
+          <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar", update_event_target: "date" } %>
+          <i class="fa-solid fa-calendar"></i>
+        </div>
+        <%= link_to event_path(@event), class: "btn btn-square btn-red", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+      </div>
+
+      <div class="form-container">
+        <div class="secondary-container">
+          <h3>Nom de l'évènement</h3>
+          <%= f.text_field :name, class: 'no-box-input', data: { update_event_target: "name" } %>
+        </div>
+        <div class="secondary-container">
+          <h3><%= f.label :description, "Description" %></h3>
+        <%= f.text_field :description, class: 'no-box-input', data: { update_event_target: "description" } %>
+        </div>
+        <div class="secondary-container">
+          <h3><%= f.label :url, "Lien" %></h3>
+          <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
+        <%= f.text_field :url, value: url, class: 'no-box-input', placeholder: "www.google.fr", data: { update_event_target: "url" } %>
+        </div>
+      </div>
+
     <% if !@event.gift.nil? %>
       <h3>La liste de cadeaux</h3>
       <ul data-controller="delete-gift">
@@ -52,9 +65,6 @@
 
   <% end %>
 
-  <%= link_to event_path(@event), class: "btn btn-square btn-red", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-    <i class="fa-solid fa-trash"></i>
-  <% end %>
 
   </div>
 </div>

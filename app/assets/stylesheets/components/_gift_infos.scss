@@ -21,6 +21,7 @@
   width: 3em;
 }
 
+
 .refresh-container {
   position: relative;
   display: inline-block;
@@ -35,10 +36,6 @@
   & img {
     width: 1em;
   }
-
-  // &:hover {
-  //   transform: rotate(360deg);
-  // }
 }
 
 .refresh-text {

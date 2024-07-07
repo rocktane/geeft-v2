@@ -22,4 +22,12 @@
   <%= link_to new_event_path, :class=> "btn-mobile" do %>
     <i class='fa-solid fa-square-plus'></i>
   <% end %>
+
+  <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete} %>
+
+    <%= current_user %>
+
+
+
+
 </div>

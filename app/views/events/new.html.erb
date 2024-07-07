@@ -1,9 +1,10 @@
 <div class="body-container">
 
   <div class="primary-container">
-    <%= link_to :back, class: "btn-back" do %>
+    <%= link_to dashboard_path, class: "btn-back" do %>
       <i class="fa-solid fa-chevron-left"></i> Retour
     <% end %>
+
 
     <% model_to_use = [@gift, @event] || @event %>
     <%= form_with(model: model_to_use, url: events_path(gift_id: @gift.id)) do |f| %>
@@ -51,6 +52,12 @@
             </li>
           <% end %>
         </ul>
+      <% else %>
+      <%= link_to new_gift_path do %>
+        <%= image_tag('close-gift.png', alt: 'gift') %>
+      <% end %>
+
+        <%# <h2>There is no Gift</h2> %>
       <% end %>
 
       <%= f.submit "Créer l'évènement", class: "btn btn-green" %>

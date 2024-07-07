@@ -51,6 +51,7 @@
 .upcoming-year {
   display: grid;
   grid-gap: 0.5em;
+  margin-top: 0.5em;
 }
 
 .year-events {
@@ -65,7 +66,7 @@
     // background-color: $background-color;
     border-bottom: 2px solid transparent;
     border-radius: 0.5em;
-    transition: 0.25s ease-in-out;
+    transition: 0.50s ease-in-out;
   }
 }
 
@@ -74,6 +75,7 @@
     // background-color: $background-color;
     border-bottom: 2px solid $accent-color;
     border-radius: 0.5em;
+    box-shadow: var(--shadow-hover);
   }
 }
 
