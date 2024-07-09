@@ -12,6 +12,7 @@ li {
   width: 100%;
   padding: 1em;
   margin: 1em 0 1em 0em;
+  box-shadow: var(--container-shadow);
   & h1 {
     font-family: $headers-font;
     color: $primary-color;

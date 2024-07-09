@@ -92,6 +92,12 @@
 .btn-back {
   font-family: $headers-font;
   display: inline-block;
+
+  & a {
+    color: $primary-color;
+    opacity: 58%;
+    margin-bottom: 1em;
+  }
 }
 
 a.btn-back {

@@ -45,7 +45,7 @@
   font-size: 1em;
   overflow: hidden;
   transition: 0.25s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;;
+  box-shadow: var(--container-shadow);
 
   & h3 {
     font-family: $body-font;

@@ -1,9 +1,9 @@
 <div class="body-container">
-  <div class="btn-back">
-    <%= link_to '< Retour', :back %>
-  </div>
   <div class="primary-container">
-    <h2>Sign up</h2>
+    <div class="btn-back">
+      <%= link_to '< Retour', :back %>
+    </div>
+    <h2>S'inscrire</h2>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
