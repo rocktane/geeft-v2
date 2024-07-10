@@ -1,0 +1,10 @@
+.cancel-account {
+  margin-top: 1em;
+  width: 20em;
+  & h3 {
+    font-family: $headers-font;
+    color: $primary-color;
+    font-size: 1.2em;
+    margin-bottom: 0.3em;
+  }
+}

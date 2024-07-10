@@ -4,8 +4,10 @@
   <div class="btn-back">
     <%= link_to '< Retour', :back %>
   </div>
-
-<h2>Log in</h2>
+<div class="top-section">
+  <h2 class="user-forms-title">Se connecter</h2>
+  <%= render "devise/shared/links" %>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
@@ -28,13 +30,12 @@
       <div class="remember-me">
         <%= f.input :remember_me, as: :boolean, label: "Se souvenir de moi" if devise_mapping.rememberable? %>
       </div>
-  </div>
-
   <div class="form-actions">
     <%= f.button :submit, "Log in", class: "btn btn-green" %>
   </div>
+  </div>
+
 <% end %>
 
-  <%= render "devise/shared/links" %>
   </div>
 </div>

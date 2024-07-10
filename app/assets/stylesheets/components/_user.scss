@@ -3,7 +3,7 @@
 .info-user{
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.5em;
   width: 20em;
 
   & label {
@@ -75,6 +75,13 @@
   font-size: 1em;
   margin-top: 0.5em;
 }
+
+.form-inputs {
+  width: 20em;
+  margin-top: 1em;
+}
+
+
 
 
 @media (max-width: 768px) {
