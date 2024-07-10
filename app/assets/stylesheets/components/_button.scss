@@ -131,6 +131,71 @@ a.btn-back {
     color 0.3s ease-in-out 0.1s;
 }
 
+
+
+
+// Let's style the component! __ Start copying from here
+.btn__theme {
+  height: 60px;
+  border-radius: 8px;
+  margin: 40px auto;
+  transition: background-color 300ms ease, box-shadow 300ms ease;
+  animation: btn__scale-down 600ms ease;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    animation: btn__scale-up 600ms ease;
+    box-shadow: 0 5px 20px rgba(252, 203, 10, .2);
+    background-color: $primary-color;
+    }
+
+     & button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: transparent;
+      transition: color 300ms ease;
+  }
+
+}
+
+.btn__content {
+  font-family: $headers-font;
+  color: $secondary-color;;
+  margin: auto;
+  text-align: center;
+  transition: color 300ms ease;
+}
+
+
+// And now is where magic begins
+@keyframes btn__scale-up {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes btn__scale-down {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+
 @media (max-width: 900px) {
 
   // Bouton mobile
