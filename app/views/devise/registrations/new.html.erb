@@ -3,7 +3,12 @@
     <div class="btn-back">
       <%= link_to '< Retour', :back %>
     </div>
-    <h2>S'inscrire</h2>
+
+        <div class="top-section">
+          <h2 class="user-forms-title">S'inscrire</h2>
+          <%= render "devise/shared/links" %>
+        </div>
+
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
@@ -14,6 +19,7 @@
                         autofocus: true,
                         input_html: { autocomplete: "email" }%>
         </div>
+
         <div class="info-user">
           <h3> Nom d'utilisateur </h3>
           <%= f.input :username,
@@ -51,14 +57,18 @@
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
         </div>
+
+        <div class="btn__theme btn btn-green">
+          <%= button_tag(type: 'submit') do %>
+            <div class="btn__content">
+              S'inscrire
+            </div>
+        <% end %>
+        </div>
       </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up", class: "btn btn-green" %>
-      </div>
+    </div>
 
 
-      <%= render "devise/shared/links" %>
 
     <% end %>
   </div>
