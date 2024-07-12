@@ -25,13 +25,13 @@
       <div class="logged-out-btn-container">
         <div class="logged-out-btn">
           <p>Rejoins le Club !</p>
-          <div class="btn-home btn-green">
+          <div class="btn-home btn__theme btn-green">
             <%= link_to 'Inscription', new_user_registration_path %>
           </div>
         </div>
         <div class="logged-out-btn">
           <p>Déjà inscrit ?</p>
-          <div class="btn-home btn-purple">
+          <div class="btn-home btn__theme btn-purple">
             <%= link_to 'Connexion', new_user_session_path %>
           </div>
         </div>
@@ -48,8 +48,13 @@
     </div>
     <%= render 'shared/event_home' %>
     <div class="home-buttons">
-      <%= link_to 'Tableau de Bord', dashboard_path, class: "btn btn-big btn-green"%>
-      <%= link_to 'Trouver un cadeau', new_gift_path, class: "btn btn-big btn-purple" %>
+      <%= link_to dashboard_path, class: "btn btn__theme btn-green" do%>
+        <div class="btn_content">Tableau de Bord</div>
+      <% end %>
+
+      <%= link_to new_gift_path, class: "btn btn__theme btn-purple" do %>
+        <div class="btn_content">Créer une liste cadeau</div>
+      <% end %>
     </div>
 
 

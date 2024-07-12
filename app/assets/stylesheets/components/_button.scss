@@ -3,22 +3,74 @@
   font-family: $headers-font;
   // margin: 0.7em 0;
   font-size: 1.1em;
-  border: none;
+  // border: none;
   border-radius: var(--border-radius);
   display: inline-block;
   text-decoration: none;
   padding: 0.5em;
   text-align: center;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  transition: background-color 0.3s ease-in-out 0.1s,
-    color 0.3s ease-in-out 0.1s;
+  // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  // transition: background-color 0.3s ease-in-out 0.1s,
+  //   color 0.3s ease-in-out 0.1s;
 
   &:hover {
     cursor: pointer;
+    }
   }
-}
 
+.btn__theme {
+  // border-radius: 8px;
+  // margin: 40px auto;
+  transition: background-color 300ms ease, box-shadow 300ms ease;
+  animation: btn__scale-down 600ms ease;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    animation: btn__scale-up 600ms ease;
+    // box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
+    // background-color: $primary-color;
+    }
+  & button {
+    cursor: pointer;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    transition: color 300ms ease;
+      }
+    }
+
+    .btn-green {
+      background-color: $primary-color;
+      color: $secondary-color;
+      &:hover {
+        box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
+      }
+    }
+
+    // Purple button style
+    .btn-purple {
+      background-color: $accent-color;
+      color: $secondary-color;
+      &:hover {
+        box-shadow: 0 5px 20px rgba(96, 54, 94, 0.2);
+      }
+    }
+
+    // Red button style
+    .btn-red {
+      background-color: rgb(184, 54, 54);
+      color: $secondary-color;
+
+      &:hover {
+        box-shadow: 0 5px 20px rgba(184, 54, 54, 0.2);
+      }
+    }
 // .btn-big {
 //   font-size: 1.5em;
 // }
@@ -49,44 +101,6 @@
 }
 
 // Green button style
-.btn-green {
-  background-color: $primary-color;
-  color: $secondary-color;
-  border: 3px solid $primary-color;
-
-  &:hover {
-    background-color: $secondary-color;
-    color: $primary-color;
-
-    a {
-      color: $primary-color;
-    }
-  }
-}
-
-// Purple button style
-.btn-purple {
-  background-color: $accent-color;
-  color: $secondary-color;
-  border: 3px solid $accent-color;
-
-  &:hover {
-    background-color: $secondary-color;
-    color: $accent-color;
-  }
-}
-
-// Red button style
-.btn-red {
-  background-color: rgb(184, 54, 54);
-  color: $secondary-color;
-  border: 3px solid rgb(184, 54, 54);
-
-  &:hover {
-    background-color: $secondary-color;
-    color: rgb(184, 54, 54);
-  }
-}
 
 // Bouton retour sur chaque page
 .btn-back {
@@ -135,32 +149,11 @@ a.btn-back {
 
 
 // Let's style the component! __ Start copying from here
-.btn__theme {
-  height: 60px;
-  border-radius: 8px;
-  margin: 40px auto;
-  transition: background-color 300ms ease, box-shadow 300ms ease;
-  animation: btn__scale-down 600ms ease;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    animation: btn__scale-up 600ms ease;
-    box-shadow: 0 5px 20px rgba(252, 203, 10, .2);
-    background-color: $primary-color;
-    }
 
-     & button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      border: none;
-      background-color: transparent;
-      transition: color 300ms ease;
-  }
-
-}
+// .btn__theme_green {
+//     box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
+//     background-color: $primary-color;
+// }
 
 .btn__content {
   font-family: $headers-font;

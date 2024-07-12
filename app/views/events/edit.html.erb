@@ -59,8 +59,10 @@
       </ul>
     <% end %>
 
-    <%= link_to event_path(@event), class: "btn btn-green", data: { env: Rails.env, event_id: @event.id, action: "click->update-event#update" }.merge(@event.gift.nil? ? {} : { gift_id: @event.gift.id }) do %>
-      Mettre à jour
+    <%= link_to event_path(@event), class: "btn btn-green btn__theme", data: { env: Rails.env, event_id: @event.id, action: "click->update-event#update" }.merge(@event.gift.nil? ? {} : { gift_id: @event.gift.id }) do %>
+      <div class="btn__content">
+        Mettre à jour
+      </div>
     <% end %>
 
   <% end %>

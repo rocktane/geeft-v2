@@ -104,7 +104,18 @@
       </div>
     </div>
 
-    <%= f.button :submit, class: "btn-green", value: "Let's geeft it" %>
+    <%# <%= f.button :submit, class: "btn-green", value: "Let's geeft it" %>
+
+      <div class="btn__theme btn btn-green">
+      <%= button_tag(type: 'submit') do %>
+        <div class="btn__content">
+          Let's Geeft it !
+        </div>
+      <% end %>
+    </div>
+
+
+
   <% end %>
 
 </div>

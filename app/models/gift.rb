@@ -25,7 +25,7 @@ class Gift < ApplicationRecord
         model: ENV["MODEL"],
         messages: [{
           role: "user",
-          content: "Je veux une liste de trente cadeaux pour #{relationship}. Cette personne est de sexe #{genre}, elle est âgée de #{age} ans et aime #{list_of_interests}. Le cadeau sera offert à l'occasion de #{occasion}. Mon budget est de #{budget} euros. Je veux que le résultat soit intégré dans une liste numérotée sans ta propre réponse. Sois concis, je veux juste les cadeaux sans explications."
+          content: "Je veux une liste de trente cadeaux pour #{relationship}. Cette personne est de sexe #{genre}, elle est âgée de #{age} ans et aime #{list_of_interests}. Le cadeau sera offert à l'occasion de #{occasion}. Mon budget est de #{budget} euros. Je veux que le résultat soit intégré dans une liste sans ta propre réponse. Sois concis, je veux juste les cadeaux sans explications."
         }]
       })
     response["choices"].first["message"]["content"]

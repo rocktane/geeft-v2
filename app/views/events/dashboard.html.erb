@@ -3,9 +3,13 @@
     <div class="annual-calendar">
       <!-- J'ai mis le calendar en "component" pour plus de lisibilité -->
       <%= render 'shared/calendar' %>
-      <%= link_to new_event_path, :class=> "btn btn-green btn-desktop" do %>
-        <i class='fa-solid fa-square-plus'></i> Nouvel évènement
+      <%= link_to new_event_path, :class=> "btn btn-green btn__theme btn-desktop" do %>
+        <div class="btn__content">
+        Nouvel évènement
+        </div>
       <% end %>
+
+
         <!-- J'ai mis les events reliés au calendrier en "component" pour plus de lisibilité -->
         <%= render 'shared/event_calendar' %>
     </div>
