@@ -1,12 +1,21 @@
 
 <%- if controller_name != 'sessions' %>
-  <!--  <%= link_to "Log in", new_session_path(resource_name) %><br /> -->
-  <div class="btn btn-square btn-purple">
+  <!--  <%= link_to "Log in", new_session_path(resource_name) %><br />
     <%= link_to new_session_path(resource_name) do %>
-      <i class="fa-solid fa-sign-in-alt"></i>
+    <div class="switch-link">
+      Déjà inscrit ? Cliquez ici pour vous connecter
+    </div>
     <% end %>
-  </div>
 <% end %>
+-->
+
+
+<div class="switch-link">
+  Déja inscrit ?
+   <%= link_to new_session_path(resource_name) do %>
+    <div>Connectez-vous</div>
+   <% end %>
+</div>
 
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>

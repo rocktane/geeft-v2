@@ -10,6 +10,7 @@
   padding: 0.5em;
   text-align: center;
   width: 100%;
+  margin-top: 0.5em;
   // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   // transition: background-color 0.3s ease-in-out 0.1s,
   //   color 0.3s ease-in-out 0.1s;
@@ -19,21 +20,21 @@
     }
   }
 
-.btn__theme {
-  // border-radius: 8px;
-  // margin: 40px auto;
-  transition: background-color 300ms ease, box-shadow 300ms ease;
-  animation: btn__scale-down 600ms ease;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    animation: btn__scale-up 600ms ease;
-    // box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
-    // background-color: $primary-color;
-    }
-  & button {
-    cursor: pointer;
-    font-size: 1.1em;
+  .btn__theme {
+    // border-radius: 8px;
+    // margin: 40px auto;
+    transition: background-color 300ms ease, box-shadow 300ms ease;
+    animation: btn__scale-down 600ms ease;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      animation: btn__scale-up 600ms ease;
+      // box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
+      // background-color: $primary-color;
+      }
+      & button {
+        cursor: pointer;
+        font-size: 1.1em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +43,7 @@
     border: none;
     background-color: transparent;
     transition: color 300ms ease;
-      }
+    }
     }
 
     .btn-green {
@@ -50,10 +51,27 @@
       color: $secondary-color;
       &:hover {
         box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
-      }
-    }
+        }
+        }
 
-    // Purple button style
+
+
+  .btn__content {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    font-family: $headers-font;
+    color: $secondary-color;;
+    margin: auto;
+    transition: color 300ms ease;
+
+    & img {
+      width: 1.5em;
+    }
+  }
+
+
+        // Purple button style
     .btn-purple {
       background-color: $accent-color;
       color: $secondary-color;
@@ -71,9 +89,7 @@
         box-shadow: 0 5px 20px rgba(184, 54, 54, 0.2);
       }
     }
-// .btn-big {
-//   font-size: 1.5em;
-// }
+
 
 // Bouton carré
 .btn-square {
@@ -147,24 +163,7 @@ a.btn-back {
 
 
 
-
-// Let's style the component! __ Start copying from here
-
-// .btn__theme_green {
-//     box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
-//     background-color: $primary-color;
-// }
-
-.btn__content {
-  font-family: $headers-font;
-  color: $secondary-color;;
-  margin: auto;
-  text-align: center;
-  transition: color 300ms ease;
-}
-
-
-// And now is where magic begins
+// Animation boutons
 @keyframes btn__scale-up {
   from {
     transform: scale(1);

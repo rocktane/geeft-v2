@@ -26,7 +26,6 @@
     margin-bottom: 0.3em;
   }
 
-
   & input {
     font-family: $body-font;
     font-size: 1em;
@@ -51,8 +50,8 @@
     color: $primary-color;
     margin-top: 0.3em;
   }
+  }
 
-}
 
 .remember-me {
   display: flex;
@@ -79,6 +78,27 @@
 .form-inputs {
   width: 20em;
   margin-top: 1em;
+}
+
+.switch-link {
+  margin-top: 1em;
+  font-family: $body-font;
+  color: $primary-color;
+  display: flex;
+
+  & a {
+    margin-left: 0.5em;
+    color: $primary-color;
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $accent-color;
+    }
+
+  }
+
+
 }
 
 

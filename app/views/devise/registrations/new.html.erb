@@ -1,13 +1,9 @@
 <div class="body-container">
-  <div class="primary-container">
     <div class="btn-back">
       <%= link_to '< Retour', :back %>
     </div>
 
-        <div class="top-section">
-          <h2 class="user-forms-title">S'inscrire</h2>
-          <%= render "devise/shared/links" %>
-        </div>
+
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -61,15 +57,17 @@
         <div class="btn__theme btn btn-green">
           <%= button_tag(type: 'submit') do %>
             <div class="btn__content">
-              S'inscrire
+              <%= image_tag('signup.svg', alt: 'Inscription') %>
+              Inscription
             </div>
         <% end %>
         </div>
+    <%= render "devise/shared/links" %>
       </div>
-    </div>
 
 
 
     <% end %>
+
+
   </div>
-</div>
