@@ -40,17 +40,14 @@ export default class extends Controller {
       const giftName = giftContainer.querySelector(".gift-name");
 
       giftName.style.transform = "translateY(250%)";
-      console.log("vers le bas");
 
       setTimeout(() => {
         const firstBonusGift = this.bonusGifts[0];
         giftName.textContent = firstBonusGift;
-        console.log("vers le haut");
         giftName.style.opacity = 0;
         giftName.style.transform = "translateY(-250%)";
 
         setTimeout(() => {
-          console.log("reset");
           giftName.style.opacity = 1;
           giftName.style.transform = "translateY(0)";
         }, 500);

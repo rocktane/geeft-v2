@@ -1,7 +1,7 @@
 .body-container {
   background-color: $background-color;
   padding: 1em 3.2em 5em 3.2em;
-  min-height: 100vh;
+  min-height: calc(100vh - 90px);
   width: 100%;
   & a {
     text-decoration: none;
@@ -22,7 +22,6 @@
     font-size: 1.5em;
     margin: 0.5em 0 0.5em 0;
   }
-
 
   & .title {
     display: none;
@@ -96,8 +95,6 @@ div[contenteditable] {
 .geeft-right {
   cursor: pointer;
 }
-
-
 
 @media (max-width: 768px) {
   .primary-container {

@@ -3,15 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["gift", "name", "description", "url", "date"];
 
-  connect() {
-    console.log("name", this.nameTarget.value);
-    console.log("description", this.descriptionTarget.value);
-    console.log("url", this.urlTarget.value);
-    console.log("date", this.dateTarget.value);
-    const date = new Date(this.dateTarget.value);
-    console.log("new Date", date);
-    console.log(typeof date);
-  }
+  connect() {}
 
   async update(event) {
     event.preventDefault();
@@ -30,7 +22,6 @@ export default class extends Controller {
 
     const url = `${env}/events/${eventId}`;
     const newList = this.giftTargets.map((gift) => gift.innerText);
-    console.log("newList", newList);
 
     // const url = `${env}/updatelist/${giftId}`;
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
@@ -53,7 +44,6 @@ export default class extends Controller {
       });
 
       const data = await response.json();
-      console.log("data", data);
 
       if (!response.ok) {
         const errorData = await response.json();
