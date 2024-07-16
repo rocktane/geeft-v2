@@ -20,76 +20,74 @@
     }
   }
 
-  .btn__theme {
-    // border-radius: 8px;
-    // margin: 40px auto;
-    transition: background-color 300ms ease, box-shadow 300ms ease;
-    animation: btn__scale-down 600ms ease;
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.05);
-      animation: btn__scale-up 600ms ease;
-      // box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
-      // background-color: $primary-color;
-      }
-      & button {
-        cursor: pointer;
-        font-size: 1.1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-color: transparent;
-    transition: color 300ms ease;
-    }
-    }
-
-    .btn-green {
-      background-color: $primary-color;
-      color: $secondary-color;
-      &:hover {
-        box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
-        }
-        }
-
-
-
-  .btn__content {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
-    font-family: $headers-font;
-    color: $secondary-color;;
-    margin: auto;
-    transition: color 300ms ease;
-
-    & img {
-      width: 1.5em;
-    }
+.btn__theme {
+  // border-radius: 8px;
+  // margin: 40px auto;
+  transition: background-color 300ms ease, box-shadow 300ms ease;
+  animation: btn__scale-down 600ms ease;
+  &:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  animation: btn__scale-up 600ms ease;
+  // box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
+  // background-color: $primary-color;
   }
+  & button {
+  cursor: pointer;
+  font-size: 1.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  transition: color 300ms ease;
+  }
+}
+
+.btn__content {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: $headers-font;
+  color: $secondary-color;;
+  margin: auto;
+  transition: color 300ms ease;
+
+  & img {
+  width: 1.5em;
+  }
+}
+
+// Green button style
+.btn-green {
+  background-color: $primary-color;
+  color: $secondary-color;
+  &:hover {
+  box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
+  }
+}
 
 
-        // Purple button style
-    .btn-purple {
-      background-color: $accent-color;
-      color: $secondary-color;
-      &:hover {
-        box-shadow: 0 5px 20px rgba(96, 54, 94, 0.2);
-      }
-    }
+// Purple button style
+.btn-purple {
+  background-color: $accent-color;
+  color: $secondary-color;
+  &:hover {
+  box-shadow: 0 5px 20px rgba(96, 54, 94, 0.2);
+  }
+}
 
-    // Red button style
-    .btn-red {
-      background-color: rgb(184, 54, 54);
-      color: $secondary-color;
+// Red button style
+.btn-red {
+  background-color: rgb(184, 54, 54);
+  color: $secondary-color;
 
-      &:hover {
-        box-shadow: 0 5px 20px rgba(184, 54, 54, 0.2);
-      }
-    }
-
+  &:hover {
+  box-shadow: 0 5px 20px rgba(184, 54, 54, 0.2);
+  }
+}
 
 // Bouton carré
 .btn-square {
@@ -111,12 +109,14 @@
   text-decoration: none;
   padding: 0.5em;
   text-align: center;
-  width: 8em;
-  transition: background-color 0.3s ease-in-out 0.1s,
-    color 0.3s ease-in-out 0.1s;
-}
+  display: flex;
 
-// Green button style
+  & img {
+    width: 1.5em;
+    gap: 0.3em;
+  }
+
+}
 
 // Bouton retour sur chaque page
 .btn-back {
@@ -136,10 +136,6 @@ a.btn-back {
   margin-bottom: 1em;
 }
 
-// Bouton mobile
-.btn-mobile {
-  display: none;
-}
 
 .action-buttons {
   display: flex;
@@ -147,7 +143,7 @@ a.btn-back {
   margin-top: 1em;
   width: 100%;
   justify-content: flex-end;
-}
+  }
 
 .btn-dashboard {
   font-family: $headers-font;
@@ -158,7 +154,7 @@ a.btn-back {
   text-align: center;
   width: 10em;
   transition: background-color 0.3s ease-in-out 0.1s,
-    color 0.3s ease-in-out 0.1s;
+  color 0.3s ease-in-out 0.1s;
 }
 
 
@@ -166,26 +162,27 @@ a.btn-back {
 // Animation boutons
 @keyframes btn__scale-up {
   from {
-    transform: scale(1);
+  transform: scale(1);
   }
   to {
-    transform: scale(1.05);
+  transform: scale(1.05);
   }
 }
 
 @keyframes btn__scale-down {
   from {
-    transform: scale(1.05);
+  transform: scale(1.05);
   }
   to {
-    transform: scale(1);
+  transform: scale(1);
   }
 }
 
 
-
-
-
+// Bouton mobile
+.btn-mobile {
+  display: none;
+}
 
 
 @media (max-width: 900px) {

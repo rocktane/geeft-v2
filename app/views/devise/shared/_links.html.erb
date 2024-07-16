@@ -1,38 +1,37 @@
 
 <%- if controller_name != 'sessions' %>
-  <!--  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <div class="switch-link">
+    Déja inscrit ?
     <%= link_to new_session_path(resource_name) do %>
-    <div class="switch-link">
-      Déjà inscrit ? Cliquez ici pour vous connecter
-    </div>
-    <% end %>
-<% end %>
--->
-
-
-<div class="switch-link">
-  Déja inscrit ?
-   <%= link_to new_session_path(resource_name) do %>
-    <div>Connectez-vous</div>
-   <% end %>
-</div>
-
-
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <!-- <%= link_to "Sign up", new_registration_path(resource_name) %><br /> -->
-  <div class="btn btn-square btn-purple">
-    <%= link_to new_registration_path(resource_name) do %>
-      <i class="fa-solid fa-user-plus"></i>
+      <div>Cliquez ici</div>
     <% end %>
   </div>
 <% end %>
 
 
-<div class="forgot-password">
-  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <div class="switch-link">
+    Pas encore inscrit ?
+    <%= link_to new_registration_path(resource_name) do %>
+      <div>Cliquez ici</div>
+    <% end %>
+  </div>
+<% end %>
+
+<!--
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
     <%= link_to "Mot de passe oublié ?", new_password_path(resource_name) %><br />
   <% end %>
-</div>
+-->
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <div class="switch-link">
+    Mot de passe oublié ?
+    <%= link_to new_password_path(resource_name) do %>
+      <div>Cliquez ici</div>
+    <% end %>
+  </div>
+<% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />

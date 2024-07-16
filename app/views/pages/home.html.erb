@@ -25,15 +25,26 @@
       <div class="logged-out-btn-container">
         <div class="logged-out-btn">
           <p>Rejoins le Club !</p>
-          <div class="btn-home btn__theme btn-green">
-            <%= link_to 'Inscription', new_user_registration_path %>
+          <div class="btn__theme btn-home btn-green">
+            <%= link_to new_user_registration_path do %>
+            <div class="btn__content">
+              <%= image_tag('signup.svg', alt: 'Inscription') %>
+              Inscription
+            </div>
+            <% end %>
           </div>
         </div>
+
+
         <div class="logged-out-btn">
           <p>Déjà inscrit ?</p>
           <div class="btn-home btn__theme btn-purple">
-            <%= link_to 'Connexion', new_user_session_path %>
+            <%= link_to new_user_session_path do %>
+            <div class="btn__content">
+              <%= image_tag('signin.svg', alt: 'Connexion') %>
+              Connexion
           </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -48,11 +59,11 @@
     </div>
     <%= render 'shared/event_home' %>
     <div class="home-buttons">
-      <%= link_to dashboard_path, class: "btn btn__theme btn-green" do%>
+      <%= link_to dashboard_path, class: "btn-home btn__theme btn-green" do%>
         <div class="btn_content">Tableau de Bord</div>
       <% end %>
 
-      <%= link_to new_gift_path, class: "btn btn__theme btn-purple" do %>
+      <%= link_to new_gift_path, class: "btn-home btn__theme btn-purple" do %>
         <div class="btn_content">Créer une liste cadeau</div>
       <% end %>
     </div>
