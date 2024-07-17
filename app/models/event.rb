@@ -3,23 +3,26 @@ class Event < ApplicationRecord
   belongs_to :user
   has_one :gift, dependent: :destroy
 
+  RECURRING_TYPES = ['yearly'].freeze
+
   validates :name, :date, presence: true
   validate :ensure_url_valid
   validates :url, format: { with: URI::DEFAULT_PARSER.make_regexp }, allow_blank: true
+  validates :recurrency, inclusion: { in: RECURRING_TYPES, allow_nil: true }
 
   private
 
   def ensure_url_valid
-    return if self.url.blank? # skip validation if url is blank or white space
+    return if url.blank? # skip validation if url is blank or white space
 
-    url_with_http = %r{^(http(s)?:\/\/[a-zA-Z0-9\-_]+\.[a-zA-Z]+(.)+)+}
+    url_with_http = %r{^(http(s)?://[a-zA-Z0-9\-_]+\.[a-zA-Z]+(.)+)+}
     url_without_http = /^([a-zA-Z0-9\-_]+\.[a-zA-Z]+(.)+)+/
 
-    if self.url.match?(url_with_http) # check if url is valid with http or https
-      self.url = self.url
-    elsif self.url.match?(url_without_http) # check if url is valid witout http or https
-      self.url = "https://#{self.url}"
-    elsif self.url.match?(/^\s*$/)
+    if url.match?(url_with_http) # check if url is valid with http or https
+      self.url = url
+    elsif url.match?(url_without_http) # check if url is valid witout http or https
+      self.url = "https://#{url}"
+    elsif url.match?(/^\s*$/)
       self.url = ''
     else
       errors.add(:url, "n'est pas valide.")
