@@ -29,7 +29,6 @@ export default class extends Controller {
 
   updateValue() {
     const slider = this.sliderTarget;
-    // console.log(this.inputTarget.innerHTML);
     this.inputTarget.innerHTML = slider.value;
     this.updatePos();
   }

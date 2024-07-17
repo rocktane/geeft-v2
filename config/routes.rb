@@ -1,18 +1,23 @@
 Rails.application.routes.draw do
   devise_for :users
-  get "up" => "rails/health#show", as: :rails_health_check
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions',
+  #   registrations: 'users/registrations'
+  # }
 
-  root "pages#home"
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
-  patch "updatelist/:id" => "gifts#updatelist", as: :updatelist
+  root 'pages#home'
 
-  get "dashboard" => "events#dashboard", as: :dashboard
-  get "link" => "events#link", as: :link
+  patch 'updatelist/:id' => 'gifts#updatelist', as: :updatelist
+
+  get 'dashboard' => 'events#dashboard', as: :dashboard
+  get 'link' => 'events#link', as: :link
 
   resources :events do
-    resources :gifts, only: [:new, :create]
+    resources :gifts, only: %i[new create]
   end
   resources :gifts do
-    resources :events, only: [:new, :create]
+    resources :events, only: %i[new create]
   end
 end

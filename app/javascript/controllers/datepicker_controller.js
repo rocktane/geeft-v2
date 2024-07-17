@@ -12,14 +12,17 @@ export default class extends Controller {
   }
 
   intializeFlatpickr() {
-    console.log("Hello, datepicker!");
     const userLang = navigator.language === "fr" ? "fr" : "en";
+    let datesPresent, booked;
 
-    const booked = JSON.parse(
-      document.body
-        .querySelector("[data-events-dates]")
-        .getAttribute("data-events-dates")
-    );
+    if (document.querySelector("[data-events-dates]")) {
+      datesPresent = true;
+      booked = JSON.parse(
+        document.body
+          .querySelector("[data-events-dates]")
+          .getAttribute("data-events-dates")
+      );
+    }
 
     if (this.element._flatpickr) {
       this.element._flatpickr.destroy();
@@ -38,6 +41,8 @@ export default class extends Controller {
           detail: { selectedDates, dateStr, instance },
         });
         document.dispatchEvent(event);
+        const selectedDate = document.querySelector("#new-event");
+        selectedDate.href = `/events/new?date=${dateStr}`;
       },
 
       onDayCreate: function (dObj, dStr, fp, dayElem) {
@@ -45,11 +50,13 @@ export default class extends Controller {
         const adjustedDate = new Date(dayElem.dateObj.getTime() - offset);
         const isoString = adjustedDate.toISOString().slice(0, 10).valueOf();
 
-        booked.forEach((bookedDate) => {
-          if (isoString == bookedDate) {
-            dayElem.innerHTML += "<span class='booked'></span>";
-          }
-        });
+        if (datesPresent) {
+          booked.forEach((bookedDate) => {
+            if (isoString == bookedDate) {
+              dayElem.innerHTML += "<span class='booked'></span>";
+            }
+          });
+        }
       },
 
       onMonthChange: function () {
