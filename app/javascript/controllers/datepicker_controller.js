@@ -41,6 +41,8 @@ export default class extends Controller {
           detail: { selectedDates, dateStr, instance },
         });
         document.dispatchEvent(event);
+        const selectedDate = document.querySelector("#new-event");
+        selectedDate.href = `/events/new?date=${dateStr}`;
       },
 
       onDayCreate: function (dObj, dStr, fp, dayElem) {
