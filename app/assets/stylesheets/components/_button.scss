@@ -10,6 +10,7 @@
   padding: 0.5em;
   text-align: center;
   width: 100%;
+  margin-top: 0.5em;
   // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   // transition: background-color 0.3s ease-in-out 0.1s,
   //   color 0.3s ease-in-out 0.1s;
@@ -25,55 +26,68 @@
   transition: background-color 300ms ease, box-shadow 300ms ease;
   animation: btn__scale-down 600ms ease;
   &:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    animation: btn__scale-up 600ms ease;
-    // box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
-    // background-color: $primary-color;
-    }
+  cursor: pointer;
+  transform: scale(1.05);
+  animation: btn__scale-up 600ms ease;
+  // box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
+  // background-color: $primary-color;
+  }
   & button {
-    cursor: pointer;
-    font-size: 1.1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-color: transparent;
-    transition: color 300ms ease;
-      }
-    }
+  cursor: pointer;
+  font-size: 1.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  transition: color 300ms ease;
+  }
+}
 
-    .btn-green {
-      background-color: $primary-color;
-      color: $secondary-color;
-      &:hover {
-        box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
-      }
-    }
+.btn__content {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: $headers-font;
+  color: $secondary-color;;
+  margin: auto;
+  transition: color 300ms ease;
 
-    // Purple button style
-    .btn-purple {
-      background-color: $accent-color;
-      color: $secondary-color;
-      &:hover {
-        box-shadow: 0 5px 20px rgba(96, 54, 94, 0.2);
-      }
-    }
+  & img {
+  width: 1.5em;
+  }
+}
 
-    // Red button style
-    .btn-red {
-      background-color: rgb(184, 54, 54);
-      color: $secondary-color;
+// Green button style
+.btn-green {
+  background-color: $primary-color;
+  color: $secondary-color;
+  &:hover {
+  box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
+  }
+}
 
-      &:hover {
-        box-shadow: 0 5px 20px rgba(184, 54, 54, 0.2);
-      }
-    }
-// .btn-big {
-//   font-size: 1.5em;
-// }
+
+// Purple button style
+.btn-purple {
+  background-color: $accent-color;
+  color: $secondary-color;
+  &:hover {
+  box-shadow: 0 5px 20px rgba(96, 54, 94, 0.2);
+  }
+}
+
+// Red button style
+.btn-red {
+  background-color: rgb(184, 54, 54);
+  color: $secondary-color;
+
+  &:hover {
+  box-shadow: 0 5px 20px rgba(184, 54, 54, 0.2);
+  }
+}
 
 // Bouton carré
 .btn-square {
@@ -95,12 +109,15 @@
   text-decoration: none;
   padding: 0.5em;
   text-align: center;
-  width: 8em;
-  transition: background-color 0.3s ease-in-out 0.1s,
-    color 0.3s ease-in-out 0.1s;
-}
+  display: flex;
+  width: 50%;
 
-// Green button style
+  & img {
+    width: 1.5em;
+    gap: 0.3em;
+  }
+
+}
 
 // Bouton retour sur chaque page
 .btn-back {
@@ -120,10 +137,6 @@ a.btn-back {
   margin-bottom: 1em;
 }
 
-// Bouton mobile
-.btn-mobile {
-  display: none;
-}
 
 .action-buttons {
   display: flex;
@@ -131,7 +144,7 @@ a.btn-back {
   margin-top: 1em;
   width: 100%;
   justify-content: flex-end;
-}
+  }
 
 .btn-dashboard {
   font-family: $headers-font;
@@ -142,51 +155,35 @@ a.btn-back {
   text-align: center;
   width: 10em;
   transition: background-color 0.3s ease-in-out 0.1s,
-    color 0.3s ease-in-out 0.1s;
+  color 0.3s ease-in-out 0.1s;
 }
 
 
 
-
-// Let's style the component! __ Start copying from here
-
-// .btn__theme_green {
-//     box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
-//     background-color: $primary-color;
-// }
-
-.btn__content {
-  font-family: $headers-font;
-  color: $secondary-color;;
-  margin: auto;
-  text-align: center;
-  transition: color 300ms ease;
-}
-
-
-// And now is where magic begins
+// Animation boutons
 @keyframes btn__scale-up {
   from {
-    transform: scale(1);
+  transform: scale(1);
   }
   to {
-    transform: scale(1.05);
+  transform: scale(1.05);
   }
 }
 
 @keyframes btn__scale-down {
   from {
-    transform: scale(1.05);
+  transform: scale(1.05);
   }
   to {
-    transform: scale(1);
+  transform: scale(1);
   }
 }
 
 
-
-
-
+// Bouton mobile
+.btn-mobile {
+  display: none;
+}
 
 
 @media (max-width: 900px) {

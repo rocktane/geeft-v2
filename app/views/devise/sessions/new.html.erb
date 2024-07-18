@@ -1,48 +1,44 @@
 <div class="body-container">
 
-<div class="primary-container">
   <div class="btn-back">
     <%= link_to '< Retour', :back %>
   </div>
-<div class="top-section">
-  <h2 class="user-forms-title">Se connecter</h2>
-  <%= render "devise/shared/links" %>
-</div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <div class="info-user">
-    <h3>Email</h3>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                label: "Email or username",
-                input_html: { autocomplete: "email" }
-                 %>
-     </div>
-     <div class="info-user">
-      <h3>Mot de Passe</h3>
-      <%= f.input :password,
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-      </div>
-
-      <div class="remember-me">
-        <%= f.input :remember_me, as: :boolean, label: "Se souvenir de moi" if devise_mapping.rememberable? %>
-      </div>
-
-      <div class="btn__theme btn btn-green">
-      <%= button_tag(type: 'submit') do %>
-        <div class="btn__content">
-          Se connecter
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <div class="info-user">
+        <h3>Email</h3>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    label: "Email or username",
+                    input_html: { autocomplete: "email" }
+                    %>
         </div>
-      <% end %>
-    </div>
+        <div class="info-user">
+          <h3>Mot de Passe</h3>
+          <%= f.input :password,
+                    required: true,
+                    input_html: { autocomplete: "current-password" } %>
+          </div>
 
 
-  </div>
+            <%= f.input :remember_me, as: :boolean, label: "Se souvenir de moi" if devise_mapping.rememberable? %>
 
-<% end %>
 
-  </div>
+
+          <div class="btn__theme btn btn-green">
+          <%= button_tag(type: 'submit') do %>
+            <div class="btn__content">
+              <%= image_tag('signin.svg', alt: 'Connexion') %>
+              Connexion
+            </div>
+          <% end %>
+        </div>
+
+
+      <%= render "devise/shared/links" %>
+      </div>
+
+    <% end %>
 </div>
