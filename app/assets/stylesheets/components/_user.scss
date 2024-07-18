@@ -26,7 +26,6 @@
     margin-bottom: 0.3em;
   }
 
-
   & input {
     font-family: $body-font;
     font-size: 1em;
@@ -51,34 +50,34 @@
     color: $primary-color;
     margin-top: 0.3em;
   }
-
-}
-
-.remember-me {
-  display: flex;
-  align-items: center;
-  margin: 0.5em 0 0.5em 0;
-
-  & input {
-    margin-right: 0.5em;
   }
 
-  & label {
-    font-family: $body-font;
-    font-size: 1em;
-    color: $primary-color;
-  }
-}
 
-.forgot-password {
-  font-family: $body-font;
-  font-size: 1em;
-  margin-top: 0.5em;
-}
 
 .form-inputs {
   width: 20em;
   margin-top: 1em;
+}
+
+.switch-link {
+  margin-top: 1em;
+  font-family: $body-font;
+  color: $primary-color;
+  display: flex;
+
+  & a {
+    margin-left: 0.5em;
+    color: $primary-color;
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $accent-color;
+    }
+
+  }
+
+
 }
 
 

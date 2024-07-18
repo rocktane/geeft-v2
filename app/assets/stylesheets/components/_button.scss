@@ -10,6 +10,7 @@
   padding: 0.5em;
   text-align: center;
   width: 100%;
+  margin-top: 0.5em;
   // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   // transition: background-color 0.3s ease-in-out 0.1s,
   //   color 0.3s ease-in-out 0.1s;
@@ -45,6 +46,21 @@
   }
 }
 
+.btn__content {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: $headers-font;
+  color: $secondary-color;
+  margin: auto;
+  transition: color 300ms ease;
+
+  & img {
+    width: 1.5em;
+  }
+}
+
+// Green button style
 .btn-green {
   background-color: $primary-color;
   color: $secondary-color;
@@ -71,9 +87,6 @@
     box-shadow: 0 5px 20px rgba(184, 54, 54, 0.2);
   }
 }
-// .btn-big {
-//   font-size: 1.5em;
-// }
 
 // Bouton carré
 .btn-square {
@@ -95,12 +108,14 @@
   text-decoration: none;
   padding: 0.5em;
   text-align: center;
-  width: 8em;
-  transition: background-color 0.3s ease-in-out 0.1s,
-    color 0.3s ease-in-out 0.1s;
-}
+  display: flex;
+  width: 50%;
 
-// Green button style
+  & img {
+    width: 1.5em;
+    gap: 0.3em;
+  }
+}
 
 // Bouton retour sur chaque page
 .btn-back {
@@ -118,11 +133,6 @@ a.btn-back {
   color: $primary-color;
   opacity: 58%;
   margin-bottom: 1em;
-}
-
-// Bouton mobile
-.btn-mobile {
-  display: none;
 }
 
 .action-buttons {
@@ -145,22 +155,7 @@ a.btn-back {
     color 0.3s ease-in-out 0.1s;
 }
 
-// Let's style the component! __ Start copying from here
-
-// .btn__theme_green {
-//     box-shadow: 0 5px 20px rgba(0, 70, 67, 0.2);
-//     background-color: $primary-color;
-// }
-
-.btn__content {
-  font-family: $headers-font;
-  color: $secondary-color;
-  margin: auto;
-  text-align: center;
-  transition: color 300ms ease;
-}
-
-// And now is where magic begins
+// Animation boutons
 @keyframes btn__scale-up {
   from {
     transform: scale(1);
@@ -179,44 +174,47 @@ a.btn-back {
   }
 }
 
-@media (max-width: 900px) {
-  // Bouton mobile
-  .btn-mobile {
-    position: fixed;
-    bottom: 2em;
-    right: 1.4em;
-    background-color: $accent-color;
-    width: 5em;
-    height: 5em;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+// Bouton mobile
+.btn-mobile {
+  display: none;
+}
 
-    & i {
-      font-size: 2em;
-      margin: 0.5em;
-    }
-  }
+// Bouton mobile
+.btn-mobile {
+  position: fixed;
+  bottom: 2em;
+  right: 1.4em;
+  background-color: $accent-color;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .btn-square {
-    top: 0;
+  & i {
+    font-size: 2em;
+    margin: 0.5em;
   }
+}
 
-  .btn-home {
-    width: 6.5em;
-    font-size: 1.4em;
-  }
+.btn-square {
+  top: 0;
+}
 
-  .btn-calendar {
-    display: none;
-  }
+.btn-home {
+  width: 6.5em;
+  font-size: 1.4em;
+}
 
-  .btn-back {
-    display: none;
-  }
+.btn-calendar {
+  display: none;
+}
 
-  .btn-desktop {
-    display: none;
-  }
+.btn-back {
+  display: none;
+}
+
+.btn-desktop {
+  display: none;
 }

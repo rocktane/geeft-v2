@@ -53,8 +53,6 @@ def sessions_titles
   case action_name
     when "new"
       "> Connexion"
-    when "create"
-      "> Connexion"
     when "destroy"
       "> Déconnexion"
   end
@@ -64,16 +62,14 @@ def registrations_titles
   case action_name
     when "new"
       "> Inscription"
-    when "create"
-      "> Inscription"
+    when "edit"
+      "> Modifier mon profil"
   end
 end
 
 def passwords_titles
   case action_name
     when "new"
-      "> Mot de passe oublié"
-    when "create"
       "> Mot de passe oublié"
   end
 end
