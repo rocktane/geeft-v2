@@ -26,8 +26,9 @@ input[type="checkbox"] + label {
   }
 }
 
-input[type="radio"]:checked + label,
-input[type="checkbox"]:checked + label {
+.occasion input[type="radio"]:checked + label,
+.relationship input[type="radio"]:checked + label,
+.interests input[type="checkbox"]:checked + label {
   background-color: $primary-color;
   color: $secondary-color;
   box-shadow: rgba(50, 50, 93, 0.5) 0px 8px 11px -4px,

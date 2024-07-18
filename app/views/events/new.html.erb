@@ -7,9 +7,20 @@
 
     <% model_to_use = [@gift, @event] || @event %>
     <%= form_with(model: model_to_use, url: events_path(gift_id: @gift.id)) do |f| %>
+    <div class="date-and-recurrent">
       <div class="secondary-container date-section date-show">
-        <%= f.text_field :date, value: params[:date], class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
+        <% date = params[:date] || Date.today %>
+        <%= f.text_field :date, value: date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
       </div>
+
+      <div class="secondary-container recurrent">
+        <%= f.check_box :recurrent, {}, true, false %>
+        <label for="event_recurrent">
+          <span class="check"></span>
+          A lieu tous les ans ?
+        </label>
+      </div>
+    </div>
 
       <div class="secondary-container">
         <h3>Nom de l'évènement</h3>
@@ -20,6 +31,7 @@
         <h3><%= f.label :description, "Description" %></h3>
       <%= f.text_field :description, class: 'no-box-input', placeholder: "Pour le cadeau commun de ..." %>
       </div>
+
 
       <div class="secondary-container">
         <h3><%= f.label :url, "URL" %></h3>
@@ -55,9 +67,7 @@
       <%= link_to new_gift_path do %>
         <%= image_tag('close-gift.png', alt: 'gift') %>
       <% end %>
-
-        <%# <h2>There is no Gift</h2> %>
-      <% end %>
+    <% end %>
 
 
 
@@ -74,5 +84,3 @@
   </div>
 
 </div>
-
-<%= console %>

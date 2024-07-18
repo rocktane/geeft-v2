@@ -36,11 +36,26 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.gift_list = @gift.generated_list
     @event.user = current_user
-    @event.gift = @gift
+    @event.gift = @gift if @gift.present?
     if @event.save
+      duplicate(@event) if @event.recurrent && !@event.occurrence_from.present?
       redirect_to event_path(@event), notice: "L'évènement a été créé avec succès."
     else
       render :new
+    end
+  end
+
+  def duplicate(event)
+    years_to_cover = 3 # create occurrences for the next 10 years
+    year = 1
+    while year <= years_to_cover
+      new_event = event.dup
+      new_event.gift_list = []
+      new_event.url = ''
+      new_event.occurrence_from = event.id
+      new_event.date = event.date.next_year(year)
+      new_event.save!
+      year += 1
     end
   end
 
@@ -92,7 +107,8 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :description, :url, :user_id, :gift_id, :event_id, gift_list: [])
+    params.require(:event).permit(:name, :date, :recurrent, :description, :url, :user_id, :gift_id, :event_id,
+                                  gift_list: [])
   end
 
   def set_event

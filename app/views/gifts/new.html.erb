@@ -81,14 +81,9 @@
       </div>
 
       <div class="new-form-section budget" data-controller="budget-slider">
-      <%# <div class="new-form-section budget"> <!-- without data-controller="budget-slider"> --> %>
         <%= f.label :budget, "Budget", class: "criteria-title" %>
         <%= f.input :budget, as: :range, input_html: { id: 'budget-slider', min: 0, max: 500, step: 1, value: 50 , data: { action: "input->budget-slider#updateValue", budget_slider_target: "slider" } },label: false %>
-        <%# <div id="budget-value">50</div> %>
         <div id="budget-value" data-budget-slider-target="input">50</div>
-        <%# <div id="drag_div">
-            <div id="hit_div"></div>
-        </div> %>
       </div>
 
       <div class="new-form-section interests">
@@ -104,8 +99,6 @@
       </div>
     </div>
 
-    <%# <%= f.button :submit, class: "btn-green", value: "Let's geeft it" %>
-
       <div class="btn__theme btn btn-green">
       <%= button_tag(type: 'submit') do %>
         <div class="btn__content">
@@ -119,163 +112,3 @@
   <% end %>
 
 </div>
-
-<%# <script>
-  // À intégrer via Stimulus
-  document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.getElementById('budget-slider');
-    const slider_element = slider.getBoundingClientRect();
-    const output = document.getElementById('budget-value');
-    const output_element = output.getBoundingClientRect();
-
-    update_pos = function() {
-      const budget = parseInt(slider.value);
-      const percentage = budget / (slider.max - slider.min);
-      const size = 40
-      const variableSize = size * (1 + percentage )
-      const size_px = variableSize + 'px'
-
-      output.style.width = size_px
-      output.style.height = size_px
-      output.style.left = `${(slider_element.width - size )* percentage}px`;
-    }
-
-    slider.oninput = function() {
-      output.innerHTML = this.value;
-      update_pos();
-    }
-
-    update_pos();
-  });
-
-</script> %>
-
-<%# <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const slider = document.getElementById('budget-slider');
-    const sliderElement = slider.getBoundingClientRect();
-    const input = document.getElementById('budget-value2');
-    const inputElement = input.getBoundingClientRect();
-
-    update_pos = function() {
-      const budget = parseInt(slider.value); // 50
-      const percentage = budget / (slider.max - slider.min); // 0.1
-      const inputSize = inputElement.width // 27
-      const thumbSize = 40 // FIND THE VALUE IN BUDGET_SLIDER.SCSS
-      const padding = 22 // FIND THE VALUE IN FORM.SCSS
-
-      input.style.top = '36px';
-      input.style.width = 'fit-content';
-      // input.style.left = `${sliderElement.x + sliderElement.width * percentage - thumbSize - (thumbSize / 3 / 0.25) * percentage}px`;
-      // const posCalculated = sliderElement.x + (sliderElement.width - thumbSize) * percentage - padding - inputSize / 2
-      console.log(inputSize);
-      console.log(inputElement.width);
-      console.log((inputElement.right - inputElement.left));
-      const posCalculated = inputSize - 6 + (thumbSize)
-      input.style.left = `${posCalculated}px`;
-
-      slider.style.border = '1px solid red';
-      input.style.border = '1px solid red';
-
-      // console.log('slider pos', sliderElement.x)
-      // console.log('input pos',inputElement.x)
-      // console.log('slider width', (sliderElement.width * percentage))
-      // console.log('input width',inputElement.width)
-      // console.log('pos calculated', input.style.left)
-      // console.log('diff', sliderElement.x - inputElement.x)
-      // console.log('diff', (((sliderElement.width - thumbSize) * percentage - thumbSize / 2) - posCalculated))
-    }
-
-    slider.oninput = function() {
-      input.innerHTML = this.value;
-      update_pos();
-    }
-    update_pos();
-  });
-</script> %>
-
-<%# <script>
-  document.addEventListener('DOMContentLoaded', function() {
-  const decrementButton = document.getElementById('decrement');
-  const incrementButton = document.getElementById('increment');
-  const ageInput = document.getElementById('age_input');
-  const hiddenAgeField = document.getElementById('age_input_hidden');
-
-  decrementButton.addEventListener('click', function() {
-    let age = parseInt(ageInput.value, 10);
-    if (age > 0) {
-      age -= 1;
-      ageInput.value = age;
-      hiddenAgeField.value = age;
-    }
-  });
-
-  incrementButton.addEventListener('click', function() {
-    let age = parseInt(ageInput.value, 10);
-    if (age < 100) {
-      age += 1;
-      ageInput.value = age;
-      hiddenAgeField.value = age;
-    }
-  });
-});
-
-</script> %>
-
-<%# <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    function interestsList() {
-      const interests = document.querySelector('.gift_interests');
-      let arrayFromList = [], arrayFromNew = [];
-      interests.addEventListener('click', function(event) {
-        event.preventDefault();
-        const parent = event.target.parentElement;
-        const input = parent.querySelector('input');
-        input.checked = !input.checked;
-
-        const inputs = document.querySelectorAll('.interests input[type="checkbox"]:checked');
-
-        // if (event.target.getAttribute('id') === `new-gift-${event.target.textContent.toLowerCase()}`) {
-        //   arrayFromNew = [];
-        //   if (input.checked === true) {
-        //     arrayFromNew.push(event.target.textContent);
-        //   }
-        // } else {
-          arrayFromList = [];
-          inputs.forEach((element) => {
-            arrayFromList.push(element.value);
-          });
-        // }
-
-        // console.log(arrayFromList.concat(arrayFromNew));
-        console.log(arrayFromList);
-        // console.log(arrayFromNew);
-
-        return arrayFromList.concat(arrayFromNew);
-      });
-    }
-    interestsList();
-  });
-</script> %>
-
-<%# <script>
-  function empty() {
-    document.getElementById('searchInterestsInput').value = '';
-    filterList('interests');
-  }
-
-  function reset() {
-    this.empty();
-    const checkboxes = document.querySelectorAll('.interests input[type="checkbox"]:checked');
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
-    if (document.querySelectorAll('[id^="new-gift-"]')) {
-      const newGifts = document.querySelectorAll('[id^="new-gift-"]');
-      newGifts.forEach((newGift) => {
-        newGift.parentElement.remove();
-      });
-    }
-    filterList('interests');
-  }
-</script> %>
