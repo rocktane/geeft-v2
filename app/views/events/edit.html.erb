@@ -15,8 +15,10 @@
           <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar", update_event_target: "date" } %>
           <i class="fa-solid fa-calendar"></i>
         </div>
-        <%= link_to event_path(@event), class: "btn btn-square btn-red", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-          <i class="fa-solid fa-trash"></i>
+        <%= link_to event_path(@event), class: "btn btn-square btn-red btn__theme", data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+          <div class="btn__content">
+            <%= image_tag('bin.svg', alt: 'Supprimer') %>
+          </div>
         <% end %>
       </div>
 
@@ -61,6 +63,7 @@
 
     <%= link_to event_path(@event), class: "btn btn-green btn__theme", data: { env: Rails.env, event_id: @event.id, action: "click->update-event#update" }.merge(@event.gift.nil? ? {} : { gift_id: @event.gift.id }) do %>
       <div class="btn__content">
+        <%= image_tag('update.svg', alt: 'Modifier') %>
         Mettre à jour
       </div>
     <% end %>
