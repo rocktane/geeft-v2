@@ -144,10 +144,10 @@ i {
   grid-gap: 1em;
 }
 
-input[type="radio"],
-span.checkbox input[type="checkbox"] {
-  display: none;
-}
+// input[type="radio"],
+// span.checkbox input[type="checkbox"] {
+//   display: none;
+// }
 
 .radio_buttons span,
 .check_boxes span {
@@ -195,11 +195,12 @@ span.checkbox input[type="checkbox"] {
   padding: 0 22px;
 }
 
-.date-and-recurrency {
+.date-and-recurrent {
   display: flex;
+  gap: 0.5em;
 }
 
-.secondary-container.recurrency {
+.secondary-container.recurrent {
   display: flex;
   gap: 0.5em;
   padding: 6px;
@@ -207,57 +208,33 @@ span.checkbox input[type="checkbox"] {
     margin-bottom: 0;
     align-self: center;
   }
-  input {
-    &:checked {
-      ~ .check {
-        border-color: #00ea90;
-        box-shadow: 0px 0px 0px 15px #00ea90 inset;
-
-        &::after {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
+  input:checked {
+    ~ label .check {
+      border: none;
+      background-color: $primary-color;
     }
   }
 }
 
-.secondary-container input#event_recurrency {
+.secondary-container input#event_recurrent {
   width: auto;
+  // display: none;
 }
 
 .check {
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  border-radius: 100px;
-  background-color: #fff;
-  border: 2px solid #00ea90;
-  box-shadow: 0px 0px 0px 0px #00ea90 inset;
-  transition: all 0.15s cubic-bezier(0, 1.05, 0.72, 1.07);
-
-  &::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 4;
-    position: absolute;
-    transform: scale(0);
-    background-size: 50%;
-    background-image: url("https://s6.picofile.com/d/8392306668/bacc888c-bed7-41a9-bf24-f6ff0718f471/checkmark.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    transition-delay: 0.2s !important;
-    transition: all 0.25s cubic-bezier(0, 1.05, 0.72, 1.07);
-  }
+  border-radius: 50%;
+  background-color: $secondary-color;
+  border: 2px solid $primary-color;
 }
 
-label[for="event_recurrency"] {
+label[for="event_recurrent"] {
   display: flex;
   align-items: center;
   gap: 0.5em;

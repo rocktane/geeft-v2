@@ -3,12 +3,10 @@ class Event < ApplicationRecord
   belongs_to :user
   has_one :gift, dependent: :destroy
 
-  RECURRING_TYPES = ['yearly'].freeze
-
   validates :name, :date, presence: true
   validate :ensure_url_valid
   validates :url, format: { with: URI::DEFAULT_PARSER.make_regexp }, allow_blank: true
-  validates :recurrency, inclusion: { in: RECURRING_TYPES, allow_nil: true }
+  validates :recurrent, inclusion: { in: [true, false] }
 
   private
 
