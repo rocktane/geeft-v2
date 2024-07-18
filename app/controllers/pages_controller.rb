@@ -5,7 +5,7 @@ class PagesController < ApplicationController
       # Récupérer tous les évènements de l'utilisateur
       @events = Event.where(user: current_user.id).order(:date)
     else
-      @user = "guest"
+      @user = 'guest'
     end
   end
 end

@@ -4,21 +4,22 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
   def dashboard
-    # Pour avoir les evenements organisés par mois
     @events = Event.where(user: current_user).order(:date)
-    @eventsDates = @events.map { |event| event.date.strftime('%Y-%m-%d') }
-    # start_date = Date.today.beginning_of_month
-    # end_date = 1.year.from_now.beginning_of_month
-    start_date = [@events.first.date.beginning_of_month, Date.today.beginning_of_month].min
-    end_date = @events.last.date.beginning_of_month
-    @all_months = (start_date..end_date).map(&:beginning_of_month).uniq
-    @today = Date.today
-    @future_events = Event.where(user: current_user).where('date >= ?', @today).order(:date)
-    @events_by_month = @all_months.map do |month|
-      unless @events.select { |e| e.date.beginning_of_month == month }.nil?
-        [month, @events.select { |e| e.date.beginning_of_month == month }]
-      end
-    end.to_h
+    if @events.empty?
+      render :dashboard
+    else
+      @events_dates = @events.map { |event| event.date.strftime('%Y-%m-%d') }
+      start_date = [@events.first.date.beginning_of_month, Date.today.beginning_of_month].min
+      end_date = @events.last.date.beginning_of_month
+      @all_months = (start_date..end_date).map(&:beginning_of_month).uniq
+      @today = Date.today
+      @future_events = Event.where(user: current_user).where('date >= ?', @today).order(:date)
+      @events_by_month = @all_months.map do |month|
+        unless @events.select { |e| e.date.beginning_of_month == month }.nil?
+          [month, @events.select { |e| e.date.beginning_of_month == month }]
+        end
+      end.to_h
+    end
   end
 
   def show

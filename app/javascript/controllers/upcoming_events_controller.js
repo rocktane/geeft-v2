@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["event", "bob"];
 
   connect() {
-    console.log("Hello, upcoming events!");
     this.update();
 
     const calendarNavbar = document.querySelector(".flatpickr-months");
@@ -86,10 +85,7 @@ export default class extends Controller {
       );
 
       const months = document.querySelectorAll(".upcoming-month");
-      console.log(months[0]);
       months.forEach((month) => {
-        console.log("month from dataset", month.getAttribute("month"));
-        console.log("calendar_month", calendar_month + 1);
         if (
           month.querySelectorAll(".event-infos-calendar").length >= 1 &&
           month.getAttribute("month") < calendar_month + 1
@@ -121,7 +117,6 @@ export default class extends Controller {
         }
       });
     } else {
-      console.log("No data-year or data-month attributes found");
     }
     this.only_six_months();
     this.year_update();

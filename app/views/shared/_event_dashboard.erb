@@ -1,3 +1,14 @@
+<% if @events.empty? %>
+  <div class="event-container-dashboard">
+    <div class="event-dashboard-title">
+      Aucun évènement à venir
+    </div>
+    <div class="event-dashboard-description">
+      <div>Vous n'avez pas encore créé d'évènement.</div>
+      <div>Créez-en un pour voir ce que vous pouvez faire.</div>
+    </div>
+  </div>
+<% else %>
   <% @future_events.each do |event| %>
     <div class="event-container-dashboard">
       <%= link_to event_path(event) do %>
@@ -8,22 +19,12 @@
         </div>
       <% end %>
         <div class="event-dashboard-description">
-          <!--
-            <% if !event.url.nil? %>
-              <% if event.url.strip != "" %>
-                    <%= link_to event.url do %>
-                      <div class="event-url"><i class="fa-solid fa-link"></i> <%= event.url.match(/\/\/(.*)/).captures[0] %></div>
-                    <% end %>
-              <% end %>
-            <% end %>
-            -->
           <div><%= event.description %></div>
         </div>
         <div class="action-buttons">
 
          <%# <%= link_to "Voir en détails", event_path(event), class: "btn btn-dashboard btn-green " %>
           <%# <%= link_to "Partager", "#", class: "btn btn-dashboard btn-purple" %>
-
           <%= link_to event_path(event), class: "btn btn-dashboard btn__theme btn-green" do %>
             <div class="btn__content">
               <%= image_tag('eye.svg' , alt:'Voir +')  %>
@@ -38,8 +39,7 @@
             </div>
           <% end %>
 
-
-
         </div>
-    </div>
+      </div>
   <% end %>
+<% end %>

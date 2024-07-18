@@ -9,6 +9,7 @@
   display: inline-block;
   border-radius: 0.8em;
   border: 2px solid $primary-color;
+  transition: box-shadow 0.3s ease-in-out;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 7px 10px -3px,
     rgba(0, 0, 0, 0.3) 0px 4px 8px -4px;
   &:hover {
