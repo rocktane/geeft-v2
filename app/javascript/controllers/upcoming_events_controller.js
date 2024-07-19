@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="upcoming-events"
 export default class extends Controller {
-  static targets = ["event", "bob"];
+  static targets = ["event", "upcomingMonth", "year"];
 
   connect() {
     this.update();
@@ -78,60 +78,52 @@ export default class extends Controller {
           .querySelector(".flatpickr-current-month")
           .getAttribute("data-year")
       );
-      const calendar_month = parseInt(
-        document
-          .querySelector(".flatpickr-current-month")
-          .getAttribute("data-month")
-      );
+      const calendar_month =
+        1 +
+        parseInt(
+          document
+            .querySelector(".flatpickr-current-month")
+            .getAttribute("data-month")
+        );
 
-      const months = document.querySelectorAll(".upcoming-month");
-      months.forEach((month) => {
-        if (
-          month.querySelectorAll(".event-infos-calendar").length >= 1 &&
-          month.getAttribute("month") < calendar_month + 1
-        ) {
-          month.style.display = "none";
-        } else {
-          month.style.display = "";
-        }
+      this.upcomingMonthTargets.forEach((month) => {
+        month.style.display = "";
       });
 
-      this.eventTargets.forEach((event) => {
-        const eventYear = parseInt(event.dataset["eventDateYear"]);
-        const eventMonth = parseInt(event.dataset["eventDateMonth"]);
+      const years = this.yearTargets;
 
-        if (
-          eventYear < calendar_year ||
-          (eventYear === calendar_year && eventMonth < calendar_month + 1)
-        ) {
-          event.style.display = "none";
-          event.closest(".upcoming-month").style.display = "none";
-        } else {
-          event.style.display = "";
-          event.closest(".upcoming-month").style.display = "";
-          if (!document.querySelector(".flatpickr-day.selected")) {
-            this.eventTargets.forEach((event) => {
-              event.style.color = "inherit";
-            });
-          }
+      years.forEach((year) => {
+        const num_year = parseInt(year.innerText);
+        const monthsOfYear =
+          year.parentElement.querySelectorAll(".upcoming-month");
+        if (num_year === calendar_year) {
+          monthsOfYear.forEach((month) => {
+            const num_month = parseInt(month.getAttribute("month"));
+            if (num_month < calendar_month) {
+              month.style.display = "none";
+            }
+          });
+        } else if (num_year < calendar_year) {
+          monthsOfYear.forEach((month) => {
+            month.style.display = "none";
+          });
         }
       });
-    } else {
+      this.only_six_months(calendar_month, calendar_year);
+      this.year_update();
     }
-    this.only_six_months();
-    this.year_update();
   }
 
-  only_six_months() {
-    const num_months = 6;
-    const months_displayed = this.bobTargets.filter(
-      (event) => event.style.display !== "none"
+  only_six_months(current_month, current_year) {
+    const num_months = 8;
+    const months = this.upcomingMonthTargets;
+    const display_months = months.filter(
+      (month) => month.style.display !== "none"
     );
-    if (months_displayed.length >= num_months) {
-      months_displayed.slice(num_months).forEach((event) => {
-        event.style.display = "none";
-      });
-    }
+
+    display_months.slice(num_months).forEach((month) => {
+      month.style.display = "none";
+    });
   }
 
   year_update() {
@@ -140,11 +132,7 @@ export default class extends Controller {
       const months = year.querySelectorAll(".upcoming-month");
       const array = [];
       months.forEach((month) => {
-        if (month.style.display == "none") {
-          array.push(month.style.display);
-        } else {
-          array.push(month.style.display);
-        }
+        array.push(month.style.display);
       });
       array.includes("")
         ? (year.style.display = "")

@@ -179,42 +179,44 @@ a.btn-back {
   display: none;
 }
 
-// Bouton mobile
-.btn-mobile {
-  position: fixed;
-  bottom: 2em;
-  right: 1.4em;
-  background-color: $accent-color;
-  width: 5em;
-  height: 5em;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media (max-width: 900px) {
+  // Bouton mobile
+  .btn-mobile {
+    position: fixed;
+    bottom: 2em;
+    right: 1.4em;
+    background-color: $accent-color;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  & i {
-    font-size: 2em;
-    margin: 0.5em;
+    & i {
+      font-size: 2em;
+      margin: 0.5em;
+    }
   }
-}
 
-.btn-square {
-  top: 0;
-}
+  .btn-square {
+    top: 0;
+  }
 
-.btn-home {
-  width: 6.5em;
-  font-size: 1.4em;
-}
+  .btn-home {
+    width: 6.5em;
+    font-size: 1.4em;
+  }
 
-.btn-calendar {
-  display: none;
-}
+  .btn-calendar {
+    display: none;
+  }
 
-.btn-back {
-  display: none;
-}
+  .btn-back {
+    display: none;
+  }
 
-.btn-desktop {
-  display: none;
+  .btn-desktop {
+    display: none;
+  }
 }
