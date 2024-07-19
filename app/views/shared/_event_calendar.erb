@@ -1,11 +1,5 @@
 <div class="monthly-events" data-controller="upcoming-events">
-  <% years = [] %>
-  <% @events.each do |event| %>
-    <% years << event.date.year %>
-    <% years = years.uniq %>
-  <% end %>
-
-  <% years.each do |year| %>
+  <% @range.each do |year| %>
     <ul class="upcoming-year">
       <div class="year-events" data-upcoming-events-target="year"><%= year %></div>
       <% @all_months.each do |month| %>

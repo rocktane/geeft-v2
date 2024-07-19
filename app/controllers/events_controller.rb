@@ -8,11 +8,12 @@ class EventsController < ApplicationController
     if @events.empty?
       render :dashboard
     else
+      @today = Date.today
+      @range = (@today.year..@today.next_year(10).year).to_a
       @events_dates = @events.map { |event| event.date.strftime('%Y-%m-%d') }
       start_date = [@events.first.date.beginning_of_month, Date.today.beginning_of_month].min
-      end_date = @events.last.date.beginning_of_month
+      end_date = [@events.last.date.beginning_of_month, @today.next_year(10).beginning_of_month].max
       @all_months = (start_date..end_date).map(&:beginning_of_month).uniq
-      @today = Date.today
       @future_events = Event.where(user: current_user).where('date >= ?', @today).order(:date)
       @events_by_month = @all_months.map do |month|
         unless @events.select { |e| e.date.beginning_of_month == month }.nil?
@@ -62,11 +63,14 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    logger.debug "Event before update: #{@event.inspect}"
     respond_to do |format|
       if @event.update(event_params)
-        logger.debug "Event after update: #{@event.inspect}"
-        format.html { redirect_to event_path(@event), notice: 'L\'évènement a été mis à jour.' }
+        if !@event.recurrent && Event.where(occurrence_from: @event.id).where('date >= ?', @event.date).exists?
+          occurrences = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date > ?',
+                                                                                                @event.date)
+          occurrences.each(&:destroy)
+        end
+        format.html { redirect_to event_path(@event), notice: "L'évènement a été mis à jour." }
         format.json { render json: { message: 'L\'évènement a été mis à jour.', event: @event }, status: :ok }
       else
         format.html do
@@ -95,7 +99,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    if @event.occurrence_from.present? || Event.where(occurrence_from: @event.id).exists?
+    if Event.where(occurrence_from: @event.id).exists?
       # Si l'événement a des occurrences futures, les supprimer
       occurrences = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date >= ?', @event.date)
       occurrences.each(&:destroy)

@@ -11,13 +11,14 @@
       <div class="secondary-container date-section date-show">
         <% date = params[:date] || Date.today %>
         <%= f.text_field :date, value: date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
+        <i class="fa-solid fa-calendar"></i>
       </div>
 
       <div class="secondary-container recurrent">
         <%= f.check_box :recurrent, {}, true, false %>
         <label for="event_recurrent">
           <span class="check"></span>
-          A lieu tous les ans ?
+          Chaque année ?
         </label>
       </div>
     </div>
