@@ -19,26 +19,18 @@
       </div>
 
       <div class="home-buttons">
-          <div class="btn__theme btn-home btn-green ">
-            <%= link_to new_user_registration_path do %>
-            <div class="btn__content">
-              <%= image_tag('signup.svg', alt: 'Inscription') %>
-              Inscription
-            </div>
-            <% end %>
+        <%= link_to new_user_registration_path, class: "btn__theme btn-home btn-green" do %>
+          <div class="btn__content">
+            <%= image_tag('signup.svg', alt: 'Inscription') %>
+            Inscription
           </div>
-
-        <div class="home-buttons">
-          <div class="btn-home btn__theme btn-purple">
-            <%= link_to new_user_session_path do %>
-            <div class="btn__content">
-              <%= image_tag('signin.svg', alt: 'Connexion') %>
-              Connexion
+        <% end %>
+        <%= link_to new_user_session_path, class: "btn__theme btn-home btn-purple" do %>
+          <div class="btn__content">
+            <%= image_tag('signin.svg', alt: 'Connexion') %>
+            Connexion
           </div>
-          <% end %>
-        </div>
-      </div>
-
+        <% end %>
     </div>
     <% else %>
 
@@ -50,7 +42,7 @@
     </div>
     <%= render 'shared/event_home' %>
     <div class="home-buttons">
-      <%= link_to dashboard_path, class: "btn-home btn__theme btn-green" do%>
+        <%= link_to dashboard_path, class: "btn-home btn__theme btn-green" do%>
         <div class="btn__content">
           <%= image_tag('calendar2.svg', alt: 'Calendrier') %>
           Calendrier
@@ -59,7 +51,7 @@
 
       <%= link_to new_gift_path, class: "btn-home btn__theme btn-purple" do %>
         <div class="btn__content">
-          <%= image_tag('close-gift.png', alt: 'Cadeau') %>
+          <%= image_tag('close-gift.svg', alt: 'Cadeau') %>
           Créer une liste cadeau
         </div>
       <% end %>

@@ -48,9 +48,6 @@
 
 
 
-
-
-
     <% if @event.gift.class.name != "NilClass" %>
       <h3>La liste de cadeaux</h3>
       <ul>
@@ -69,9 +66,14 @@
       </ul>
 
     <% else %>
-        <%= link_to 'Trouver le parfait cadeau', new_event_gift_path(@event), class: 'btn btn-green' %>
+        <%= link_to new_event_gift_path(@event), class: 'btn btn__theme btn-green' do %>
+          <div class="btn__content">
+            <%= image_tag('close-gift.svg', alt: 'Ajouter un cadeau') %>
+            Trouver le cadeau parfait
+          </div>
+        <% end %>
+
     <% end %>
 
   </div>
-
 </div>
