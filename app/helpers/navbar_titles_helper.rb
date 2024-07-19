@@ -30,7 +30,7 @@ end
 def events_titles
   case action_name
     when "dashboard"
-      "> Tableau de bord"
+      "> Calendrier"
     when "new"
       "> Créer mon èvènement"
     when "show"
