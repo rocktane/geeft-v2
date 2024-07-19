@@ -94,14 +94,14 @@ class EventsController < ApplicationController
     end
   end
 
-  # def add_gifts
-  #   @event.update(event_params)
-  #   redirect_to event_path(@event)
-  # end
-
   def destroy
+    if @event.occurrence_from.present? || Event.where(occurrence_from: @event.id).exists?
+      # Si l'événement a des occurrences futures, les supprimer
+      occurrences = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date >= ?', @event.date)
+      occurrences.each(&:destroy)
+    end
     @event.destroy
-    redirect_to dashboard_path
+    redirect_to dashboard_path, notice: 'Event and its future occurrences were successfully destroyed.'
   end
 
   private

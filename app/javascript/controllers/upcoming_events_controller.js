@@ -109,13 +109,13 @@ export default class extends Controller {
           });
         }
       });
-      this.only_six_months(calendar_month, calendar_year);
+      this.only_six_months();
       this.year_update();
     }
   }
 
-  only_six_months(current_month, current_year) {
-    const num_months = 8;
+  only_six_months() {
+    const num_months = 6;
     const months = this.upcomingMonthTargets;
     const display_months = months.filter(
       (month) => month.style.display !== "none"
