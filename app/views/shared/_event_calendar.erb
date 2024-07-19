@@ -7,11 +7,11 @@
 
   <% years.each do |year| %>
     <ul class="upcoming-year">
-      <div class="year-events"><%= year %></div>
+      <div class="year-events" data-upcoming-events-target="year"><%= year %></div>
       <% @all_months.each do |month| %>
         <% next if month.year != year %>
         <% if !(@events_by_month[month].empty?) %>
-          <li class="upcoming-month event-container-calendar" data-upcoming-events-target='bob' month="<%= month.month %>">
+          <li class="upcoming-month event-container-calendar" data-upcoming-events-target='upcomingMonth' month="<%= month.month %>">
             <h1>En <%= french_month(month) %></h1>
               <ul>
                 <% @events_by_month[month].each do |event| %>
@@ -24,7 +24,7 @@
                 <% end %>
               </ul>
             <% elsif month >= @today.beginning_of_month %>
-                <li class="upcoming-month event-container-calendar" data-upcoming-events-target='bob' month="<%= month.month %>">
+                <li class="upcoming-month event-container-calendar" data-upcoming-events-target='upcomingMonth' month="<%= month.month %>">
               <h1>En <%= french_month(month) %></h1>
               <p class="event-infos-calendar">Aucun évènement ce mois-ci.</p>
             <% end %>
