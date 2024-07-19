@@ -35,12 +35,12 @@ input#event_url::placeholder {
   font-style: italic;
 }
 
-input:-webkit-autofill {
-  -webkit-text-fill-color: $primary-color !important;
-  font-family: $body-font;
-  color: red;
-  -webkit-background-clip: text;
-}
+// input:-webkit-autofill {
+//   // -webkit-text-fill-color: $primary-color !important;
+//   // font-family: $body-font;
+//   // color: red;
+//   // -webkit-background-clip: text;
+// }
 
 .search {
   position: relative;
