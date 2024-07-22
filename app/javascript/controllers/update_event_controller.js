@@ -1,15 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = [
-    "gift",
-    "name",
-    "description",
-    "url",
-    "date",
-    "recurrent",
-    "occurrenceFrom",
-  ];
+  static targets = ["gift", "name", "description", "url", "date", "recurrent"];
 
   connect() {}
 
@@ -49,7 +41,6 @@ export default class extends Controller {
           url: this.urlTarget.value,
           description: this.descriptionTarget.value,
           recurrent: this.recurrentTarget.checked,
-          occurrence_from: this.occurrenceFromTarget.value,
         }), // A ADAPTER POUR LE generated_list au cas ou Gift
       });
 

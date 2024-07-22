@@ -58,16 +58,16 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         Rails.logger.info "LOGGER : Event updated successfully: #{@event.inspect}"
+        f_occ = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date > ?', @event.date)
         if @event.recurrent
-          if Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date > ?', @event.date).empty?
+          if f_occ.empty?
             duplicate(@event)
           else
-            f_occ = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date > ?', @event.date)
             f_occ.each do |occ|
-              occ.update(date: occ.date.change(day: @event.date.day, month: @event.date.month))
+              occ.update(name: @event.name, date: occ.date.change(day: @event.date.day, month: @event.date.month))
             end
           end
-        elsif f_occ = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date > ?', @event.date)
+        else
           f_occ.destroy_all
         end
         format.html { redirect_to event_path(@event), notice: "L'évènement a été mis à jour." }
@@ -89,7 +89,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    if Event.where(occurrence_from: @event.id).exists?
+    if @event.recurrent || Event.where(occurrence_from: @event.id).exists?
       # Si l'événement a des occurrences futures, les supprimer
       occ = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date >= ?', @event.date)
       occ.each(&:destroy)

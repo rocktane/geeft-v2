@@ -26,7 +26,6 @@
           <%= link_to event_path(@event), class: "btn btn-square btn-red btn__theme", data: {
             turbo_method: :delete,
             turbo_confirm: 'Êtes-vous sûr de vouloir supprimer cet évènement ?',
-            update_event_target: "occurrenceFrom",
           } do %>
             <div class="btn__content">
               <%= image_tag('bin.svg', alt: 'Supprimer') %>
