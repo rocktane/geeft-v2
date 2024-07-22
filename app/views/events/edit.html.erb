@@ -15,7 +15,7 @@
             <i class="fa-solid fa-calendar"></i>
           </div>
           <div class="secondary-container recurrent">
-            <%= f.check_box :recurrent, {}, true, false %>
+            <%= f.check_box :recurrent, checked: @event.recurrent, data: { update_event_target: "recurrent" } %>
             <label for="event_recurrent">
               <span class="check"></span>
               Chaque année ?

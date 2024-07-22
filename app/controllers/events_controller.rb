@@ -5,6 +5,12 @@ class EventsController < ApplicationController
 
   def dashboard
     @events = Event.where(user: current_user).order(:date)
+    console
+    filter = @events.where(date: Date.today..Date.today.next_year(10))
+    @test = []
+    filter.each do |event|
+      @test << [event.name, event.date]
+    end
     if @events.empty?
       render :dashboard
     else
@@ -46,29 +52,23 @@ class EventsController < ApplicationController
     end
   end
 
-  def duplicate(event)
-    years_to_cover = 3 # create occurrences for the next 10 years
-    year = 1
-    while year <= years_to_cover
-      new_event = event.dup
-      new_event.gift_list = []
-      new_event.url = ''
-      new_event.occurrence_from = event.id
-      new_event.date = event.date.next_year(year)
-      new_event.save!
-      year += 1
-    end
-  end
-
   def edit; end
 
   def update
     respond_to do |format|
       if @event.update(event_params)
-        if !@event.recurrent && Event.where(occurrence_from: @event.id).where('date >= ?', @event.date).exists?
-          occurrences = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date > ?',
-                                                                                                @event.date)
-          occurrences.each(&:destroy)
+        Rails.logger.info "LOGGER : Event updated successfully: #{@event.inspect}"
+        f_occ = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date > ?', @event.date)
+        if @event.recurrent
+          if f_occ.empty?
+            duplicate(@event)
+          else
+            f_occ.each do |occ|
+              occ.update(name: @event.name, date: occ.date.change(day: @event.date.day, month: @event.date.month))
+            end
+          end
+        else
+          f_occ.destroy_all
         end
         format.html { redirect_to event_path(@event), notice: "L'évènement a été mis à jour." }
         format.json { render json: { message: 'L\'évènement a été mis à jour.', event: @event }, status: :ok }
@@ -81,9 +81,36 @@ class EventsController < ApplicationController
       end
     end
   rescue StandardError => e
+    Rails.logger.error "LOGGER : Error updating event: #{e.message}"
     respond_to do |format|
       format.html { render file: "#{Rails.root}/public/500.html", layout: false, status: :internal_server_error }
       format.json { render json: { error: e.message }, status: :internal_server_error }
+    end
+  end
+
+  def destroy
+    if @event.recurrent || Event.where(occurrence_from: @event.id).exists?
+      # Si l'événement a des occurrences futures, les supprimer
+      occ = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date >= ?', @event.date)
+      occ.each(&:destroy)
+    end
+    @event.destroy
+    redirect_to dashboard_path, notice: 'Event and its future occurrences were successfully destroyed.'
+  end
+
+  private
+
+  def duplicate(event)
+    @events = Event.where(user: current_user).order(:date)
+    @today = Date.today
+    years_to_cover = [@events.last.date.year - @today.year, 10].max
+    (1..(years_to_cover + 1)).each do |i|
+      new_event = event.dup
+      new_event.gift_list = []
+      new_event.url = ''
+      new_event.occurrence_from = event.id
+      new_event.date = event.date.next_year(i)
+      new_event.save
     end
   end
 
@@ -97,18 +124,6 @@ class EventsController < ApplicationController
       render 'gifts/show'
     end
   end
-
-  def destroy
-    if Event.where(occurrence_from: @event.id).exists?
-      # Si l'événement a des occurrences futures, les supprimer
-      occurrences = Event.where(occurrence_from: @event.occurrence_from || @event.id).where('date >= ?', @event.date)
-      occurrences.each(&:destroy)
-    end
-    @event.destroy
-    redirect_to dashboard_path, notice: 'Event and its future occurrences were successfully destroyed.'
-  end
-
-  private
 
   def event_params
     params.require(:event).permit(:name, :date, :recurrent, :description, :url, :user_id, :gift_id, :event_id,

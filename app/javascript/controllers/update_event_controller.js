@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["gift", "name", "description", "url", "date"];
+  static targets = ["gift", "name", "description", "url", "date", "recurrent"];
 
   connect() {}
 
@@ -40,10 +40,11 @@ export default class extends Controller {
           name: this.nameTarget.value,
           url: this.urlTarget.value,
           description: this.descriptionTarget.value,
+          recurrent: this.recurrentTarget.checked,
         }), // A ADAPTER POUR LE generated_list au cas ou Gift
       });
 
-      const data = await response.json();
+      // const data = await response.json();
 
       if (!response.ok) {
         const errorData = await response.json();
