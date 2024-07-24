@@ -59,7 +59,7 @@
         <%= f.text_field :url, value: url, class: 'no-box-input', placeholder: "www.google.fr", data: { update_event_target: "url" } %>
         </div>
 
-        <%= render "shared/gifts_list_event" %>
+        <%= render "shared/gifts_list_edit_event" %>
 
 
     <%= link_to event_path(@event), class: "btn btn-green btn__theme", data: { env: Rails.env, event_id: @event.id, action: "click->update-event#update" }.merge(@event.gift.nil? ? {} : { gift_id: @event.gift.id }) do %>

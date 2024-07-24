@@ -37,24 +37,27 @@
       </div>
     <% end %>
 
-    <% if @event.gift.present? %>
-      <h3>La liste de cadeaux</h3>
-      <ul>
-        <% @event.gift_list.each do |gift| %>
-          <li data-save-gift-target="gift">
-            <div class="secondary-container geeft">
-              <div class="geeft-left">
-                <div class="gift-icon">
-                  <i class="fa-solid fa-gift"></i>
-                </div>
-                <div class="gift">
-                  <%= gift %>
-                </div>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+
+    <div class="gifts-event">
+        <% if @event.gift.present? %>
+          <h3>Les idées cadeaux</h3>
+          <ul>
+            <% @event.gift_list.each do |gift| %>
+              <li data-save-gift-target="gift">
+                <div class="secondary-container">
+                  <div class="gift-container">
+                    <div class="gift-left">
+                      <%= image_tag('open-gift.png', class: 'icon-gift') %>
+                        <div class="gift">
+                          <%= gift %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </li>
+            <% end %>
+          </ul>
+    </div>
     <% else %>
       <%= link_to new_event_gift_path(@event), class: 'btn btn__theme btn-green' do %>
         <div class="btn__content">

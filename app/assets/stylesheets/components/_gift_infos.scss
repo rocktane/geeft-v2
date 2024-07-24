@@ -1,9 +1,13 @@
 .gift-container {
-  display: grid;
+  // display: grid;
+  // align-items: center;
+  // justify-content: space-between;
+  // grid-template-areas: "gl . rf";
+  // grid-auto-rows: max-content;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  grid-template-areas: "gl . rf";
-  grid-auto-rows: max-content;
+
   & span {
     display: flex;
     flex-direction: row-reverse;
@@ -17,9 +21,21 @@
   }
 }
 
-.logo-gift {
+.icon-gift {
   width: 3em;
 }
+
+.delete-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  cursor: pointer;
+  & img {
+    width: 1.5em;
+  }
+}
+
 
 
 .refresh-container {
@@ -62,13 +78,11 @@
 .gift-left {
   display: flex;
   align-items: center;
+  & .gift {
+  margin-left: 0.5em;
+  }
 }
 
-.gift-name {
-  margin-left: 0.5em;
-  transform: translateY(0);
-  transition: transform 0.3s ease 0.3s;
-}
 
 .form-comment {
   display: flex;

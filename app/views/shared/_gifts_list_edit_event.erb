@@ -1,5 +1,3 @@
-
-
 <div class="gifts-event">
   <% if !@event.gift.nil? %>
     <h3>Les idées cadeaux</h3>
@@ -9,16 +7,14 @@
           <div class="secondary-container">
           <div class="gift-container">
             <div class="gift-left">
-                <%= image_tag('open-gift.png', alt: 'Cadeau', class:"logo-gift") %>
+                <%= image_tag('open-gift.png', alt: 'Cadeau', class:"icon-gift") %>
                 <%# <i class="fa-solid fa-gift"></i> %>
-              <div class="gift-name">
+              <div class="gift">
                 <%= gift %>
               </div>
             </div>
-            <div class="gift-delete" data-action="click->delete-gift#delete">
-              <div class="refresh-arrow">
-              <%= image_tag('bin2.svg', class:'logo-refresh') %>
-            </div>
+            <div class="delete-container" data-action="click->delete-gift#delete">
+              <%= image_tag('bin2.svg') %>
           </div>
           </div>
           </div>
