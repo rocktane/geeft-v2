@@ -65,7 +65,7 @@ input#event_url::placeholder {
   background-color: $secondary-color;
   color: $primary-color;
   border: 2px solid $primary-color;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   height: 2em;
   width: 2em;
   display: inline-flex;

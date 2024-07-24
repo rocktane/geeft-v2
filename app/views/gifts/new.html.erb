@@ -74,7 +74,7 @@
         <%= f.label :occasion, "Occasion", class: "criteria-title" %>
         <div class="background"></div>
         <div class="search">
-          <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="occasion">🔎</span>
+          <span class="search-icon" data-action="click->search-input#animate" data-search-input-value="occasion"></span>
           <input type="text" id="searchOccasionInput" data-action="keyup->search-input#filterList" data-search-input-target="occasionInput">
         </div>
         <%= f.input :occasion, collection: Gift::OCCASIONS.sort, as: :radio_buttons, label: false, required: false, class: "choiceList"  %>

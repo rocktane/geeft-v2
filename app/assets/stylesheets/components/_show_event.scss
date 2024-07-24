@@ -4,11 +4,13 @@
   align-items: center;
   width: fit-content;
   padding-left: 0.6em;
-  i {
-    padding-right: 0.6em;
-    padding-left: 0.6em;
-  }
-  span {
+  // img {
+    //   padding-right: 0.6em;
+    //   padding-left: 0.3em;
+    //   width: 2.2em;
+    // }
+    span {
+    padding-right: 0.4em;
     padding-top: 2px;
   }
 }
@@ -17,9 +19,9 @@
   display: flex;
   align-items: center;
   width: fit-content;
-  i {
-    padding-right: 0.6em;
-  }
+  // i {
+  //   padding-right: 0.6em;
+  // }
 }
 .date-section {
   border: 3px solid $primary-color;
@@ -31,7 +33,14 @@
   color: $primary-color;
   font-size: 1em;
   text-align: center;
+
+  img {
+    padding-right: 0.6em;
+    // padding-left: 0.3em;
+    width: 2.2em;
+  }
 }
+
 .date-section input {
   color: $primary-color;
   font-family: $body-font;

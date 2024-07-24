@@ -74,27 +74,7 @@
 
 
 
-.geeft {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 
-  .gift-icon {
-    font-size: 1.5em;
-    margin-right: 0.5em;
-    color: $accent-color;
-  }
-}
-
-.geeft-left {
-  display: flex;
-  align-items: center;
-  grid-area: "gl";
-}
-
-.geeft-right {
-  cursor: pointer;
-}
 
 @media (max-width: 768px) {
   .primary-container {

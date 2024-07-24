@@ -1,79 +1,70 @@
 <div class="body-container">
-
   <div class="primary-container">
-
     <%= link_to dashboard_path, class: "btn-back" do %>
       <i class="fa-solid fa-chevron-left"></i> Retour
     <% end %>
 
     <div class="top-section">
-      <div class="date-and-recurrent">
-        <div class="date-section date-show">
-          <span id="date"><%= @event.date.strftime('%d/%m/%Y') %></span>
-          <i class="fa-solid fa-calendar"></i>
-        </div>
-        <% if @event.recurrent %>
-          <div class="secondary-container recurrent">
-            Chaque année
-          </div>
-        <% end %>
+      <div class="date-section date-show">
+        <span id="date"><%= @event.date.strftime('%d/%m/%Y') %></span>
+        <%= image_tag('calendar.svg') %>
+        <%# <i class="fa-solid fa-calendar"></i> %>
       </div>
       <%= link_to edit_event_path(@event), class: "btn btn-square btn-green btn__theme" do %>
-      <div class="btn__content">
-        <%= image_tag('pen.svg', alt: 'Modifier') %>
-      </div>
+        <div class="btn__content">
+          <%= image_tag('pen.svg', alt: 'Modifier') %>
+        </div>
       <% end %>
     </div>
 
+    <div class="secondary-container">
+      <h3>Nom de l'évènement</h3>
+      <%= @event.name %>
+    </div>
+
+    <% if @event.url.present? %>
       <div class="secondary-container">
-        <h3>Nom de l'évènement</h3>
-        <%= @event.name %>
+        <h3>Lien</h3>
+        <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
+        <%= link_to url, @event.url, target: :_blank %>
       </div>
-
-      <% if @event.url != "" && !@event.url.nil? %>
-        <div class="secondary-container">
-          <h3>Lien</h3>
-          <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
-          <%= link_to url, @event.url, target: :_blank %>
-        </div>
-      <% end %>
-
-
-      <% if @event.description != "" %>
-        <div class="secondary-container">
-          <h3>Description</h3>
-          <%= @event.description %>
-        </div>
-      <% end %>
-
-
-
-    <% if @event.gift.class.name != "NilClass" %>
-      <h3>La liste de cadeaux</h3>
-      <ul>
-        <% @event.gift_list.each do |gift| %>
-            <div class="secondary-container geeft">
-              <div class="geeft-left">
-                <div class="gift-icon">
-                  <i class="fa-solid fa-gift"></i>
-                </div>
-                <div class="gift">
-                  <%= gift %>
-                </div>
-              </div>
-            </div>
-        <% end %>
-      </ul>
-
-    <% else %>
-        <%= link_to new_event_gift_path(@event), class: 'btn btn__theme btn-green' do %>
-          <div class="btn__content">
-            <%= image_tag('close-gift.svg', alt: 'Ajouter un cadeau') %>
-            Trouver le cadeau parfait
-          </div>
-        <% end %>
-
     <% end %>
 
+    <% if @event.description.present? %>
+      <div class="secondary-container">
+        <h3>Description</h3>
+        <%= @event.description %>
+      </div>
+    <% end %>
+
+
+    <div class="gifts-event">
+        <% if @event.gift.present? %>
+          <h3>Les idées cadeaux</h3>
+          <ul>
+            <% @event.gift_list.each do |gift| %>
+              <li data-save-gift-target="gift">
+                <div class="secondary-container">
+                  <div class="gift-container">
+                    <div class="gift-left">
+                      <%= image_tag('open-gift.png', class: 'icon-gift') %>
+                        <div class="gift">
+                          <%= gift %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </li>
+            <% end %>
+          </ul>
+    </div>
+    <% else %>
+      <%= link_to new_event_gift_path(@event), class: 'btn btn__theme btn-green' do %>
+        <div class="btn__content">
+          <%= image_tag('close-gift.svg', alt: 'Ajouter un cadeau') %>
+          Trouver le cadeau parfait
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
