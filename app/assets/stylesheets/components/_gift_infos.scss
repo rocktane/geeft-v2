@@ -34,7 +34,7 @@
   transition: transform 0.5s ease;
 
   & img {
-    width: 1em;
+    width: 1.5em;
   }
 }
 
@@ -73,18 +73,18 @@
 .form-comment {
   display: flex;
   align-items: center;
-  height: 3em;
+  // height: 3em;
   gap: 1em;
 }
 
 #comment {
-  border: 2px solid $primary-color;
+  border: 3px solid $primary-color;
   border-radius: var(--border-radius);
   background-color: $secondary-color;
   font-family: $body-font;
   color: $primary-color;
   font-size: 1em;
-  width: 45%;
+  width: 100%;
   padding: 0 1em;
   align-self: stretch;
   + input[name="commit"] {
@@ -103,4 +103,10 @@
 .gift-comment {
   margin-top: 1em;
   margin-bottom: 1em;
+  & h2 {
+    font-family: $headers-font;
+    color: $primary-color;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+  }
 }

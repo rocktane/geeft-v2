@@ -10,7 +10,7 @@
                   </div>
                 </div>
                 <% if @user == @gift.user %>
-                  <span class="refresh-container" data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh" class ="gift-delete">
+                  <span data-action="click->refresh-gift#refresh" data-refresh-gift-target="refresh" class ="gift-delete">
                     <div class="refresh-arrow">
                       <%= image_tag('refresh.svg', class: "logo-refresh") %>
                     </div>

@@ -1,7 +1,7 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["gift", "name", "description", "url", "date", "recurrent"];
+  static targets = ["gift", "name", "updateDescription", "url", "date", "recurrent"]
 
   connect() {}
 
@@ -13,7 +13,6 @@ export default class extends Controller {
       .querySelector("[data-event-id]")
       .getAttribute("data-event-id");
 
-    // If the environment is not defined, we set it to development
     if (env === "development") {
       env = "http://localhost:3000";
     } else {
@@ -23,7 +22,6 @@ export default class extends Controller {
     const url = `${env}/events/${eventId}`;
     const newList = this.giftTargets.map((gift) => gift.innerText);
 
-    // const url = `${env}/updatelist/${giftId}`;
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
     try {
@@ -32,19 +30,17 @@ export default class extends Controller {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "X-CSRF-Token": csrfToken, // Incluez le jeton CSRF dans les en-têtes
+          "X-CSRF-Token": csrfToken,
         },
         body: JSON.stringify({
           gift_list: newList,
           date: new Date(this.dateTarget.value),
           name: this.nameTarget.value,
           url: this.urlTarget.value,
-          description: this.descriptionTarget.value,
+          description: this.updateDescriptionTarget.value,
           recurrent: this.recurrentTarget.checked,
-        }), // A ADAPTER POUR LE generated_list au cas ou Gift
+        }),
       });
-
-      // const data = await response.json();
 
       if (!response.ok) {
         const errorData = await response.json();
