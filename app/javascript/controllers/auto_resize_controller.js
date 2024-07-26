@@ -4,15 +4,11 @@ export default class extends Controller {
   static targets = ["resizeDescription"]
 
   connect() {
-    this.resize()
+    this.resize();
   }
 
   resize() {
     this.resizeDescriptionTarget.style.height = 'auto';
     this.resizeDescriptionTarget.style.height = `${this.resizeDescriptionTarget.scrollHeight}px`;
-  }
-
-  update() {
-    this.resize()
   }
 }

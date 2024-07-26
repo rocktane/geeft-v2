@@ -9,10 +9,15 @@
           <ul>
             <% events_for_month.each do |event| %>
               <%= link_to event_path(event) do %>
-                <li class="event-infos-home">
-                  <div class="event-name"><%= event.name %></div>
-                  <div class="event-date"><%= event.date.strftime("%d/%m") %></div>
+              <div class="event-infos-home">
+                <li>
+                  <div class="event-infos">
+                    <div class="event-name"><%= event.name %></div>
+                    <div class="event-date"><%= event.date.strftime("%d/%m") %></div>
+                  </div>
                 </li>
+              </div>
+
               <% end %>
             <% end %>
           </ul>

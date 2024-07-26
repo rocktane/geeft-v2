@@ -10,10 +10,14 @@
               <ul>
                 <% @events_by_month[month].each do |event| %>
                   <%= link_to event_path(event) do %>
-                    <li class="event-infos-calendar" data-upcoming-events-target="event" data-event-date-year="<%= event.date.year %>" data-event-date-month="<%= event.date.month %>" data-event-date-day="<%= event.date.day %>">
-                      <div class="event-name"><%= event.name %></div>
-                      <div class="event-date"><%= event.date.strftime("%d/%m") %></div>
-                    </li>
+                    <div class="event-infos-calendar">
+                      <li data-upcoming-events-target="event" data-event-date-year="<%= event.date.year %>" data-event-date-month="<%= event.date.month %>" data-event-date-day="<%= event.date.day %>">
+                        <div class="event-infos">
+                          <div class="event-name"><%= event.name %></div>
+                          <div class="event-date"><%= event.date.strftime("%d/%m") %></div>
+                        </div>
+                      </li>
+                    </div>
                   <% end %>
                 <% end %>
               </ul>
