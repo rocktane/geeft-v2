@@ -70,21 +70,16 @@
           </ul>
       </div>
       <% else %>
-      <%= link_to new_gift_path do %>
-        <%= image_tag('close-gift.svg', alt: 'gift') %>
-      <% end %>
+        <div class="btn__theme btn btn-green">
+          <%= button_tag(type: 'submit') do %>
+            <div class="btn__content">
+              <%= image_tag('new-event.svg') %>
+              Créer l'évènement
+            </div>
+          <% end %>
+        </div>
     <% end %>
 
-
-
-    <div class="btn__theme btn btn-green">
-      <%= button_tag(type: 'submit') do %>
-        <div class="btn__content">
-          <%= image_tag('new-event.svg') %>
-          Créer l'évènement
-        </div>
-      <% end %>
-    </div>
 
     <% end %>
 

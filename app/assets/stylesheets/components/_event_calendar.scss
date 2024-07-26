@@ -29,21 +29,42 @@
   }
 }
 
-.event-infos-calendar {
+.event-infos-calendar li {
   font-family: $body-font;
   color: $primary-color;
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
   font-size: 0.9em;
   margin: 0.5em 0 0.5em 0em;
   align-items: center;
   padding: 0.5em;
   gap: 0.3em;
+  position: relative;
+  &::after {
+    content: "";
+    opacity: 0;
+    transition: opacity 2s;
+  }
+  &:hover::after {
+    content: "";
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    bottom: 0;
+    border: 1px solid $accent-color;
+    opacity: 1;
+  }
   &.date-selected {
     background-color: rgb(186, 205, 204);
     border-radius: 8px;
   }
+  .event-infos {
+    display: flex;
+    justify-content: space-between;
+  }
 }
+
+
 
 .monthly-events {
   width: 100%;
@@ -62,23 +83,23 @@
   font-size: 1.2em;
 }
 
-.upcoming-month ul a {
-  > li {
-    // background-color: $background-color;
-    border-bottom: 2px solid transparent;
-    border-radius: 0.5em;
-    transition: 0.50s ease-in-out;
-  }
-}
+// .upcoming-month ul a {
+//   > li {
+//     // background-color: $background-color;
+//     border-bottom: 2px solid transparent;
+//     border-radius: 0.5em;
+//     transition: 0.50s ease-in-out;
+//   }
+// }
 
-.upcoming-month ul a:hover {
-  > li {
-    // background-color: $background-color;
-    border-bottom: 2px solid $accent-color;
-    border-radius: 0.5em;
-    box-shadow: var(--shadow-hover);
-  }
-}
+// .upcoming-month ul a:hover {
+//   > li {
+//     // background-color: $background-color;
+//     border-bottom: 2px solid $accent-color;
+//     border-radius: 0.5em;
+//     box-shadow: var(--shadow-hover);
+//   }
+// }
 
 @media (max-width: 768px) {
   .annual-calendar {

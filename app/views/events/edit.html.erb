@@ -51,7 +51,7 @@
         </div>
         <div class="secondary-container">
           <h3>Description</h3>
-          <%= f.text_area :description, class: 'no-box-input', data: { controller: "auto-resize", "update-event-target": "updateDescription", "auto-resize-target": "resizeDescription" }, action: "input->auto-resize#update" %>
+          <%= f.text_area :description, class: 'no-box-input', data: { controller: "auto-resize", "update-event-target": "updateDescription", "auto-resize-target": "resizeDescription" }, action: "change->auto-resize#resize" %>
         </div>
         <div class="secondary-container">
           <h3>Lien</h3>

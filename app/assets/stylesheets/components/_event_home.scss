@@ -24,14 +24,35 @@ li {
   }
 }
 
-.event-infos-home {
+.event-infos-home li {
   font-family: $body-font;
   color: $primary-color;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
   font-size: 1.1em;
   margin: 0.5em 0 0.5em 0em;
+  position: relative;
+  &::after {
+    content: "";
+    opacity: 0;
+    transition: opacity 2s;
+  }
+  &:hover::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 0;
+    border: 1px solid $accent-color;
+    opacity: 1;
+  }
+  .event-infos {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
 }
 
 .event-date {
