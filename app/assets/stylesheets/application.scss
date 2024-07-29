@@ -5,11 +5,11 @@
   box-sizing: border-box;
 }
 
+
 :root {
   --border-radius: 10px;
-  --shadow-hover:rgba(17, 17, 26, 0.1) 0px 3px 0px;
-  --container-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px
-
+  // --shadow-hover:rgba(17, 17, 26, 0.1) 0px 3px 0px;
+  --container-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 // Ajout de la ligne pour pouvoir cacher la nav-bar sur la homepage mobile

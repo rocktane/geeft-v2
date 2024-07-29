@@ -34,12 +34,16 @@
     </div>
     <% else %>
 
-    <div class="home-title">
-    <%= "Hello " + @user.username if @user.username%>
-    </div>
-    <div class="home-subtitle">
+    <%# <div class="home-title"> %>
+    <!--
+    <h1>
+      Hello <%=  @user.username if @user.username  %>, prépare-toi pour tes prochains événements !
+    </h1>
+    -->
+    <%# </div> %>
+    <%# <div class="home-subtitle">
       Prochains évènements
-    </div>
+    </div> %>
     <%= render 'shared/event_home' %>
     <div class="home-buttons">
         <%= link_to dashboard_path, class: "btn-home btn__theme btn-green" do%>

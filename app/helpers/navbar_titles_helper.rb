@@ -23,7 +23,7 @@ private
 def pages_titles
   case action_name
     when "home"
-      "> Trouve le cadeau parfait"
+      "> Tes prochains évènements"
   end
 end
 
@@ -32,7 +32,7 @@ def events_titles
     when "dashboard"
       "> Calendrier"
     when "new"
-      "> Créer mon évènement"
+      "> Créer mon èvènement"
     when "show"
       "> Mon évènement"
     when "edit"

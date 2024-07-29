@@ -16,44 +16,47 @@ li {
   & h1 {
     font-family: $headers-font;
     color: $primary-color;
-    font-size: 1.1em;
+    font-size: 1.3em;
   }
   & a {
     color: $primary-color;
     text-decoration: none;
+  }
+  .no-event {
+    font-family: $body-font;
+    color: $primary-color;
+    font-size: 1.1em;
+    margin: 0.5em 0 0.5em 0em;
+    padding: 0.5em;
+    position: relative;
   }
 }
 
 .event-infos-home li {
   font-family: $body-font;
   color: $primary-color;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
   font-size: 1.1em;
   margin: 0.5em 0 0.5em 0em;
+  padding: 0.5em;
   position: relative;
-  &::after {
-    content: "";
-    opacity: 0;
-    transition: opacity 2s;
-  }
-  &:hover::after {
-    content: "";
-    position: absolute;
-    left: 10%;
-    right: 10%;
-    bottom: 0;
-    border: 1px solid $accent-color;
-    opacity: 1;
+  // border-left: 2px solid transparent;
+  // transition: border-left-color 2s ease, color 5s ease;
+  &:hover {
+    // border-left-color: $accent-color;
+    border-left: 2px solid $accent-color;
   }
   .event-infos {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
-
-
 }
+
+
+
+
+
+
 
 .event-date {
   background-color: $accent-color;
