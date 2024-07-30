@@ -1,8 +1,8 @@
 // Bouton de base
 .btn {
   font-family: $headers-font;
-  margin-top: 0.5em;
-  font-size: 1.2em;
+  // margin-top: 0.5em;
+  font-size: 18px;
   // border: none;
   border-radius: var(--border-radius);
   display: inline-block;
@@ -10,7 +10,6 @@
   padding: 0.5em;
   text-align: center;
   width: 100%;
-  margin-top: 0.5em;
   // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   // transition: background-color 0.3s ease-in-out 0.1s,
   //   color 0.3s ease-in-out 0.1s;
@@ -35,7 +34,7 @@
   }
   & button {
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,15 +103,14 @@
 // Boutons HomePage Log-in/out
 .btn-home {
   margin-top: 0.3em;
-  font-family: $headers-font;
-  font-size: 1.2em;
-  border-radius: var(--border-radius);
-  text-decoration: none;
-  padding: 0.5em;
+  // font-family: $headers-font;
+  font-size: 20px;
+  // border-radius: var(--border-radius);
+  // text-decoration: none;
+  // padding: 0.5em;
   // justify-content: center;
   display: flex;
   width: 50%;
-
   & img {
     width: 1.5em;
     gap: 0.5em;
@@ -147,7 +145,7 @@ a.btn-back {
 
 .btn-dashboard {
   display: flex;
-  font-size: 0.9em;
+  font-size: 15px;
   text-align: center;
   justify-content: center;
   width: 14em;

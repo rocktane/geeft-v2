@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
   def dashboard
     @events = Event.where(user: current_user).order(:date)
-    console
+    # console
     filter = @events.where(date: Date.today..Date.today.next_year(10))
     @test = []
     filter.each do |event|

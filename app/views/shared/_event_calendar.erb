@@ -6,7 +6,7 @@
         <% next if month.year != year %>
         <% if !(@events_by_month[month].empty?) %>
           <li class="upcoming-month event-container-calendar" data-upcoming-events-target='upcomingMonth' month="<%= month.month %>">
-            <h1>En <%= french_month(month) %></h1>
+            <h2>En <%= french_month(month) %></h2>
               <ul>
                 <% @events_by_month[month].each do |event| %>
                   <%= link_to event_path(event) do %>
@@ -23,7 +23,7 @@
               </ul>
             <% elsif month >= @today.beginning_of_month %>
                 <li class="upcoming-month event-container-calendar" data-upcoming-events-target='upcomingMonth' month="<%= month.month %>">
-              <h1>En <%= french_month(month) %></h1>
+              <h2>En <%= french_month(month) %></h2>
               <p class="no-event">Aucun évènement ce mois-ci.</p>
             <% end %>
           </li>

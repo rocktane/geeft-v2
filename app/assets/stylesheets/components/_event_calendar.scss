@@ -18,22 +18,20 @@
   padding: 0.5em;
   // margin: 0.7em 0 0.7em 0em;
   box-shadow: var(--container-shadow);
-  & h1 {
-    font-family: $headers-font;
-    color: $primary-color;
-    font-size: 1.2em;
-  }
   & a {
     color: $primary-color;
     text-decoration: none;
+  }
+  & h2 {
+    padding-left: 0.25em;
   }
 }
 
 .event-infos-calendar {
   font-family: $body-font;
   color: $primary-color;
-  font-size: 1em;
-  margin: 0.5em 0 0.5em 0em;
+  // font-size: 1em;
+  margin: 0.2em 0 0.2em 0em;
   align-items: center;
   padding: 0.5em;
   gap: 0.3em;
@@ -75,21 +73,21 @@
 .upcoming-year {
   display: grid;
   grid-gap: 0.5em;
-  margin-top: 0.5em;
+  margin-top: 0.8em;
 }
 
 .year-events {
   display: flex;
-  margin: 0.1em 0 0.1em 0;
-
+  // margin: 0.1em 0 0.1em 0;
   background-color: $accent-color;
   border-radius: var(--border-radius);
-  font-family: $headers-font;
+  font-family: $body-font;
   color: $secondary-color;
-  font-size: 1.2em;
+  font-size: 20px;
   width: 4em;
   box-shadow: var(--container-shadow);
   justify-content: center;
+  padding: 0.3em;
 }
 
 // .upcoming-month ul a {
@@ -120,11 +118,6 @@
     margin: 0;
   }
 
-  .event-container-calendar {
-    & h1 {
-      font-size: 1em;
-    }
-  }
 
   .event-infos-calendar {
     font-size: 1em;

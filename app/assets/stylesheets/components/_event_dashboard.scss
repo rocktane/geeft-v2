@@ -10,23 +10,15 @@
   border-radius: var(--border-radius);
   margin-bottom: 1em;
   box-shadow: var(--container-shadow);
-
-
-}
-
-.event-dashboard-title {
-  font-family: $headers-font;
-  color: $primary-color;
-  font-size: 1.2em;
 }
 
 
 .event-dashboard-description {
   font-family: $body-font;
   color: $primary-color;
-  font-size: 1em;
+  // font-size: 1em;
   margin-top: 0.5em;
-  line-height: 1.5em;
+  // line-height: 1.5em;
 }
 
 

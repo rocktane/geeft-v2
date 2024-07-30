@@ -7,17 +7,17 @@ li {
 .event-container-home {
   font-family: $body-font;
   background-color: $secondary-color;
-  border: 3px solid $primary-color;
+  border: 2px solid $primary-color;
   border-radius: var(--border-radius);
   width: 100%;
   padding: 1em;
   margin: 1em 0 0.5em 0em;
   box-shadow: var(--container-shadow);
-  & h1 {
-    font-family: $headers-font;
-    color: $primary-color;
-    font-size: 1.3em;
-  }
+  // & h1 {
+  //   font-family: $headers-font;
+  //   color: $primary-color;
+  //   font-size: 20px;
+  // }
   & a {
     color: $primary-color;
     text-decoration: none;
@@ -35,15 +35,16 @@ li {
 .event-infos-home li {
   font-family: $body-font;
   color: $primary-color;
-  font-size: 1.1em;
-  margin: 0.5em 0 0.5em 0em;
+  font-size: 18px;
+  margin: 0.2em 0 0.2em 0em;
   padding: 0.5em;
   position: relative;
-  // border-left: 2px solid transparent;
-  // transition: border-left-color 2s ease, color 5s ease;
+  border-left: 3px solid transparent;
+  transition: border-left 0.5s ease-in-out, padding-left 0.3s ease-in-out;
   &:hover {
     // border-left-color: $accent-color;
-    border-left: 2px solid $accent-color;
+    border-left: 3px solid $accent-color;
+    padding-left: 1em;
   }
   .event-infos {
     display: flex;
@@ -62,16 +63,11 @@ li {
   background-color: $accent-color;
   padding: 0.25em 0.5em;
   color: white;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
 }
 
 @media (max-width: 768px) {
-  .event-container-home {
-    width: 100%;
-    & h1 {
-      font-size: 1em;
-    }
-  }
+
 
   .event-infos-home {
     font-size: 1em;

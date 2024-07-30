@@ -12,8 +12,14 @@
 }
 
 .flatpickr-calendar.inline {
-  background-color: #bacdcc;
+  // background-color: #bacdcc;
+  background-color: $secondary-color;
+  border: 2px solid $primary-color;
+  border-radius: var(--border-radius);
+  box-shadow: var(--container-shadow);
 }
+
+
 
 .flatpickr-calendar.arrowTop:after,
 .flatpickr-calendar.arrowTop:before {
