@@ -12,11 +12,11 @@
   <% @future_events.each do |event| %>
     <div class="event-container-dashboard">
       <%= link_to event_path(event) do %>
-        <div class="event-dashboard-title">
+        <h2>
           <% day = event.date.strftime("%d") %>
           <% year = event.date.strftime("%Y") %>
           <%= event.name %> - le <%= day %> <%= french_month(event.date) %> <%= year %>
-        </div>
+        </h2>
       <% end %>
         <div class="event-dashboard-description">
           <div><%= event.description %></div>

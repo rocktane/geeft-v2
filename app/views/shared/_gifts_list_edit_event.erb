@@ -1,6 +1,5 @@
 <div class="gifts-event">
   <% if !@event.gift.nil? %>
-    <h3>Les idées cadeaux</h3>
     <ul data-controller="delete-gift">
       <% @event.gift_list.each do |gift| %>
         <li data-update-event-target="gift">

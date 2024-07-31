@@ -21,3 +21,21 @@
 $body-font: "ABeeZee-Regular";
 $headers-font: "Otomanopee";
 $accent-font: "Syncopate";
+
+.title {
+  font-family: $headers-font;
+  color: #004643;
+  font-size: 25px;
+}
+
+h1 {
+  font-family: $headers-font;
+  color: #004643;
+  font-size: 20px;
+}
+
+h2 {
+  font-family: $headers-font;
+  color: #004643;
+  font-size: 18px;
+}

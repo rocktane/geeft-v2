@@ -6,27 +6,21 @@
   background-color: $secondary-color;
   border: 2px solid $primary-color;
   width: 70%;
-  padding: 1em 1em 1em 1em;
+  padding: 1em;
   border-radius: var(--border-radius);
   margin-bottom: 1em;
   box-shadow: var(--container-shadow);
-
 }
-
-.event-dashboard-title {
-  font-family: $headers-font;
-  color: $primary-color;
-  font-size: 1.5em;
-}
-
 
 
 .event-dashboard-description {
   font-family: $body-font;
   color: $primary-color;
-  font-size: 1em;
+  // font-size: 1em;
   margin-top: 0.5em;
+  // line-height: 1.5em;
 }
+
 
 // .event-url {
 //   display: inline-block;
