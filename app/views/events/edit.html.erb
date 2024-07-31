@@ -1,11 +1,8 @@
 <div class="body-container">
-
-<div class="primary-container" data-controller="update-event">
-
-
-  <%= link_to event_path(@event), class: "btn-back" do %>
-    <i class="fa-solid fa-chevron-left"></i> Annuler
-  <% end %>
+  <div class="primary-container" data-controller="update-event">
+    <%= link_to event_path(@event), class: "btn-back" do %>
+      <i class="fa-solid fa-chevron-left"></i> Annuler
+    <% end %>
 
     <%= form_with(model: @event, url: event_path(@event), method: :patch) do |f| %>
       <div class="top-section">
@@ -22,6 +19,7 @@
             </label>
           </div>
         </div>
+
         <% if @event.occurrence_from.nil? %>
           <%= link_to event_path(@event), class: "btn btn-square btn-red btn__theme", data: {
             turbo_method: :delete,
@@ -41,42 +39,42 @@
             </div>
           <% end %>
         <% end %>
-
       </div>
 
-
-        <div class="secondary-container">
-          <h3>Nom de l'évènement</h3>
-          <%= f.text_field :name, class: 'no-box-input', data: { update_event_target: "name" } %>
-        </div>
-        <div class="secondary-container">
+      <div class="secondary-container">
+        <h3>Nom de l'évènement</h3>
+        <%= f.text_field :name, class: 'no-box-input', data: { update_event_target: "name" } %>
+      </div>
+        <!--
+      <div class="secondary-container">
+        <label>
           <h3>Description</h3>
-          <%= f.text_area :description, class: 'no-box-input', data: { update_event_target: "updateDescription"  } %>
-        </div>
-        <div class="secondary-container">
-          <h3>Lien</h3>
-          <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
-        <%= f.text_field :url, value: url, class: 'no-box-input', placeholder: "www.google.fr", data: { update_event_target: "url" } %>
-        </div>
-
-        <%= render "shared/gifts_list_edit_event" %>
-
-
-    <%= link_to event_path(@event), class: "btn btn-green btn__theme", data: { env: Rails.env, event_id: @event.id, action: "click->update-event#update" }.merge(@event.gift.nil? ? {} : { gift_id: @event.gift.id }) do %>
-      <div class="btn__content">
-        <%= image_tag('update.svg', alt: 'Modifier') %>
-        Mettre à jour
+          <%= f.text_area :description, class: 'no-box-input', data: { update_event_target: "updateDescription" } %>
+        </label>
       </div>
+        -->
+      <div class="secondary-container" data-controller="input-sizer">
+        <label class="input-sizer stacked">
+          <h3>Description</h3>
+          <%= f.text_area :description, class: 'no-box-input', data: { update_event_target: "updateDescription", input_sizer_target: "text" } %>
+        </label>
+      </div>
+
+      <div class="secondary-container">
+        <h3>Lien</h3>
+        <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
+        <%= f.text_field :url, value: url, class: 'no-box-input', placeholder: "www.google.fr", data: { update_event_target: "url" } %>
+      </div>
+
+      <%= render "shared/gifts_list_edit_event" %>
+
+      <%= link_to event_path(@event), class: "btn btn-green btn__theme", data: { env: Rails.env, event_id: @event.id, action: "click->update-event#update" }.merge(@event.gift.nil? ? {} : { gift_id: @event.gift.id }) do %>
+        <div class="btn__content">
+          <%= image_tag('update.svg', alt: 'Modifier') %>
+          Mettre à jour
+        </div>
+      <% end %>
     <% end %>
-
-  <% end %>
-</form>
-
-  <label class="input-sizer stacked" data-controller="input-sizer">
-    <span>Text: </span>
-    <textarea data-input-sizer-target="textarea" rows="1" placeholder="hi"></textarea>
-  </label>
-
 
   </div>
 </div>
