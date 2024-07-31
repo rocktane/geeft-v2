@@ -129,6 +129,8 @@ i {
 .criteria-form {
   display: grid;
   grid-gap: 1em;
+  width: 100%;
+  max-width: 55em;
 }
 
 input[type="radio"],

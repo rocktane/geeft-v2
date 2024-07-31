@@ -3,7 +3,8 @@
   padding: 1em 3.2em 5em 3.2em;
   min-height: calc(100vh - 90px);
   width: 100%;
-  & a {
+
+  a {
     text-decoration: none;
     color: $secondary-color;
   }
@@ -15,38 +16,40 @@
   // position: relative;
   width: 100%;
   max-width: 30em;
-  & .user-forms-title {
+
+  .user-forms-title {
     font-family: $headers-font;
     color: $primary-color;
     font-size: 1.5em;
     margin: 0.5em 0 0.5em 0;
   }
-  & .title {
+
+  .title {
     display: none;
   }
 }
 
-  .secondary-container {
-    margin: 0.5em 0 0 0;
-    padding: 0.6em;
-    border: 3px solid $primary-color;
-    border-radius: var(--border-radius);
-    background-color: $secondary-color;
+.secondary-container {
+  margin: 0.5em 0 0 0;
+  padding: 0.6em;
+  border: 3px solid $primary-color;
+  border-radius: var(--border-radius);
+  background-color: $secondary-color;
+  font-family: $body-font;
+  color: $primary-color;
+  font-size: 1em;
+  overflow: hidden;
+  transition: 0.25s ease-in-out;
+  box-shadow: var(--container-shadow);
+
+  h3 {
     font-family: $body-font;
     color: $primary-color;
-    font-size: 1em;
-    overflow: hidden;
-    transition: 0.25s ease-in-out;
-    box-shadow: var(--container-shadow);
+    font-size: 0.7em;
+    margin: 0em 0 0.5em 0;
+  }
 
-    & h3 {
-      font-family: $body-font;
-      color: $primary-color;
-      font-size: 0.7em;
-      margin: 0em 0 0.5em 0;
-      }
-
-  & input,
+  input,
   textarea {
     font-family: $body-font;
     font-size: 1em;
@@ -56,22 +59,26 @@
     resize: none;
     box-sizing: border-box;
     white-space: pre-wrap;
-    }
-    a {
+  }
+
+  a {
     color: $primary-color;
-    }
-    }
+  }
+}
 
-  .secondary-container[data-refresh-gift-target="gift"] {
-    width: 50%;
-    margin: 0;
-    }
+.secondary-container[data-refresh-gift-target="gift"] {
+  width: 50%;
+  margin: 0;
+}
 
-  div[contenteditable] {
-        border: 1px solid black;
-        width: 200px;
-        }
+div[contenteditable] {
+  border: 1px solid black;
+  width: 200px;
+}
 
+.form-container {
+  margin-bottom: 0.6em;
+}
 
 
 

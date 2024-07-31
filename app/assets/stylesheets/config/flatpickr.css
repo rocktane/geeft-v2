@@ -551,8 +551,8 @@ span.flatpickr-weekday {
 .flatpickr-day.nextMonthDay:focus {
   cursor: pointer;
   outline: 0;
-  background: rgba(0, 70, 67, 0.3);
-  border-color: rgba(0, 70, 67, 0.3);
+  background: rgba(0, 70, 67, 0.2);
+  border-color: rgba(0, 70, 67, 0.2);
 }
 .flatpickr-day.today {
   border-color: rgba(0, 70, 67, 0.3);
@@ -563,7 +563,7 @@ span.flatpickr-weekday {
   background: #959ea9; */
   /* color: #fff; */
   border-color: rgba(0, 70, 67, 0.3);
-  background-color: rgba(0, 70, 67, 0.3);
+  background-color: rgba(0, 70, 67, 0.2);
   color: #004643;
 }
 .flatpickr-day.selected,
