@@ -9,7 +9,7 @@
       <% if @user == @gift.user %>
         <div class="gift-comment">
           <%= form_with(url: gift_path, method: :patch) do |f| %>
-            <h2>Une modification à effectuer ?</h2>
+            <h3>Une modification à effectuer ?</h3>
             <div class="form-comment">
               <%= f.text_field :comment, as: :text, placeholder: "Moins de coffrets, plus d'ateliers" %>
               <%= f.button(type: 'submit', class: 'btn btn__theme btn-square btn-purple') do %>
@@ -22,7 +22,7 @@
         </div>
       <% end %>
 
-      
+
 
       <% text = @event.id ? "Ajouter cette liste à l'évènement" : 'Créer un évènement avec cette liste' %>
       <% svg_icon = image_tag('new-event.svg', alt: 'Ajouter') %>

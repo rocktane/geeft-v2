@@ -1,18 +1,20 @@
 <div class="body-container">
   <div class="dashboard">
-    <div class="annual-calendar">
+    <div class="annual-calendar left-pane">
       <%= render 'shared/calendar' %>
+      <!--
       <%= link_to new_event_path, :class=> "btn btn-green btn__theme btn-desktop", id: "new-event" do %>
         <div class="btn__content">
         <%= image_tag('new-event.svg', alt: 'Nouvel Évènement') %>
         Nouvel évènement
         </div>
       <% end %>
+      -->
       <% if !@events.empty? %>
         <%= render 'shared/event_calendar' %>
       <% end %>
     </div>
-    <div class="dashboard-right">
+    <div class="dashboard-right right-pane">
       <%= link_to :back, class: "btn-back" do %>
         <i class="fa-solid fa-chevron-left"></i> Retour
       <% end %>
@@ -23,4 +25,9 @@
   <%= link_to new_event_path, :class=> "btn-mobile" do %>
     <i class='fa-solid fa-square-plus'></i>
   <% end %>
+
+
+
+
+
 </div>
