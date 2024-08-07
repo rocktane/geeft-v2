@@ -11,7 +11,7 @@
           <%= form_with(url: gift_path, method: :patch) do |f| %>
             <h3>Une modification à effectuer ?</h3>
             <div class="form-comment">
-              <%= f.text_field :comment, as: :text, placeholder: "Moins de coffrets, plus d'ateliers" %>
+              <%= f.text_field :comment, as: :text, placeholder: "Elle aime aussi..." %>
               <%= f.button(type: 'submit', class: 'btn btn__theme btn-square btn-purple') do %>
                 <div class="btn__content">
                   <%= image_tag('send.svg', alt: "Envoyer") %>

@@ -10,7 +10,7 @@ export default class extends Controller {
     const old_list = this.giftTargets.slice(0, 5);
     let new_list = [];
     old_list.forEach((gift) => {
-      new_list.push(gift.firstChild.nodeValue.trim());
+    new_list.push(gift.firstChild.nodeValue.trim());
     });
     return new_list;
   }
@@ -31,11 +31,14 @@ export default class extends Controller {
 
     const url = `${env}/updatelist/${giftId}`;
     const origin = window.location.href;
-    const showGiftUrl = `${env}/gifts/${giftId}`;
-    let redirection = `${env}/gifts/${giftId}/events/new`;
+    let redirection;
+    let eventId;
 
-    if (origin === !showGiftUrl) {
+    if (origin.includes("?event_id=")) {
+      eventId = origin.split("?event_id=")[1];
       redirection = `${env}/events/${eventId}`;
+    } else {
+      redirection = `${env}/gifts/${giftId}/events/new`;
     }
 
     const newList = this.newList();
@@ -63,5 +66,7 @@ export default class extends Controller {
     } catch (error) {
       console.error("Une erreur s'est produite : ", error);
     }
+
+
   }
 }

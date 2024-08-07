@@ -51,7 +51,7 @@
 
       <div class="gifts-event">
         <% if @gift[:id] %>
-          <h4>La liste de cadeaux</h4>
+          <h3>Idées Cadeaux</h3>
           <ul>
             <% @event.gift.generated_list.each do |gift| %>
               <li data-save-gift-target="gift">
@@ -68,7 +68,7 @@
               </li>
             <% end %>
           </ul>
-        <% else %>
+        <% end %>
           <div class="btn__theme btn btn-green">
             <%= button_tag(type: 'submit') do %>
               <div class="btn__content">
@@ -77,7 +77,6 @@
               </div>
             <% end %>
           </div>
-        <% end %>
       </div>
     <% end %>
   </div>

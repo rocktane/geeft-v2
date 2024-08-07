@@ -93,7 +93,7 @@
 
 #comment {
   // margin-top: 0.5em;
-  border: 2px solid $primary-color;
+  border: 2px solid $accent-color;
   border-radius: var(--border-radius);
   background-color: $secondary-color;
   font-family: $body-font;
@@ -113,6 +113,15 @@
     outline: none;
     border: 2px solid $primary-color;
   }
+
+  &::placeholder {
+    color: #B4AFA7;
+    font-style: italic;
+  }
+
+
+
+
 }
 
 .gift-comment {
