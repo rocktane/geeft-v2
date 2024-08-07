@@ -4,45 +4,49 @@
       <i class="fa-solid fa-chevron-left"></i> Retour
     <% end %>
 
-    <div class="top-section">
-      <div class="date-section date-show">
-        <span id="date"><%= @event.date.strftime('%d/%m/%Y') %></span>
-        <%= image_tag('calendar.svg') %>
-        <%# <i class="fa-solid fa-calendar"></i> %>
+    <div class="form-container">
+      <div class="top-section">
+        <div class="date-section date-show">
+          <span id="date"><%= @event.date.strftime('%d/%m/%Y') %></span>
+          <%= image_tag('calendar.svg') %>
+          <%# <i class="fa-solid fa-calendar"></i> %>
+        </div>
+        <%= link_to edit_event_path(@event), class: "btn btn-square btn-green btn__theme" do %>
+          <div class="btn__content">
+            <%= image_tag('pen.svg', alt: 'Modifier') %>
+          </div>
+        <% end %>
       </div>
-      <%= link_to edit_event_path(@event), class: "btn btn-square btn-green btn__theme" do %>
-        <div class="btn__content">
-          <%= image_tag('pen.svg', alt: 'Modifier') %>
+
+      <div class="secondary-container">
+        <h4>Nom de l'évènement</h4>
+        <%= @event.name %>
+      </div>
+
+      <% if @event.description.present? %>
+        <div class="secondary-container">
+          <h4>Description</h4>
+          <%= @event.description %>
         </div>
       <% end %>
+
+      <% if @event.url.present? %>
+        <div class="secondary-container">
+          <h4>Lien</h4>
+          <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
+          <%= link_to url, @event.url, target: :_blank %>
+        </div>
+      <% end %>
+
     </div>
-
-    <div class="secondary-container">
-      <h3>Nom de l'évènement</h3>
-      <%= @event.name %>
-    </div>
-
-    <% if @event.url.present? %>
-      <div class="secondary-container">
-        <h3>Lien</h3>
-        <% url = @event.url.gsub(/https?:\/\/(www\.)?/, "") %>
-        <%= link_to url, @event.url, target: :_blank %>
-      </div>
-    <% end %>
-
-    <% if @event.description.present? %>
-      <div class="secondary-container">
-        <h3>Description</h3>
-        <%= @event.description %>
-      </div>
-    <% end %>
 
 
     <div class="gifts-event">
         <% if @event.gift.present? %>
-          <h3>Les idées cadeaux</h3>
+        <!--
+          <h4>Les idées cadeaux</h4>
           <ul>
-            <% @event.gift_list.each do |gift| %>
+            <% @event.gift.generated_list.each do |gift| %>
               <li data-save-gift-target="gift">
                 <div class="secondary-container">
                   <div class="gift-container">
@@ -57,7 +61,11 @@
               </li>
             <% end %>
           </ul>
+        -->
+    <%= render "shared/gifts_list_event" %>
     </div>
+
+
     <% else %>
       <%= link_to new_event_gift_path(@event), class: 'btn btn__theme btn-green' do %>
         <div class="btn__content">

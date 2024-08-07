@@ -22,6 +22,30 @@
   margin: 1.5em auto;
 }
 
+
+// html, body {
+//   height: 100%;
+// }
+
+// body {
+//   display: flex;
+//   font-family: Arial, sans-serif;
+// }
+
+.dashboard {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Hauteur totale de la vue */
+}
+
+.left-pane, .right-pane {
+  // width: 50%;
+  overflow-y: auto; /* Ajoute un défilement vertical */
+  padding-bottom: 5em;
+  // padding: 1em; /* Pour le contenu */
+}
+
+
 @media (max-width: 800px) {
   .dashboard-right {
     display: none;

@@ -32,7 +32,7 @@ def events_titles
     when "dashboard"
       "> Calendrier"
     when "new"
-      "> Créer mon èvènement"
+      "> Créer mon évènement"
     when "show"
       "> Mon évènement"
     when "edit"

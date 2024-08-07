@@ -4,6 +4,7 @@
       <i class="fa-solid fa-chevron-left"></i> Retour
     <% end %>
 
+    <div class="form-container">
     <% model_to_use = [@gift, @event] || @event %>
     <%= form_with(model: model_to_use, url: events_path(gift_id: @gift.id)) do |f| %>
       <div class="date-and-recurrent">
@@ -23,19 +24,21 @@
       </div>
 
       <div class="secondary-container">
-        <h3>Nom de l'évènement</h3>
+        <h4>Nom de l'évènement</h4>
         <%= f.text_field :name, class: 'no-box-input', placeholder: "Anniversaire de ..." %>
       </div>
 
       <div class="secondary-container" data-controller="input-sizer">
-        <h3>Description</h3>
+        <h4>Description</h4>
         <%= f.text_area :description, class: 'no-box-input', data: { input_sizer_target: "text" }, placeholder: "Pour le cadeau commun de ..." %>
       </div>
 
       <div class="secondary-container">
-        <h3><%= f.label :url, "URL" %></h3>
+        <h4><%= f.label :url, "Cagnotte" %></h4>
         <%= f.text_field :url, class: 'no-box-input', placeholder: "leetchi.com" %>
       </div>
+    </div>
+
 
       <%# Need to find a way to display the error in case %>
       <% if false %>
@@ -48,7 +51,7 @@
 
       <div class="gifts-event">
         <% if @gift[:id] %>
-          <h3>La liste de cadeaux</h3>
+          <h3>Idées Cadeaux</h3>
           <ul>
             <% @event.gift.generated_list.each do |gift| %>
               <li data-save-gift-target="gift">
@@ -65,7 +68,7 @@
               </li>
             <% end %>
           </ul>
-        <% else %>
+        <% end %>
           <div class="btn__theme btn btn-green">
             <%= button_tag(type: 'submit') do %>
               <div class="btn__content">
@@ -74,7 +77,6 @@
               </div>
             <% end %>
           </div>
-        <% end %>
       </div>
     <% end %>
   </div>

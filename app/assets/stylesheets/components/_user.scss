@@ -11,10 +11,7 @@
 
   }
 
-  & h3 {
-    font-family: $headers-font;
-    color: $primary-color;
-    font-size: 1.2em;
+  & h4 {
     margin-bottom: 0.3em;
   }
 
@@ -27,6 +24,7 @@
   }
 
   & input {
+    margin-top: 0.5em;
     font-family: $body-font;
     font-size: 1em;
     color: $primary-color;

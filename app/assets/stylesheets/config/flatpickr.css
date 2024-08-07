@@ -18,7 +18,12 @@
   box-sizing: border-box;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: #fff;
+  background: #FFF3E1;
+  border: 2px solid #004643;
+  font-family: ABeeZee-Regular;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  ;
   /* -webkit-box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6,
     0 -1px 0 #e6e6e6, 0 3px 13px rgba(0, 0, 0, 0.08);
   box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6,
@@ -551,8 +556,8 @@ span.flatpickr-weekday {
 .flatpickr-day.nextMonthDay:focus {
   cursor: pointer;
   outline: 0;
-  background: rgba(0, 70, 67, 0.3);
-  border-color: rgba(0, 70, 67, 0.3);
+  background: rgba(0, 70, 67, 0.2);
+  border-color: rgba(0, 70, 67, 0.2);
 }
 .flatpickr-day.today {
   border-color: rgba(0, 70, 67, 0.3);
@@ -563,7 +568,7 @@ span.flatpickr-weekday {
   background: #959ea9; */
   /* color: #fff; */
   border-color: rgba(0, 70, 67, 0.3);
-  background-color: rgba(0, 70, 67, 0.3);
+  background-color: rgba(0, 70, 67, 0.2);
   color: #004643;
 }
 .flatpickr-day.selected,
@@ -584,11 +589,12 @@ span.flatpickr-weekday {
 .flatpickr-day.selected.nextMonthDay,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
-  background: #fff3e1;
+  border-color: rgba(0, 70, 67, 0.3);
+  background-color: rgba(0, 70, 67, 0.2);;
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: #000000;
-  border-color: #fff3e1;
+  color: #004643;
+  /* border-color: #fff3e1; */
 }
 .flatpickr-day.selected.startRange,
 .flatpickr-day.startRange.startRange,

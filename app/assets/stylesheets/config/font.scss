@@ -39,3 +39,23 @@ h2 {
   color: #004643;
   font-size: 18px;
 }
+
+
+h3 {
+    background-color: #60365E;
+    border-radius: 10px;
+    font-family: $body-font;
+    color: #FFF3E1;
+    font-size: 19px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    justify-content: center;
+    padding: 0.5em;
+    display: inline-block;
+    align-items: center;
+}
+
+h4 {
+  font-family: $body-font;
+  color: #004643;
+  font-size: 13px;
+}

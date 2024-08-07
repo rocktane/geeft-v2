@@ -9,7 +9,7 @@
       <%= f.error_notification %>
       <div class="form-inputs">
         <div class="info-user">
-          <h3> Email </h3>
+          <h2> Email </h2>
           <%= f.input :email,
                         required: true,
                         autofocus: true,
@@ -17,7 +17,7 @@
         </div>
 
         <div class="info-user">
-          <h3> Nom d'utilisateur </h3>
+          <h2> Nom d'utilisateur </h2>
           <%= f.input :username,
                       required: true,
                       autofocus: true,
@@ -30,7 +30,7 @@
               input_html: { autocomplete: "birthday" } %>
         -->
         <div class="info-user">
-          <h3> Date d'anniversaire </h3>
+          <h2> Date d'anniversaire </h2>
           <%= f.text_field :birthday,
               required: true,
               autofocus: true,
@@ -40,7 +40,7 @@
         </div>
 
         <div class="info-user">
-          <h3> Mot de passe </h3>
+          <h2> Mot de passe </h2>
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
@@ -48,7 +48,7 @@
         </div>
 
         <div class="info-user">
-          <h3> Confirmation du mot de passe </h3>
+          <h4> Confirmation du mot de passe </h4>
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>

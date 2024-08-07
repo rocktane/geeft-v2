@@ -1,7 +1,9 @@
-<div class="gifts-event">
-  <% if !@event.gift.nil? %>
+  <h3>
+    Idées Cadeaux
+  </h3>
+  <% if @event.gift.present? %>
     <ul data-controller="delete-gift">
-      <% @event.gift_list.each do |gift| %>
+      <% @event.gift.generated_list.each do |gift| %>
         <li data-update-event-target="gift">
           <div class="secondary-container">
           <div class="gift-container">
@@ -21,4 +23,3 @@
       <% end %>
     </ul>
   <% end %>
-</div>

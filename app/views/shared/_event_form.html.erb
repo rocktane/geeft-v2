@@ -19,19 +19,19 @@
       <%= f.text_field :date, class: 'no-box-input date-show', as: :string, data: { controller: "calendar" } %>
       </div>
       <div class="secondary-container">
-        <h3>Nom de l'ènement</h3>
+        <h4>Nom de l'ènement</h4>
         <%= f.text_field :name, class: 'no-box-input' %>
       </div>
       <div class="secondary-container">
-        <h3><%= f.label :description, "Description" %></h3>
+        <h4><%= f.label :description, "Description" %></h4>
       <%= f.text_field :description, class: 'no-box-input' %>
       </div>
       <div class="secondary-container">
-        <h3><%= f.label :url, "URL" %></h3>
+        <h4><%= f.label :url, "URL" %></h4>
       <%= f.text_field :url, class: 'no-box-input', placeholder: "www.google.fr" %>
       </div>
       <% if !@event.gift.nil? %>
-        <h3><%= f.label :generated_list, "Liste de cadeaux" %></h3>
+        <h4><%= f.label :generated_list, "Liste de cadeaux" %></h4>
         <div class="gift-list">
           <% @event.gift.generated_list.each do |gift| %>
             <div class="secondary-container">
